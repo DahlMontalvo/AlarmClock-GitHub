@@ -1,0 +1,552 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		001638FB14DAC9690097041F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001638FA14DAC9690097041F /* UIKit.framework */; };
+		001638FD14DAC9690097041F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001638FC14DAC9690097041F /* Foundation.framework */; };
+		001638FF14DAC9690097041F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001638FE14DAC9690097041F /* CoreGraphics.framework */; };
+		0016390514DAC9690097041F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0016390314DAC9690097041F /* InfoPlist.strings */; };
+		0016390714DAC9690097041F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0016390614DAC9690097041F /* main.m */; };
+		0016390B14DAC9690097041F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0016390A14DAC9690097041F /* AppDelegate.m */; };
+		0016390E14DAC9690097041F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0016390C14DAC9690097041F /* MainStoryboard.storyboard */; };
+		0016391114DAC9690097041F /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0016391014DAC9690097041F /* MasterViewController.m */; };
+		0016391C14DAC9690097041F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0016391B14DAC9690097041F /* SenTestingKit.framework */; };
+		0016391D14DAC9690097041F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001638FA14DAC9690097041F /* UIKit.framework */; };
+		0016391E14DAC9690097041F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001638FC14DAC9690097041F /* Foundation.framework */; };
+		0016392614DAC9690097041F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0016392414DAC9690097041F /* InfoPlist.strings */; };
+		0016392914DAC9690097041F /* alarm1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0016392814DAC9690097041F /* alarm1Tests.m */; };
+		0016393814DADE5F0097041F /* minTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0016393714DADE5F0097041F /* minTableViewController.m */; };
+		001954EF14DC316C0027FF43 /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 001954EE14DC316C0027FF43 /* Singleton.m */; };
+		0036C2811509F92400CA8CC9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0036C2801509F92400CA8CC9 /* AVFoundation.framework */; };
+		0036C2881509FA4100CA8CC9 /* chimes.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0036C2871509FA4100CA8CC9 /* chimes.wav */; };
+		004E8A6914F6837F0013550D /* AddRepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 004E8A6814F6837F0013550D /* AddRepeatViewController.m */; };
+		006F2A0E14F687E400C4A906 /* EditRepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 006F2A0D14F687E400C4A906 /* EditRepeatViewController.m */; };
+		00961B3D14E143A30097F622 /* AddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961B3C14E143A30097F622 /* AddTimeViewController.m */; };
+		00A64AD714DDBB9000A8AC52 /* AddAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A64AD614DDBB9000A8AC52 /* AddAlarmViewController.m */; };
+		00B4A6BE14F6753700716821 /* DoMathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B4A6BD14F6753700716821 /* DoMathViewController.m */; };
+		00DE2B3614E4818C00A5B32F /* EditAlarmAddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DE2B3514E4818C00A5B32F /* EditAlarmAddTimeViewController.m */; };
+		00EE848414DF1DF100CEB90F /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EE848314DF1DF100CEB90F /* Alarm.m */; };
+		00EE848B14DF2F0D00CEB90F /* AlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EE848A14DF2F0D00CEB90F /* AlarmCell.m */; };
+		CE47CDA914E3B3EE005E44ED /* EditAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE47CDA814E3B3EE005E44ED /* EditAlarmViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0016391F14DAC9690097041F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 001638ED14DAC9690097041F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 001638F514DAC9690097041F;
+			remoteInfo = alarm1;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		001638F614DAC9690097041F /* alarm1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alarm1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		001638FA14DAC9690097041F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		001638FC14DAC9690097041F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		001638FE14DAC9690097041F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0016390214DAC9690097041F /* alarm1-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "alarm1-Info.plist"; sourceTree = "<group>"; };
+		0016390414DAC9690097041F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0016390614DAC9690097041F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0016390814DAC9690097041F /* alarm1-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "alarm1-Prefix.pch"; sourceTree = "<group>"; };
+		0016390914DAC9690097041F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0016390A14DAC9690097041F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0016390D14DAC9690097041F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		0016390F14DAC9690097041F /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		0016391014DAC9690097041F /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		0016391A14DAC9690097041F /* alarm1Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = alarm1Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0016391B14DAC9690097041F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		0016392314DAC9690097041F /* alarm1Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "alarm1Tests-Info.plist"; sourceTree = "<group>"; };
+		0016392514DAC9690097041F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0016392714DAC9690097041F /* alarm1Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = alarm1Tests.h; sourceTree = "<group>"; };
+		0016392814DAC9690097041F /* alarm1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = alarm1Tests.m; sourceTree = "<group>"; };
+		0016393614DADE5F0097041F /* minTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = minTableViewController.h; path = ../minTableViewController.h; sourceTree = "<group>"; };
+		0016393714DADE5F0097041F /* minTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = minTableViewController.m; path = ../minTableViewController.m; sourceTree = "<group>"; };
+		001954ED14DC316C0027FF43 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Singleton.h; path = ../Singleton.h; sourceTree = "<group>"; };
+		001954EE14DC316C0027FF43 /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Singleton.m; path = ../Singleton.m; sourceTree = "<group>"; };
+		0036C2801509F92400CA8CC9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0036C2871509FA4100CA8CC9 /* chimes.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chimes.wav; sourceTree = "<group>"; };
+		004E8A6714F6837F0013550D /* AddRepeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRepeatViewController.h; sourceTree = "<group>"; };
+		004E8A6814F6837F0013550D /* AddRepeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRepeatViewController.m; sourceTree = "<group>"; };
+		006F2A0C14F687E400C4A906 /* EditRepeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditRepeatViewController.h; sourceTree = "<group>"; };
+		006F2A0D14F687E400C4A906 /* EditRepeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditRepeatViewController.m; sourceTree = "<group>"; };
+		00961B3B14E143A30097F622 /* AddTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTimeViewController.h; sourceTree = "<group>"; };
+		00961B3C14E143A30097F622 /* AddTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTimeViewController.m; sourceTree = "<group>"; };
+		00A64AD514DDBB9000A8AC52 /* AddAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddAlarmViewController.h; path = ../AddAlarmViewController.h; sourceTree = "<group>"; };
+		00A64AD614DDBB9000A8AC52 /* AddAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddAlarmViewController.m; path = ../AddAlarmViewController.m; sourceTree = "<group>"; };
+		00B4A6BC14F6753700716821 /* DoMathViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoMathViewController.h; sourceTree = "<group>"; };
+		00B4A6BD14F6753700716821 /* DoMathViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoMathViewController.m; sourceTree = "<group>"; };
+		00DE2B3414E4818C00A5B32F /* EditAlarmAddTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAlarmAddTimeViewController.h; sourceTree = "<group>"; };
+		00DE2B3514E4818C00A5B32F /* EditAlarmAddTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAlarmAddTimeViewController.m; sourceTree = "<group>"; };
+		00EE848214DF1DF100CEB90F /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
+		00EE848314DF1DF100CEB90F /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
+		00EE848914DF2F0D00CEB90F /* AlarmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmCell.h; sourceTree = "<group>"; };
+		00EE848A14DF2F0D00CEB90F /* AlarmCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmCell.m; sourceTree = "<group>"; };
+		CE47CDA714E3B3EE005E44ED /* EditAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAlarmViewController.h; sourceTree = "<group>"; };
+		CE47CDA814E3B3EE005E44ED /* EditAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAlarmViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		001638F314DAC9690097041F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0036C2811509F92400CA8CC9 /* AVFoundation.framework in Frameworks */,
+				001638FB14DAC9690097041F /* UIKit.framework in Frameworks */,
+				001638FD14DAC9690097041F /* Foundation.framework in Frameworks */,
+				001638FF14DAC9690097041F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0016391614DAC9690097041F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0016391C14DAC9690097041F /* SenTestingKit.framework in Frameworks */,
+				0016391D14DAC9690097041F /* UIKit.framework in Frameworks */,
+				0016391E14DAC9690097041F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		001638EB14DAC9690097041F = {
+			isa = PBXGroup;
+			children = (
+				0016390014DAC9690097041F /* alarm1 */,
+				0016392114DAC9690097041F /* alarm1Tests */,
+				001638F914DAC9690097041F /* Frameworks */,
+				001638F714DAC9690097041F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		001638F714DAC9690097041F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				001638F614DAC9690097041F /* alarm1.app */,
+				0016391A14DAC9690097041F /* alarm1Tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		001638F914DAC9690097041F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0036C2801509F92400CA8CC9 /* AVFoundation.framework */,
+				001638FA14DAC9690097041F /* UIKit.framework */,
+				001638FC14DAC9690097041F /* Foundation.framework */,
+				001638FE14DAC9690097041F /* CoreGraphics.framework */,
+				0016391B14DAC9690097041F /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0016390014DAC9690097041F /* alarm1 */ = {
+			isa = PBXGroup;
+			children = (
+				0016390C14DAC9690097041F /* MainStoryboard.storyboard */,
+				0036C2871509FA4100CA8CC9 /* chimes.wav */,
+				0016390914DAC9690097041F /* AppDelegate.h */,
+				0016390A14DAC9690097041F /* AppDelegate.m */,
+				0016390F14DAC9690097041F /* MasterViewController.h */,
+				0016391014DAC9690097041F /* MasterViewController.m */,
+				0016393614DADE5F0097041F /* minTableViewController.h */,
+				0016393714DADE5F0097041F /* minTableViewController.m */,
+				00B4A6BA14F674DE00716821 /* DoMathViewController */,
+				00DE2B3B14E4829E00A5B32F /* AddAlarm */,
+				00DE2B3914E4825A00A5B32F /* Edit Alarm */,
+				00DE2B3A14E4827C00A5B32F /* NSObject Klasser */,
+				0016390114DAC9690097041F /* Supporting Files */,
+			);
+			path = alarm1;
+			sourceTree = "<group>";
+		};
+		0016390114DAC9690097041F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0016390214DAC9690097041F /* alarm1-Info.plist */,
+				0016390314DAC9690097041F /* InfoPlist.strings */,
+				0016390614DAC9690097041F /* main.m */,
+				0016390814DAC9690097041F /* alarm1-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0016392114DAC9690097041F /* alarm1Tests */ = {
+			isa = PBXGroup;
+			children = (
+				0016392714DAC9690097041F /* alarm1Tests.h */,
+				0016392814DAC9690097041F /* alarm1Tests.m */,
+				0016392214DAC9690097041F /* Supporting Files */,
+			);
+			path = alarm1Tests;
+			sourceTree = "<group>";
+		};
+		0016392214DAC9690097041F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0016392314DAC9690097041F /* alarm1Tests-Info.plist */,
+				0016392414DAC9690097041F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		00B4A6BA14F674DE00716821 /* DoMathViewController */ = {
+			isa = PBXGroup;
+			children = (
+				00B4A6BC14F6753700716821 /* DoMathViewController.h */,
+				00B4A6BD14F6753700716821 /* DoMathViewController.m */,
+			);
+			name = DoMathViewController;
+			sourceTree = "<group>";
+		};
+		00DE2B3914E4825A00A5B32F /* Edit Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				CE47CDA714E3B3EE005E44ED /* EditAlarmViewController.h */,
+				CE47CDA814E3B3EE005E44ED /* EditAlarmViewController.m */,
+				00DE2B3414E4818C00A5B32F /* EditAlarmAddTimeViewController.h */,
+				00DE2B3514E4818C00A5B32F /* EditAlarmAddTimeViewController.m */,
+				006F2A0C14F687E400C4A906 /* EditRepeatViewController.h */,
+				006F2A0D14F687E400C4A906 /* EditRepeatViewController.m */,
+			);
+			name = "Edit Alarm";
+			sourceTree = "<group>";
+		};
+		00DE2B3A14E4827C00A5B32F /* NSObject Klasser */ = {
+			isa = PBXGroup;
+			children = (
+				00EE848214DF1DF100CEB90F /* Alarm.h */,
+				00EE848314DF1DF100CEB90F /* Alarm.m */,
+				00EE848914DF2F0D00CEB90F /* AlarmCell.h */,
+				00EE848A14DF2F0D00CEB90F /* AlarmCell.m */,
+				001954ED14DC316C0027FF43 /* Singleton.h */,
+				001954EE14DC316C0027FF43 /* Singleton.m */,
+			);
+			name = "NSObject Klasser";
+			sourceTree = "<group>";
+		};
+		00DE2B3B14E4829E00A5B32F /* AddAlarm */ = {
+			isa = PBXGroup;
+			children = (
+				00A64AD514DDBB9000A8AC52 /* AddAlarmViewController.h */,
+				00A64AD614DDBB9000A8AC52 /* AddAlarmViewController.m */,
+				00961B3B14E143A30097F622 /* AddTimeViewController.h */,
+				00961B3C14E143A30097F622 /* AddTimeViewController.m */,
+				004E8A6714F6837F0013550D /* AddRepeatViewController.h */,
+				004E8A6814F6837F0013550D /* AddRepeatViewController.m */,
+			);
+			name = AddAlarm;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		001638F514DAC9690097041F /* alarm1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0016392C14DAC9690097041F /* Build configuration list for PBXNativeTarget "alarm1" */;
+			buildPhases = (
+				001638F214DAC9690097041F /* Sources */,
+				001638F314DAC9690097041F /* Frameworks */,
+				001638F414DAC9690097041F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = alarm1;
+			productName = alarm1;
+			productReference = 001638F614DAC9690097041F /* alarm1.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0016391914DAC9690097041F /* alarm1Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0016392F14DAC9690097041F /* Build configuration list for PBXNativeTarget "alarm1Tests" */;
+			buildPhases = (
+				0016391514DAC9690097041F /* Sources */,
+				0016391614DAC9690097041F /* Frameworks */,
+				0016391714DAC9690097041F /* Resources */,
+				0016391814DAC9690097041F /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0016392014DAC9690097041F /* PBXTargetDependency */,
+			);
+			name = alarm1Tests;
+			productName = alarm1Tests;
+			productReference = 0016391A14DAC9690097041F /* alarm1Tests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		001638ED14DAC9690097041F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 001638F014DAC9690097041F /* Build configuration list for PBXProject "alarm1" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 001638EB14DAC9690097041F;
+			productRefGroup = 001638F714DAC9690097041F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				001638F514DAC9690097041F /* alarm1 */,
+				0016391914DAC9690097041F /* alarm1Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		001638F414DAC9690097041F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0016390514DAC9690097041F /* InfoPlist.strings in Resources */,
+				0016390E14DAC9690097041F /* MainStoryboard.storyboard in Resources */,
+				0036C2881509FA4100CA8CC9 /* chimes.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0016391714DAC9690097041F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0016392614DAC9690097041F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0016391814DAC9690097041F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		001638F214DAC9690097041F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0016390714DAC9690097041F /* main.m in Sources */,
+				0016390B14DAC9690097041F /* AppDelegate.m in Sources */,
+				0016391114DAC9690097041F /* MasterViewController.m in Sources */,
+				0016393814DADE5F0097041F /* minTableViewController.m in Sources */,
+				001954EF14DC316C0027FF43 /* Singleton.m in Sources */,
+				00A64AD714DDBB9000A8AC52 /* AddAlarmViewController.m in Sources */,
+				00EE848414DF1DF100CEB90F /* Alarm.m in Sources */,
+				00EE848B14DF2F0D00CEB90F /* AlarmCell.m in Sources */,
+				00961B3D14E143A30097F622 /* AddTimeViewController.m in Sources */,
+				CE47CDA914E3B3EE005E44ED /* EditAlarmViewController.m in Sources */,
+				00DE2B3614E4818C00A5B32F /* EditAlarmAddTimeViewController.m in Sources */,
+				00B4A6BE14F6753700716821 /* DoMathViewController.m in Sources */,
+				004E8A6914F6837F0013550D /* AddRepeatViewController.m in Sources */,
+				006F2A0E14F687E400C4A906 /* EditRepeatViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0016391514DAC9690097041F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0016392914DAC9690097041F /* alarm1Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0016392014DAC9690097041F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 001638F514DAC9690097041F /* alarm1 */;
+			targetProxy = 0016391F14DAC9690097041F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0016390314DAC9690097041F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0016390414DAC9690097041F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0016390C14DAC9690097041F /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0016390D14DAC9690097041F /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		0016392414DAC9690097041F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0016392514DAC9690097041F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0016392A14DAC9690097041F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		0016392B14DAC9690097041F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0016392D14DAC9690097041F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "alarm1/alarm1-Prefix.pch";
+				INFOPLIST_FILE = "alarm1/alarm1-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0016392E14DAC9690097041F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "alarm1/alarm1-Prefix.pch";
+				INFOPLIST_FILE = "alarm1/alarm1-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		0016393014DAC9690097041F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/alarm1.app/alarm1";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "alarm1/alarm1-Prefix.pch";
+				INFOPLIST_FILE = "alarm1Tests/alarm1Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		0016393114DAC9690097041F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/alarm1.app/alarm1";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "alarm1/alarm1-Prefix.pch";
+				INFOPLIST_FILE = "alarm1Tests/alarm1Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		001638F014DAC9690097041F /* Build configuration list for PBXProject "alarm1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0016392A14DAC9690097041F /* Debug */,
+				0016392B14DAC9690097041F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0016392C14DAC9690097041F /* Build configuration list for PBXNativeTarget "alarm1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0016392D14DAC9690097041F /* Debug */,
+				0016392E14DAC9690097041F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0016392F14DAC9690097041F /* Build configuration list for PBXNativeTarget "alarm1Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0016393014DAC9690097041F /* Debug */,
+				0016393114DAC9690097041F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 001638ED14DAC9690097041F /* Project object */;
+}
