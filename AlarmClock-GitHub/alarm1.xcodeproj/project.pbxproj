@@ -29,6 +29,7 @@
 		00961B3D14E143A30097F622 /* AddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961B3C14E143A30097F622 /* AddTimeViewController.m */; };
 		00A64AD714DDBB9000A8AC52 /* AddAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A64AD614DDBB9000A8AC52 /* AddAlarmViewController.m */; };
 		00B4A6BE14F6753700716821 /* DoMathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B4A6BD14F6753700716821 /* DoMathViewController.m */; };
+		00D417DD15C5C822002052E2 /* BigBG_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D417DC15C5C822002052E2 /* BigBG_1.png */; };
 		00DE2B3614E4818C00A5B32F /* EditAlarmAddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DE2B3514E4818C00A5B32F /* EditAlarmAddTimeViewController.m */; };
 		00EE848414DF1DF100CEB90F /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EE848314DF1DF100CEB90F /* Alarm.m */; };
 		00EE848B14DF2F0D00CEB90F /* AlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EE848A14DF2F0D00CEB90F /* AlarmCell.m */; };
@@ -81,6 +82,7 @@
 		00A64AD614DDBB9000A8AC52 /* AddAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddAlarmViewController.m; path = ../AddAlarmViewController.m; sourceTree = "<group>"; };
 		00B4A6BC14F6753700716821 /* DoMathViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoMathViewController.h; sourceTree = "<group>"; };
 		00B4A6BD14F6753700716821 /* DoMathViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoMathViewController.m; sourceTree = "<group>"; };
+		00D417DC15C5C822002052E2 /* BigBG_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigBG_1.png; sourceTree = "<group>"; };
 		00DE2B3414E4818C00A5B32F /* EditAlarmAddTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAlarmAddTimeViewController.h; sourceTree = "<group>"; };
 		00DE2B3514E4818C00A5B32F /* EditAlarmAddTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAlarmAddTimeViewController.m; sourceTree = "<group>"; };
 		00EE848214DF1DF100CEB90F /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		0016390114DAC9690097041F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				00D417DC15C5C822002052E2 /* BigBG_1.png */,
 				0016390214DAC9690097041F /* alarm1-Info.plist */,
 				0016390314DAC9690097041F /* InfoPlist.strings */,
 				0016390614DAC9690097041F /* main.m */,
@@ -318,6 +321,7 @@
 				0016390514DAC9690097041F /* InfoPlist.strings in Resources */,
 				0016390E14DAC9690097041F /* MainStoryboard.storyboard in Resources */,
 				0036C2881509FA4100CA8CC9 /* chimes.wav in Resources */,
+				00D417DD15C5C822002052E2 /* BigBG_1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

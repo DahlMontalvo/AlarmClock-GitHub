@@ -10,6 +10,10 @@
 #import "Singleton.h"
 @implementation MasterViewController
 @synthesize timeDisplay;
+@synthesize ampmDisplay;
+@synthesize secondsDisplay;
+@synthesize dayDisplay;
+@synthesize dateDisplay;
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -26,7 +30,6 @@
 - (void)minTableViewControllerDidDone:(AddAlarmViewController *)controller
 {
 	[self dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"Dismiss");
 }
 
 
@@ -42,9 +45,31 @@
     
     dateFormat = [[NSDateFormatter alloc] init];
     
-    [dateFormat setTimeStyle:NSDateFormatterMediumStyle];
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    [outputFormatter setDateFormat:@"a"];
+    
+    NSDateFormatter *secondFormatter = [[NSDateFormatter alloc] init];
+    [secondFormatter setDateFormat:@"ss"];
+    
+    NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
+    [dayFormatter setDateFormat:@"EEE"];
+    
+    NSDateFormatter *fullDateFormatter = [[NSDateFormatter alloc] init];
+    [fullDateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    [dateFormat setDateFormat:@"hh:mm"];
+    //[dateFormat setTimeStyle:NSDateFormatterShortStyle];
     NSString *dateString = [dateFormat stringFromDate:dateShow];
+    NSString *ampmString = [outputFormatter stringFromDate:dateShow];
+    NSString *secondsString = [secondFormatter stringFromDate:dateShow];
+    NSString *dayString = [dayFormatter stringFromDate:dateShow];
+    NSString *fullDateString = [fullDateFormatter stringFromDate:dateShow];
+    
+    ampmDisplay.text = ampmString;
     timeDisplay.text = dateString;
+    secondsDisplay.text = secondsString;
+    dayDisplay.text = dayString;
+    dateDisplay.text = fullDateString;
 }
 
 
@@ -65,6 +90,27 @@
 
 - (void)viewDidLoad
 {
+    
+    //Kolla veckodag
+    NSDateFormatter* theDateFormatter = [[NSDateFormatter alloc] init];
+    [theDateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+    [theDateFormatter setDateFormat:@"EEEE"];
+    NSString *weekDay =  [theDateFormatter stringFromDate:[NSDate date]];
+    
+    NSLog(@"%@",weekDay);
+    
+    NSDate *today = [NSDate date];
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *weekdayComponents =
+    [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:today];
+    NSInteger day = [weekdayComponents day];
+    NSInteger weekday = [weekdayComponents weekday];
+    
+    NSLog(@"day: %i", day);
+    NSLog(@"Weekday: %i", weekday);
+    
+    //
     
     NSLog(@"Did start MasterViewController ViewDidLoad");
      [[self navigationController] setNavigationBarHidden:YES animated:NO];   

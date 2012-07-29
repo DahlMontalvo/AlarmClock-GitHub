@@ -41,6 +41,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="BigBG_1.png" id="S1U-WI-sgF">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="iAC-Ja-QpT">
                                 <rect key="frame" x="282" y="441" width="18" height="19"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -56,10 +60,38 @@
                                     <segue destination="bYr-UU-Cp9" kind="modal" identifier="PushminView" modalTransitionStyle="flipHorizontal" id="Lcw-9L-qmG"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="bEb-Tc-TiO">
-                                <rect key="frame" x="20" y="172" width="280" height="79"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="bEb-Tc-TiO">
+                                <rect key="frame" x="20" y="114" width="280" height="251"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="48"/>
+                                <fontDescription key="fontDescription" name="DBLCDTempBlack" family="DB LCD Temp" pointSize="70"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Day" lineBreakMode="tailTruncation" minimumFontSize="10" id="2GE-5u-hGM">
+                                <rect key="frame" x="63" y="176" width="86" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PM" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="7fz-jI-LLH">
+                                <rect key="frame" x="180" y="176" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="00-00-00" lineBreakMode="tailTruncation" minimumFontSize="10" id="dqG-8N-TNo">
+                                <rect key="frame" x="63" y="266" width="94" height="21"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <fontDescription key="fontDescription" name="DBLCDTempBlack" family="DB LCD Temp" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="00" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="nEl-bo-p2D">
+                                <rect key="frame" x="165" y="266" width="97" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DBLCDTempBlack" family="DB LCD Temp" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -70,6 +102,10 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="ampmDisplay" destination="7fz-jI-LLH" id="3Dp-UG-ENV"/>
+                        <outlet property="dateDisplay" destination="dqG-8N-TNo" id="FEt-PU-2eg"/>
+                        <outlet property="dayDisplay" destination="2GE-5u-hGM" id="m9o-os-U7C"/>
+                        <outlet property="secondsDisplay" destination="nEl-bo-p2D" id="pkI-RX-k4F"/>
                         <outlet property="timeDisplay" destination="bEb-Tc-TiO" id="gFL-6y-uI0"/>
                     </connections>
                 </viewController>
@@ -1053,6 +1089,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="3001" y="327"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BigBG_1.png" width="960" height="960"/>
+    </resources>
     <classes>
         <class className="AddAlarmViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddAlarmViewController.h"/>
@@ -1121,6 +1160,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
             <relationships>
                 <relationship kind="action" name="settingsButton:"/>
+                <relationship kind="outlet" name="ampmDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dateDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dayDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="secondsDisplay" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="timeDisplay" candidateClass="UILabel"/>
             </relationships>
         </class>

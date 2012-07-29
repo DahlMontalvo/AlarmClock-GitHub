@@ -15,6 +15,10 @@
     
     NSDateFormatter *dateFormat;
     IBOutlet UILabel *timeDisplay;
+    IBOutlet UILabel *ampmDisplay;
+    IBOutlet UILabel *secondsDisplay;
+    IBOutlet UILabel *dayDisplay;
+    IBOutlet UILabel *dateDisplay;
     
     NSTimer *timer;
 }
@@ -23,7 +27,10 @@
 
 
 @property(retain,nonatomic)UILabel *timeDisplay;
-
+@property(retain,nonatomic)UILabel *ampmDisplay;
+@property(retain,nonatomic)UILabel *secondsDisplay;
+@property(retain,nonatomic)UILabel *dayDisplay;
+@property(retain,nonatomic)UILabel *dateDisplay;
 
 
 - (IBAction)settingsButton:(id)sender;
