@@ -34,5 +34,7 @@
 - (IBAction)cancel:(id)sender;
 - (IBAction)save:(id)sender;
 - (IBAction)switchFlicked:(id)sender;
+- (IBAction)dismissKeyboard:(id)sender;
+
 
 @end

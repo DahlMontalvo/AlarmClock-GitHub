@@ -26,7 +26,7 @@
     
     [[[Singleton sharedSingleton] sharedPrefs] synchronize];
 	[self.delegate minTableViewControllerDidDone:self];
-    
+        
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -78,8 +78,13 @@
 
 - (void)viewDidLoad
 {
+   
+    NSLog(@"TABLEVIEW VIEW DID LOAD");
+     
+    
     //Antalet singletonvariabler
     counter = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
+    NSLog(@"Counter:%i",counter);
     
     //Läser in alla sharedprefs i en sharedAlarmsArray
     if ([[[Singleton sharedSingleton] sharedAlarmsArray] count] < counter) {
@@ -96,7 +101,8 @@
         
             [[[Singleton sharedSingleton] sharedAlarmsArray] addObject:alarm];
             
-            NSLog(@"%@", alarm.repeat);
+            NSLog(@"Added alarm with name: %@", alarm.name);
+            
             
         }
     }
@@ -118,35 +124,20 @@
     [[[Singleton sharedSingleton] sharedPrefs] setValue:[[Singleton sharedSingleton]sharedAlarmsArray] forKey:@"AlarmArraySave"];
     [[[Singleton sharedSingleton] sharedPrefs] synchronize];
     
+    
+    
     [super viewDidUnload];
 
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    
-    [self.tableView reloadData];
-    
-    if ([[[Singleton sharedSingleton] sharedAlarmsArray] count] < counter) {
-        
-        for (int i = 0; i < counter ; i++) {
-            
-            [self.tableView reloadData];
-            
-            Alarm *alarm = [[Alarm alloc] init];
-            alarm.name = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"name%i",i]];
-            alarm.fireDate = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"firedate%i",i]];
-            alarm.alarmState = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:[NSString stringWithFormat:@"CurrentSwitchState%i",i]];
-            
-            [[[Singleton sharedSingleton] sharedAlarmsArray] addObject:alarm];
-            
-        }
-        
         [self.tableView reloadData];
-        
-    }
-
-    [[self navigationController] setNavigationBarHidden:NO animated:YES];
+    
+    counter = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
+    
+    //Läser in alla sharedprefs i en sharedAlarmsArray
+       [[self navigationController] setNavigationBarHidden:NO animated:YES];
     
     [super viewWillAppear:animated];
     
@@ -188,33 +179,37 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
-    return [[[Singleton sharedSingleton] sharedAlarmsArray]count];
-    
+  
+        return [[[Singleton sharedSingleton] sharedAlarmsArray]count];
 }
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-	cell = (AlarmCell *)[tableView dequeueReusableCellWithIdentifier:@"AlarmCell"];
     
-	Alarm *alarm = [[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:indexPath.row];
-	cell.nameLabel.text = alarm.name;
+        
+        cell = (AlarmCell *)[tableView dequeueReusableCellWithIdentifier:@"AlarmCell"];
+        
+        Alarm *alarm = [[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:indexPath.row];
+        cell.nameLabel.text = alarm.name;
+        
+        NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+        [outputFormatter setDateFormat:@"HH:mm a"];
+        NSString *dateString = [outputFormatter stringFromDate:alarm.fireDate];
+        
+        cell.timeLabel.text = dateString;
+        
+        //kollar om staten är on eller off, och skriver ut det
+        if ([[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:indexPath.row] alarmState] == 1) {
+            cell.onOffLabel.text = @"On";
+        } else {
+            cell.onOffLabel.text = @"Off";
+        }
+        
+        return cell;
     
-    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-    [outputFormatter setDateFormat:@"h:mm a"];
-    NSString *dateString = [outputFormatter stringFromDate:alarm.fireDate];
-    
-    cell.timeLabel.text = dateString;
-	
-    //kollar om staten är on eller off, och skriver ut det
-    if ([[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:indexPath.row] alarmState] == 1) {
-        cell.onOffLabel.text = @"On";
-    } else {
-        cell.onOffLabel.text = @"Off";
-    }
-    
-    return cell;
 }
 
 
@@ -243,6 +238,9 @@
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
         y = y - 1;
+        
+                
+        [[[Singleton sharedSingleton] sharedPrefs] setInteger:y forKey:@"Counter"];
 
 	}   
 }

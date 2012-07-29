@@ -24,31 +24,31 @@
     int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
     
     UITableViewCell *cell = mondayButton;    
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag2%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
+    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag1%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
     else  cell.accessoryType = UITableViewCellAccessoryNone;
     
     cell = tuesdayButton;    
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag3%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
+    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag2%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
     else  cell.accessoryType = UITableViewCellAccessoryNone;
     
     cell = wednesdayButton;    
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag4%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
+    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag3%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
     else  cell.accessoryType = UITableViewCellAccessoryNone;
     
     cell = thursdayButton;    
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag5%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
+    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag4%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
     else  cell.accessoryType = UITableViewCellAccessoryNone;
     
     cell = fridayButton;    
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag6%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
+    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag5%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
     else  cell.accessoryType = UITableViewCellAccessoryNone;
     
     cell = saturdayButton;    
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag7%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
+    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag6%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
     else  cell.accessoryType = UITableViewCellAccessoryNone;
     
     cell = sundayButton;    
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag1%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
+    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag7%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
     else  cell.accessoryType = UITableViewCellAccessoryNone;
     
 }
@@ -67,7 +67,7 @@
     int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    int weekday = indexPath.row;
+    int weekday = indexPath.row+1;
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     if (cell.accessoryType == UITableViewCellAccessoryNone) {
@@ -83,13 +83,13 @@
     
     NSString *repeatText = @"";
     
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag2%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@M",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag3%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@T",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag4%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@W",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag5%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@T",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag6%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@F",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
+    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag1%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@M",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
+    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag2%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@T",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
+    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag3%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@W",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
+    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag4%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@T",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
+    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag5%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@F",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
+    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag6%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@S",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
     if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag7%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@S",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag1%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@S",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
     
     if ([repeatText isEqualToString:@"       "]) {
         repeatText = @"Once";

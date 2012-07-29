@@ -95,7 +95,7 @@
             if ([[repeat objectAtIndex:i] integerValue] == 1) {
             NSDateComponents *nowComponents = [gregorian components:NSYearCalendarUnit | NSWeekCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit fromDate:today];
             
-            [nowComponents setWeekday:i+1+1];
+            [nowComponents setWeekday:i+1];
              [nowComponents setHour:8]; //8a.m.
              [nowComponents setMinute:0];
              [nowComponents setSecond:0];

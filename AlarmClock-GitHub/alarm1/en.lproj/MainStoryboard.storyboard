@@ -176,11 +176,11 @@
                                             <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="ZGR-MU-c2d">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="State" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="ZGR-MU-c2d">
                                             <rect key="frame" x="228" y="11" width="52" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.25098040699958801" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -256,6 +256,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    <connections>
+                                                        <action selector="dismissKeyboard:" destination="5wC-Zj-kgQ" eventType="editingDidEndOnExit" id="GJt-hJ-7zx"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -841,6 +844,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    <connections>
+                                                        <action selector="dismissKeyboard:" destination="tKJ-4d-3s1" eventType="editingDidEndOnExit" id="ShQ-LR-dCR"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1092,88 +1098,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     <resources>
         <image name="BigBG_1.png" width="960" height="960"/>
     </resources>
-    <classes>
-        <class className="AddAlarmViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddAlarmViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="save:"/>
-                <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="repeatLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="repeatSideLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timeSideLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="AddRepeatViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddRepeatViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="fridayButton" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="mondayButton" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="saturdayButton" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="sundayButton" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="thursdayButton" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="tuesdayButton" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="wednesdayButton" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="AddTimeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddTimeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="save:"/>
-                <relationship kind="outlet" name="timePicker" candidateClass="UIDatePicker"/>
-            </relationships>
-        </class>
-        <class className="AlarmCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AlarmCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="alarmSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="onOffLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="DoMathViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DoMathViewController.h"/>
-        </class>
-        <class className="EditAlarmAddTimeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditAlarmAddTimeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="save:"/>
-                <relationship kind="outlet" name="timePicker" candidateClass="UIDatePicker"/>
-            </relationships>
-        </class>
-        <class className="EditAlarmViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditAlarmViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="save:"/>
-                <relationship kind="action" name="switchFlicked:"/>
-                <relationship kind="outlet" name="alarmSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="timeSideLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="EditRepeatViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditRepeatViewController.h"/>
-        </class>
-        <class className="MasterViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="settingsButton:"/>
-                <relationship kind="outlet" name="ampmDisplay" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="dateDisplay" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="dayDisplay" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="secondsDisplay" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timeDisplay" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="minTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/minTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="done:"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -31,6 +31,8 @@ static Singleton *shared = NULL;
         self.sharedAlarmsArray = [[NSMutableArray alloc] initWithCapacity:10];
         self.sharedFireDates = [[NSMutableArray alloc] init];
         NSLog(@"Singletons initierade");
+        // NSLog(@"SINGLETON_Number of objects in alarms after ViewDidLoad in AddAlarm: %i",[[[Singleton sharedSingleton] sharedAlarmsArray]count]);
+       
         
     }
     return self;

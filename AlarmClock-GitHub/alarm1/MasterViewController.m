@@ -44,6 +44,7 @@
     NSDate *dateShow= [NSDate dateWithTimeIntervalSinceNow:0];
     
     dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"HH:mm"];
     
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
     [outputFormatter setDateFormat:@"a"];
@@ -57,7 +58,7 @@
     NSDateFormatter *fullDateFormatter = [[NSDateFormatter alloc] init];
     [fullDateFormatter setDateFormat:@"yyyy-MM-dd"];
     
-    [dateFormat setDateFormat:@"hh:mm"];
+   
     //[dateFormat setTimeStyle:NSDateFormatterShortStyle];
     NSString *dateString = [dateFormat stringFromDate:dateShow];
     NSString *ampmString = [outputFormatter stringFromDate:dateShow];
@@ -90,6 +91,10 @@
 
 - (void)viewDidLoad
 {
+    
+    
+    
+   
     
     //Kolla veckodag
     NSDateFormatter* theDateFormatter = [[NSDateFormatter alloc] init];
@@ -139,7 +144,9 @@
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     [super viewWillAppear:animated];
+         NSLog(@"Counter: %i",[[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"]);
 }
+
 
 - (void)viewDidAppear:(BOOL)animated
 {

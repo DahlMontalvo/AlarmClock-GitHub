@@ -28,13 +28,13 @@
 {
     int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"]; 
     [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"repeatString%i",y]];
-    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"dag0%i",y]];
     [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"dag1%i",y]];
     [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"dag2%i",y]];
     [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"dag3%i",y]];
     [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"dag4%i",y]];
     [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"dag5%i",y]];
     [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"dag6%i",y]];
+    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"dag7%i",y]];
 	[self.delegate addAlarmViewControllerDidCancel:self];
 }
 - (IBAction)save:(id)sender
@@ -130,10 +130,22 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)dismissKeyboard:(id)sender
+{
+     [nameField resignFirstResponder];
+}
+
+// ...
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
+    
+   
+    
+
+
     
     NSLog(@"Kommer hit");
     int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
@@ -141,13 +153,6 @@
     
     timeSideLabel.text = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"time%i",y]];
     repeatSideLabel.text = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"repeatString%i",y]];
-        
-    titlesArray = [[NSMutableArray alloc]init];
-    [titlesArray addObject:@"Time"];
-    [titlesArray addObject:@"Repeat"];
-    [titlesArray addObject:@"Sound"];
-    [titlesArray addObject:@"Snooze"];
-    [titlesArray addObject:@"Whatever"];
     
     for (int i = 0; i < 7; i++) {
         [[[Singleton sharedSingleton] sharedPrefs] setValue:[NSString stringWithFormat:@"%i",0] forKey:[NSString stringWithFormat:@"dag%i",i]];
@@ -187,7 +192,7 @@
 {
     int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
     timeSideLabel.text = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"time%i",y]];
-    timeSideLabel.text = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"repeatString%i",y]];
+    repeatSideLabel.text = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"repeatString%i",y]];
     
     [super viewDidAppear:animated];
 }

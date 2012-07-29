@@ -28,6 +28,12 @@
     
 }
 
+- (void)dismissKeyboard:(id)sender
+{
+    [nameField resignFirstResponder];
+}
+
+
 
 - (IBAction)cancel:(id)sender
 {
@@ -220,6 +226,7 @@
 {
         
     [self performSelector:@selector(selector) withObject:self afterDelay:0.1];
+    [nameField resignFirstResponder];
     
     
 }
