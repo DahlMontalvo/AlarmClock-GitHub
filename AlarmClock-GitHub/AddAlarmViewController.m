@@ -26,15 +26,10 @@
 
 - (IBAction)cancel:(id)sender
 {
-    int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"]; 
-    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"repeatString%i",y]];
-    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"dag1%i",y]];
-    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"dag2%i",y]];
-    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"dag3%i",y]];
-    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"dag4%i",y]];
-    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"dag5%i",y]];
-    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"dag6%i",y]];
-    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"dag7%i",y]];
+    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmTime"];
+    for (int i = 0; i < 7; i++) {
+        [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"newAlarmRepeatArray%i", i]];
+    }
 	[self.delegate addAlarmViewControllerDidCancel:self];
 }
 - (IBAction)save:(id)sender
@@ -51,7 +46,7 @@
         }
     }
     
-    //Kollar om något fel uppstått
+    //Kollar om något annat fel uppstått
     if (error == 1) {
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please use another name" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
@@ -60,28 +55,24 @@
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter a name for the alarm" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
     }
-    else if ([[[Singleton sharedSingleton] sharedFireDates] count] == 0 || ![[Singleton sharedSingleton] sharedFireDates]) {
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter a time for the alarm" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
-    }
     else {
         //****************************
         //Om inte, lägg till ett alarm
         //****************************
         
         //Y är antalet alarm - innan vi lägger till
-        int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"]; 
+        int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"newAlarmID"]; 
         
         //Skapar nytt alarm
         Alarm *alarm = [[Alarm alloc] init];
         alarm.name = nameField.text;
         alarm.identifier = nameField.text;
-        alarm.fireDate = [[[Singleton sharedSingleton] sharedFireDates]objectAtIndex:[[[Singleton sharedSingleton] sharedFireDates] count]-1];
+        alarm.fireDate = [[[Singleton sharedSingleton] sharedPrefs] objectForKey:@"newAlarmTime"];
         alarm.alarmState = 1;
         
         NSMutableArray *repeatArray = [[NSMutableArray alloc] init];
         for (int i = 0; i < 7; i++) {
-            if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag%i%i",i,y]] isEqualToString:@"1"]) {
+            if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"newAlarmRepeatArray%i",i]] intValue] == 1) {
                 [repeatArray insertObject:[NSNumber numberWithInteger:1] atIndex:i];
             }
             else { 
@@ -91,7 +82,7 @@
         alarm.repeat = repeatArray;
         
         //Settar sharedPrefs firedateY till firedaten
-        [[[Singleton sharedSingleton] sharedPrefs] setValue:[[[Singleton sharedSingleton] sharedFireDates]objectAtIndex:[[[Singleton sharedSingleton] sharedFireDates] count]-1] forKey:[NSString stringWithFormat:@"firedate%i",y]];
+        /*[[[Singleton sharedSingleton] sharedPrefs] setValue:[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"newAlarmTime"]];*/
         
         NSString *localString = nameField.text;
     
@@ -117,8 +108,9 @@
     
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (indexPath.section == 0)
+	if (indexPath.section == 0) {
 		[self.nameField becomeFirstResponder];
+    }
 }
 
 
@@ -135,38 +127,64 @@
      [nameField resignFirstResponder];
 }
 
+-(void) setTimeLabel {
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    [outputFormatter setDateFormat:@"h:mm a"];
+    NSDate *date = [NSDate date];
+    if ([[[Singleton sharedSingleton] sharedPrefs] objectForKey:@"newAlarmTime"] != nil) {
+        date = [[[Singleton sharedSingleton] sharedPrefs] objectForKey:@"newAlarmTime"];
+    }
+    timeSideLabel.text = [outputFormatter stringFromDate:date];
+}
+
+-(void) setRepeatLabel {
+    NSString *text = @"";
+    NSMutableArray *days = [[NSMutableArray alloc] initWithObjects:@"M",@"T",@"W",@"T",@"F",@"S",@"S", nil];
+    for (int i = 0; i < 7; i++) {
+        if ([[[[Singleton sharedSingleton] sharedPrefs] objectForKey:[NSString stringWithFormat:@"newAlarmRepeatArray%i", i]] intValue] == 1) {
+            text = [NSString stringWithFormat:@"%@ %@", text, [days objectAtIndex:i]];
+        }
+        else {
+            text = [NSString stringWithFormat:@"%@ _", text];
+        }
+    }
+    if ([text isEqualToString:@" _ _ _ _ _ _ _"]) {
+        text = @"Once";
+    }
+    else if ([text isEqualToString:@" M T W T F S S"]) {
+        text = @"Every day";
+    }
+    else if ([text isEqualToString:@" M T W T F _ _"]) {
+        text = @"Every weekday";
+    }
+    repeatSideLabel.text = text;
+}
+
 // ...
 
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
-    
-   
-    
-
-
-    
-    NSLog(@"Kommer hit");
+    //viewDidLoad kallas bara en gång per skapat alarm - precis när man ska börja skapa det ("viewDidLoad")
     int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
-    [[[Singleton sharedSingleton] sharedPrefs] setValue:@"Once" forKey:[NSString stringWithFormat:@"repeatString%i",y]];
+    [[[Singleton sharedSingleton] sharedPrefs] setInteger:y forKey:@"newAlarmID"];
     
-    timeSideLabel.text = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"time%i",y]];
-    repeatSideLabel.text = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"repeatString%i",y]];
+    //Då nollställer vi repeaten om det mot förmodan skulle hänga kvar något
+    //GÅR FRÅN 0-6
+    [[[Singleton sharedSingleton] sharedPrefs] setValue:nil forKey:@"newAlarmRepeatArray"];
     
     for (int i = 0; i < 7; i++) {
-        [[[Singleton sharedSingleton] sharedPrefs] setValue:[NSString stringWithFormat:@"%i",0] forKey:[NSString stringWithFormat:@"dag%i",i]];
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:nil forKey:[NSString stringWithFormat:@"newAlarmRepeatArray%i", i]];
     }
+    
+    //Sätt det nya alarmets tid till nu, ifall något gammalt hänger kvar
+    [[[Singleton sharedSingleton] sharedPrefs] setValue:[NSDate date] forKey:@"newAlarmTime"];
+    
+    [self setTimeLabel];
+    [self setRepeatLabel];
         
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-     NSLog(@"Number of objects in alarms after ViewDidLoad in AddAlarm: %i",[[[Singleton sharedSingleton] sharedAlarmsArray]count]);
 }
 
 - (void)viewDidUnload
@@ -182,18 +200,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
-    timeSideLabel.text = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"time%i",y]];
-    repeatSideLabel.text = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"repeatString%i",y]];
-    
+    [self setTimeLabel];
+    [self setRepeatLabel];    
     [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
-{
-    int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
-    timeSideLabel.text = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"time%i",y]];
-    repeatSideLabel.text = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"repeatString%i",y]];
-    
+{    
     [super viewDidAppear:animated];
 }
 
@@ -217,80 +230,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
-    // Return the number of sections.
     return 1;
 }
-
-/*
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 1;    
-}
-
-*/
-
-
-
-
-
- 
-
-/*
- 
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
- {
- static NSString *CellIdentifier = @"Cell";
- 
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
- if (cell == nil) {
- cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
- }
- 
- 
- 
- cell.textLabel.text = [titlesArray objectAtIndex:indexPath.row];
- 
- return cell;
- }
- 
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 @end

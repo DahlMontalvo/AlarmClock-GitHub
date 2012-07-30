@@ -20,37 +20,17 @@
 @synthesize sundayButton;
 
 -(void)viewDidLoad {
+    NSMutableArray *cells = [[NSMutableArray alloc] initWithObjects:mondayButton, tuesdayButton, wednesdayButton, thursdayButton, fridayButton, saturdayButton, sundayButton, nil];
     
-    int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
-    
-    UITableViewCell *cell = mondayButton;    
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag1%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
-    else  cell.accessoryType = UITableViewCellAccessoryNone;
-    
-    cell = tuesdayButton;    
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag2%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
-    else  cell.accessoryType = UITableViewCellAccessoryNone;
-    
-    cell = wednesdayButton;    
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag3%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
-    else  cell.accessoryType = UITableViewCellAccessoryNone;
-    
-    cell = thursdayButton;    
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag4%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
-    else  cell.accessoryType = UITableViewCellAccessoryNone;
-    
-    cell = fridayButton;    
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag5%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
-    else  cell.accessoryType = UITableViewCellAccessoryNone;
-    
-    cell = saturdayButton;    
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag6%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
-    else  cell.accessoryType = UITableViewCellAccessoryNone;
-    
-    cell = sundayButton;    
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag7%i",y]] isEqualToString:@"1"])  cell.accessoryType = UITableViewCellAccessoryCheckmark;  
-    else  cell.accessoryType = UITableViewCellAccessoryNone;
-    
+    for (int i = 0; i < 7; i++) {
+        UITableViewCell *cell = [cells objectAtIndex:i];
+        if ([[[[Singleton sharedSingleton] sharedPrefs] objectForKey:[NSString stringWithFormat:@"newAlarmRepeatArray%i", i]] intValue] == 1) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }        
+        else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -64,44 +44,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    int weekday = indexPath.row+1;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    int weekday = indexPath.row;
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     if (cell.accessoryType == UITableViewCellAccessoryNone) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;   
-        [[[Singleton sharedSingleton] sharedPrefs] setValue:[NSString stringWithFormat:@"%i",1] forKey:[NSString stringWithFormat:@"dag%i%i",weekday,y]];
-        NSLog(@"Checkade %i", weekday); 
+        [[[Singleton sharedSingleton] sharedPrefs] setObject:[NSNumber numberWithInt:1] forKey:[NSString stringWithFormat:@"newAlarmRepeatArray%i", weekday]];
     }
     else {
         cell.accessoryType = UITableViewCellAccessoryNone;   
-        [[[Singleton sharedSingleton] sharedPrefs] setValue:[NSString stringWithFormat:@"%i",0] forKey:[NSString stringWithFormat:@"dag%i%i",weekday,y]];
-        NSLog(@"Uncheckade %i", weekday);
+        [[[Singleton sharedSingleton] sharedPrefs] setObject:[NSNumber numberWithInt:0] forKey:[NSString stringWithFormat:@"newAlarmRepeatArray%i", weekday]];
     }
-    
-    NSString *repeatText = @"";
-    
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag1%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@M",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag2%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@T",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag3%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@W",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag4%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@T",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag5%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@F",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag6%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@S",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
-    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"dag7%i",y]] isEqualToString:@"1"])  repeatText = [NSString stringWithFormat:@"%@S",repeatText];    else  repeatText = [NSString stringWithFormat:@"%@ ",repeatText];
-    
-    if ([repeatText isEqualToString:@"       "]) {
-        repeatText = @"Once";
-    }
-    else if ([repeatText isEqualToString:@"MTWTFSS"]) {
-        repeatText = @"Daily";
-    }
-
-    [[[Singleton sharedSingleton] sharedPrefs] setValue:repeatText forKey:[NSString stringWithFormat:@"repeatString%i",y]];
-    
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
