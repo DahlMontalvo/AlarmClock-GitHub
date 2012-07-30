@@ -10,6 +10,7 @@
 #import "AddAlarmViewController.h"
 #import "EditAlarmViewController.h"
 #import "AlarmCell.h"
+#import "SettingCell.h"
 
 @class minTableViewController;
 
@@ -23,9 +24,8 @@
     
    
     int counter;
-    AlarmCell *cell;
     UILocalNotification *localNotif;
-    
+ 
    
 }
 

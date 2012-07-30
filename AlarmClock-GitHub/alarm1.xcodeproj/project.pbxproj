@@ -25,6 +25,7 @@
 		0036C2811509F92400CA8CC9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0036C2801509F92400CA8CC9 /* AVFoundation.framework */; };
 		0036C2881509FA4100CA8CC9 /* chimes.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0036C2871509FA4100CA8CC9 /* chimes.wav */; };
 		004E8A6914F6837F0013550D /* AddRepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 004E8A6814F6837F0013550D /* AddRepeatViewController.m */; };
+		00566C1B15C73BA9004601B8 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00566C1A15C73BA9004601B8 /* SettingCell.m */; };
 		006F2A0E14F687E400C4A906 /* EditRepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 006F2A0D14F687E400C4A906 /* EditRepeatViewController.m */; };
 		00961B3D14E143A30097F622 /* AddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961B3C14E143A30097F622 /* AddTimeViewController.m */; };
 		00A64AD714DDBB9000A8AC52 /* AddAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A64AD614DDBB9000A8AC52 /* AddAlarmViewController.m */; };
@@ -74,6 +75,8 @@
 		0036C2871509FA4100CA8CC9 /* chimes.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chimes.wav; sourceTree = "<group>"; };
 		004E8A6714F6837F0013550D /* AddRepeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRepeatViewController.h; sourceTree = "<group>"; };
 		004E8A6814F6837F0013550D /* AddRepeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRepeatViewController.m; sourceTree = "<group>"; };
+		00566C1915C73BA9004601B8 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
+		00566C1A15C73BA9004601B8 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		006F2A0C14F687E400C4A906 /* EditRepeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditRepeatViewController.h; sourceTree = "<group>"; };
 		006F2A0D14F687E400C4A906 /* EditRepeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditRepeatViewController.m; sourceTree = "<group>"; };
 		00961B3B14E143A30097F622 /* AddTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTimeViewController.h; sourceTree = "<group>"; };
@@ -229,6 +232,8 @@
 				00EE848314DF1DF100CEB90F /* Alarm.m */,
 				00EE848914DF2F0D00CEB90F /* AlarmCell.h */,
 				00EE848A14DF2F0D00CEB90F /* AlarmCell.m */,
+				00566C1915C73BA9004601B8 /* SettingCell.h */,
+				00566C1A15C73BA9004601B8 /* SettingCell.m */,
 				001954ED14DC316C0027FF43 /* Singleton.h */,
 				001954EE14DC316C0027FF43 /* Singleton.m */,
 			);
@@ -370,6 +375,7 @@
 				00B4A6BE14F6753700716821 /* DoMathViewController.m in Sources */,
 				004E8A6914F6837F0013550D /* AddRepeatViewController.m in Sources */,
 				006F2A0E14F687E400C4A906 /* EditRepeatViewController.m in Sources */,
+				00566C1B15C73BA9004601B8 /* SettingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

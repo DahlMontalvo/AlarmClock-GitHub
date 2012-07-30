@@ -132,7 +132,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-        [self.tableView reloadData];
+       // [self.tableView reloadData];
+    
+
     
     counter = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
     
@@ -174,23 +176,71 @@
 {
 
     // Return the number of sections.
-    return 1;
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    if(section == 0){
+        return @"Alarms";
+    } else {
+        return @"Settings";
+    }
+        
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  
-        return [[[Singleton sharedSingleton] sharedAlarmsArray]count];
-}
+    if (section == 0) {
+        
+        if ([[[Singleton sharedSingleton] sharedAlarmsArray]count] < 1) {
+            return 1;
+        } else {
+            return ([[[Singleton sharedSingleton] sharedAlarmsArray]count]);
+        }
+        
+    }
+    
+    if (section ==1) {
+        return 5;
+    } else {
+        
+        return 0;
+    }
 
+}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     
+    
+    alarms = [[Singleton sharedSingleton] sharedAlarmsArray];
+    
+    NSLog(@"%i, %i",indexPath.row, alarms.count);
+    
+    static NSString *CellIdentifier1 = @"AlarmCell";
+    static NSString *CellIdentifier2 = @"SettingCell";
+    
+    NSMutableArray *settingsArray = [NSMutableArray arrayWithCapacity:5];
+    [settingsArray addObject:@"Math Level: "];
+    [settingsArray addObject:@"Math Type: "];
+    [settingsArray addObject:@"Number of Questions: "];
+    [settingsArray addObject:@"24 Hour Clock: "];
+    [settingsArray addObject:@"Clock Style:"];
+    
+    if (alarms.count == 0 && indexPath.row < 1 && indexPath.section == 0) {
         
-        cell = (AlarmCell *)[tableView dequeueReusableCellWithIdentifier:@"AlarmCell"];
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"addCell"];
+        cell.textLabel.text = @"Add Alarm...";
+        return cell;
+        
+    } else if (indexPath.section == 0 && indexPath.row < alarms.count) {
+        
+         NSLog(@"Skapa AlarmCell");
+        
+        AlarmCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier1];
         
         Alarm *alarm = [[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:indexPath.row];
         cell.nameLabel.text = alarm.name;
@@ -207,10 +257,25 @@
         } else {
             cell.onOffLabel.text = @"Off";
         }
+    
+        return cell;        
+           
+    } else {
+        
+        NSLog(@"Skapa SettingCell");
+        
+        SettingCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
+        cell.settingLabel.text = [settingsArray objectAtIndex:indexPath.row];
         
         return cell;
+
+    }
+   
     
 }
+        
+        
+
 
 
 
@@ -241,6 +306,7 @@
         
                 
         [[[Singleton sharedSingleton] sharedPrefs] setInteger:y forKey:@"Counter"];
+        [tableView reloadData];
 
 	}   
 }
@@ -250,6 +316,8 @@
 - (void)addAlarmViewController:(AddAlarmViewController *)controller didAddAlarm:(Alarm *)alarm
 {
 	[[[Singleton sharedSingleton] sharedAlarmsArray]addObject:alarm];
+    
+    
     
     
     //int y = [[Singleton sharedSingleton] sharedPrefs];
@@ -267,11 +335,11 @@
 
 - (void)editAlarmViewController:(EditAlarmViewController *)controller didEditAlarm:(Alarm *)alarm
 {
-   
+    AlarmCell *cell;
     int q = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"TheRowISelected"];
     
     if ([[[Singleton sharedSingleton] sharedPrefs] integerForKey:[NSString stringWithFormat:@"CurrentSwitchState%i",q]] == 1) {
-        cell.onOffLabel.text = @"On";
+      cell.onOffLabel.text = @"On";
     } else {
         
         cell.onOffLabel.text = @"Off";
