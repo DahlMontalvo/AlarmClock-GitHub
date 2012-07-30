@@ -31,6 +31,7 @@
         [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"newAlarmRepeatArray%i", i]];
     }
 	[self.delegate addAlarmViewControllerDidCancel:self];
+    NSLog(@"Cancelled");
 }
 - (IBAction)save:(id)sender
 {
