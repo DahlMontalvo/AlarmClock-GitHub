@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11D50d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Aaq-VX-fh7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11A511" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Aaq-VX-fh7">
     <dependencies>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
@@ -190,7 +190,6 @@
                                     <outlet property="nameLabel" destination="GKK-1Q-SoD" id="DwL-ca-sJD"/>
                                     <outlet property="onOffLabel" destination="ZGR-MU-c2d" id="Bd6-tf-yQb"/>
                                     <outlet property="timeLabel" destination="0Gg-p4-bLU" id="Tq4-wd-m29"/>
-                                    <segue destination="nIZ-MZ-Aia" kind="modal" identifier="EditAlarm" id="u8j-XD-QfE"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingCell" id="0dk-vx-JcT" customClass="SettingCell">
@@ -242,6 +241,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="b9I-dh-qdN" kind="modal" identifier="AddAlarm" id="U8u-NR-gZ1"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -261,6 +263,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="nIZ-MZ-Aia" kind="modal" identifier="EditAlarm" id="mP1-rp-HJT"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1609" y="28"/>
@@ -795,6 +800,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="QzK-Q4-zy7"/>
+                    <connections>
+                        <outlet property="fridayButton" destination="DhV-EX-cu2" id="yy7-9p-qfW"/>
+                        <outlet property="mondayButton" destination="hxA-ma-K2c" id="vS0-Uh-6Zh"/>
+                        <outlet property="saturdayButton" destination="aPD-SF-eeM" id="b3b-Vo-S9b"/>
+                        <outlet property="sundayButton" destination="LO5-2c-6fe" id="GGQ-Qy-woO"/>
+                        <outlet property="thursdayButton" destination="GrH-9Q-a88" id="16H-jK-q7m"/>
+                        <outlet property="tuesdayButton" destination="gXN-0O-t52" id="sRj-9N-2R2"/>
+                        <outlet property="wednesdayButton" destination="yNy-oo-PBR" id="eyO-cv-pUg"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="3001" y="927"/>
@@ -1084,6 +1098,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <connections>
                         <outlet property="alarmSwitch" destination="S5J-ir-75c" id="M0y-uz-yGD"/>
                         <outlet property="nameField" destination="Sto-cc-obJ" id="kud-ec-hyq"/>
+                        <outlet property="repeatSideLabel" destination="H5h-qF-Cwz" id="Ii1-Ig-zvw"/>
                         <outlet property="timeSideLabel" destination="PFf-Ae-LqU" id="ui1-yU-Hhq"/>
                     </connections>
                 </tableViewController>
@@ -1207,11 +1222,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="action" name="switchFlicked:"/>
                 <relationship kind="outlet" name="alarmSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="repeatSideLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="timeSideLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="EditRepeatViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EditRepeatViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="fridayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="mondayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="saturdayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="sundayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="thursdayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="tuesdayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="wednesdayButton" candidateClass="UITableViewCell"/>
+            </relationships>
         </class>
         <class className="MasterViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
@@ -1242,4 +1267,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="8CX-P5-XEd"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -18,32 +18,15 @@
 -(IBAction)save:(id)sender {
     
     //Antal klockor
-    int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"]; 
+    int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
     
     //selectedTime innehåller nu tiden som användaren matat in
     NSDate *selectedTime = [timePicker date];
-    
-    //Korrigerar till rätt format
-    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-    [outputFormatter setDateFormat:@"h:mm a"];
-    
-    //dateString innehåller nu tiden, fast som en sträng
-    NSString *dateString = [outputFormatter stringFromDate:selectedTime];
-    NSLog(@"Tiden som sträng: %@",dateString);
-    
-    //Lägger till tiden i sharedFireDates-arrayen
-    [[[Singleton sharedSingleton] sharedFireDates] addObject:selectedTime];
-    NSLog(@"Lade till ett objekt i sharedFireDates, hela arrayen: %@", [[Singleton sharedSingleton] sharedFireDates]);
-    
-    //Lägger till i singleton
-    [[[Singleton sharedSingleton] sharedPrefs] setValue:dateString forKey:[NSString stringWithFormat:@"time%i",y]];
-    [[[Singleton sharedSingleton] sharedPrefs] setValue:dateString forKey:@"SkaVisasISideLabel"];
-    
-    //Synkar med singleton
+    [[[Singleton sharedSingleton] sharedPrefs] setValue:selectedTime forKey:@"editAlarmTime"];
     [[[Singleton sharedSingleton] sharedPrefs] synchronize];
     
     //Användarfeedback
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Time" message:[NSString stringWithFormat:@"Alarm is set to: %@",dateString] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Time set" message:[NSString stringWithFormat:@"Time set"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertView show];
         
 }
@@ -64,6 +47,7 @@
     
     
     
+    [timePicker setDate:[[[Singleton sharedSingleton] sharedPrefs] objectForKey:@"editAlarmTime"]];
     
     [super viewDidLoad];
 }

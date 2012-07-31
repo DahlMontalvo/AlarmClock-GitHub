@@ -19,6 +19,7 @@
 @synthesize alarms;
 @synthesize delegate;
 @synthesize delegate2;
+@synthesize selectedIndex;
 
 
 - (IBAction)done:(id)sender
@@ -37,12 +38,15 @@
 		AddAlarmViewController *addAlarmViewController = [[navigationController viewControllers] objectAtIndex:0];
 		addAlarmViewController.delegate = self;
         
-	} else if ([segue.identifier isEqualToString:@"EditAlarm"]) {
+	} 
+    else if ([segue.identifier isEqualToString:@"EditAlarm"]) {
         
         UINavigationController *navigationController = segue.destinationViewController;
 		EditAlarmViewController *editAlarmViewController = [[navigationController viewControllers] objectAtIndex:0];
 		editAlarmViewController.delegate2 = self;
-        
+        editAlarmViewController.alarmID = selectedIndex;
+        NSLog(@"2. editAlarmViewController.alarmID: %i", editAlarmViewController.alarmID);
+        NSLog(@"2. selectedIndex: %i", selectedIndex);
     }
 }
 
@@ -63,9 +67,6 @@
 }
 
 
-
-
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -79,9 +80,6 @@
 - (void)viewDidLoad
 {
    
-    NSLog(@"TABLEVIEW VIEW DID LOAD");
-     
-    
     //Antalet singletonvariabler
     counter = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
     NSLog(@"Counter:%i",counter);
@@ -95,7 +93,7 @@
         
             Alarm *alarm = [[Alarm alloc] init];
             alarm.name = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"name%i",i]];
-            alarm.fireDate = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"firedate%i",i]];
+            alarm.fireDate = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"time%i",i]];
             alarm.alarmState = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:[NSString stringWithFormat:@"CurrentSwitchState%i",i]];
             alarm.repeat = [[[Singleton sharedSingleton] sharedPrefs] objectForKey:[NSString stringWithFormat:@"repeat%i",i]];
         
@@ -196,7 +194,7 @@
         if ([[[Singleton sharedSingleton] sharedAlarmsArray]count] < 1) {
             return 1;
         } else {
-            return ([[[Singleton sharedSingleton] sharedAlarmsArray]count]);
+            return ([[[Singleton sharedSingleton] sharedAlarmsArray]count]+1);
         }
         
     }
@@ -218,7 +216,7 @@
     
     alarms = [[Singleton sharedSingleton] sharedAlarmsArray];
     
-    NSLog(@"%i, %i",indexPath.row, alarms.count);
+    int num = [[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"Counter"] intValue];
     
     static NSString *CellIdentifier1 = @"AlarmCell";
     static NSString *CellIdentifier2 = @"SettingCell";
@@ -230,39 +228,38 @@
     [settingsArray addObject:@"24 Hour Clock: "];
     [settingsArray addObject:@"Clock Style:"];
     
-    if (alarms.count == 0 && indexPath.row < 1 && indexPath.section == 0) {
-        
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"addCell"];
-        cell.textLabel.text = @"Add Alarm...";
-        return cell;
-        
-    } else if (indexPath.section == 0 && indexPath.row < alarms.count) {
-        
-         NSLog(@"Skapa AlarmCell");
-        
-        AlarmCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier1];
-        
-        Alarm *alarm = [[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:indexPath.row];
-        cell.nameLabel.text = alarm.name;
-        
-        NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-        [outputFormatter setDateFormat:@"HH:mm a"];
-        NSString *dateString = [outputFormatter stringFromDate:alarm.fireDate];
-        
-        cell.timeLabel.text = dateString;
-        
-        //kollar om staten är on eller off, och skriver ut det
-        if ([[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:indexPath.row] alarmState] == 1) {
-            cell.onOffLabel.text = @"On";
-        } else {
-            cell.onOffLabel.text = @"Off";
+    if (indexPath.section == 0) {
+        if (indexPath.row >= num) {
+            UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"addCell"];
+            cell.textLabel.text = @"Add Alarm...";
+            return cell;
         }
-    
-        return cell;        
-           
-    } else {
+        else {
+            
+            AlarmCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier1];
+            
+            Alarm *alarm = [[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:indexPath.row];
+            cell.nameLabel.text = alarm.name;
+            
+            NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+            [outputFormatter setDateFormat:@"HH:mm a"];
+            NSString *dateString = [outputFormatter stringFromDate:alarm.fireDate];
+            
+            cell.timeLabel.text = dateString;
+            
+            //kollar om staten är on eller off, och skriver ut det
+            if ([[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:indexPath.row] alarmState] == 1) {
+                cell.onOffLabel.text = @"On";
+            } else {
+                cell.onOffLabel.text = @"Off";
+            }
+            
+            return cell;        
+
+        }
         
-        NSLog(@"Skapa SettingCell");
+    } 
+    else {
         
         SettingCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
         cell.settingLabel.text = [settingsArray objectAtIndex:indexPath.row];
@@ -359,13 +356,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    int y = indexPath.row;
-   [[[Singleton sharedSingleton] sharedPrefs] setInteger:y forKey:@"TheRowISelected"];
-    NSLog(@"Rad: %i",y);
-  
-    
-    
-   
+    selectedIndex = indexPath.row;
+    if (indexPath.row == [[[Singleton sharedSingleton] sharedAlarmsArray] count]) {
+        [self performSegueWithIdentifier:@"AddAlarm" sender:self];
+    }
+    else {
+        [self performSegueWithIdentifier:@"EditAlarm" sender:self];
+    }
+    NSLog(@"1. selectedIndex: %i", selectedIndex);
 }
 
 @end

@@ -10,4 +10,12 @@
 
 @interface EditRepeatViewController : UITableViewController
 
+@property (strong, nonatomic) IBOutlet UITableViewCell *mondayButton;
+@property (strong, nonatomic) IBOutlet UITableViewCell *tuesdayButton;
+@property (strong, nonatomic) IBOutlet UITableViewCell *wednesdayButton;
+@property (strong, nonatomic) IBOutlet UITableViewCell *thursdayButton;
+@property (strong, nonatomic) IBOutlet UITableViewCell *fridayButton;
+@property (strong, nonatomic) IBOutlet UITableViewCell *saturdayButton;
+@property (strong, nonatomic) IBOutlet UITableViewCell *sundayButton;
+
 @end

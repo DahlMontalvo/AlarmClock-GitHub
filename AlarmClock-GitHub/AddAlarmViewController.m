@@ -47,7 +47,7 @@
         }
     }
     
-    //Kollar om något annat fel uppstått
+    //Kollar om något annat fel uppstått och utformar meddelande
     if (error == 1) {
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please use another name" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
@@ -87,7 +87,9 @@
         
         NSString *localString = nameField.text;
     
-        [[[Singleton sharedSingleton] sharedPrefs] setValue:localString forKey:[NSString stringWithFormat:@"name%i",y]];   
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:localString forKey:[NSString stringWithFormat:@"name%i",y]]; 
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:alarm.fireDate forKey:[NSString stringWithFormat:@"time%i",y]]; 
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:[NSNumber numberWithInt:1] forKey:[NSString stringWithFormat:@"CurrentSwitchState%i",y]]; 
         [[[Singleton sharedSingleton] sharedPrefs] synchronize];
     
         [self.delegate addAlarmViewController:self didAddAlarm:alarm];
@@ -173,8 +175,6 @@
     
     //Då nollställer vi repeaten om det mot förmodan skulle hänga kvar något
     //GÅR FRÅN 0-6
-    [[[Singleton sharedSingleton] sharedPrefs] setValue:nil forKey:@"newAlarmRepeatArray"];
-    
     for (int i = 0; i < 7; i++) {
         [[[Singleton sharedSingleton] sharedPrefs] setValue:nil forKey:[NSString stringWithFormat:@"newAlarmRepeatArray%i", i]];
     }

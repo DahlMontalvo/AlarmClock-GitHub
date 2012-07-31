@@ -20,16 +20,19 @@
     
     NSTimer *sekundIntervall1;
     UILocalNotification *localNotif;
+    int alarmID;
     
 }
 
 @property (nonatomic, weak) id <EditAlarmViewControllerDelegate> delegate2;
 
 @property (nonatomic, strong) NSMutableArray *titlesArray;
+@property (nonatomic) int alarmID;
 @property (nonatomic, retain) IBOutlet UITextField *nameField;
 @property (nonatomic, retain) IBOutlet UILabel *timeSideLabel;
 @property (nonatomic, retain) IBOutlet UISwitch *alarmSwitch;
 @property (nonatomic, retain) UILocalNotification *localNotif;
+@property (retain, nonatomic) IBOutlet UILabel *repeatSideLabel;
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)save:(id)sender;

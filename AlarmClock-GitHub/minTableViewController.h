@@ -11,6 +11,7 @@
 #import "EditAlarmViewController.h"
 #import "AlarmCell.h"
 #import "SettingCell.h"
+#import "EditAlarmViewController.h"
 
 @class minTableViewController;
 
@@ -32,6 +33,7 @@
 @property (nonatomic, weak) id <minTableViewControllerDelegate> delegate;
 @property (nonatomic, weak) id <minTableViewControllerDelegate> delegate2;
 @property (nonatomic, retain) NSMutableArray *alarms;
+@property (nonatomic) int selectedIndex;
 
 
 

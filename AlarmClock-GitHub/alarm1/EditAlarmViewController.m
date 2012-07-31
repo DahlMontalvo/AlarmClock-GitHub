@@ -23,6 +23,8 @@
 @synthesize timeSideLabel;
 @synthesize alarmSwitch;
 @synthesize localNotif;
+@synthesize repeatSideLabel;
+@synthesize alarmID;
 
 - (IBAction)switchFlicked:(id)sender {
     
@@ -46,7 +48,7 @@
     //y är antal alarm
     int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
     //q är index för det alarm vi försöker ändra
-    int q = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"TheRowISelected"];
+    int q = alarmID;
     
     int error = 0;
     
@@ -62,7 +64,7 @@
         }
     }
     
-    //Kollar om något fel uppstått
+    //Kollar om något annat fel uppstått och utformar felmeddelande
     if (error == 1) {
         //Om namnet redan finns
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please use another name" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -73,20 +75,24 @@
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter a name for the alarm" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
     }
-    else if ([[[Singleton sharedSingleton] sharedFireDates] count] == 0 || ![[Singleton sharedSingleton] sharedFireDates]) {
-        //Om ingen tid angivits
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter a time for the alarm" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
-    }
     else {
         
         //Skapa nytt alarm
         Alarm *alarm = [[Alarm alloc] init];
         alarm.name = nameField.text;
         alarm.identifier = alarm.name;
+        alarm.fireDate = [[[Singleton sharedSingleton] sharedPrefs] objectForKey:@"editAlarmTime"];
         
-        //Tar fram det senast satta fireDatet från date-pickern
-        alarm.fireDate = [[[Singleton sharedSingleton] sharedFireDates] objectAtIndex:[[[Singleton sharedSingleton] sharedFireDates] count]-1];
+        NSMutableArray *repeatArray = [[NSMutableArray alloc] init];
+        for (int i = 0; i < 7; i++) {
+            if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"editAlarmRepeatArray%i",i]] intValue] == 1) {
+                [repeatArray insertObject:[NSNumber numberWithInteger:1] atIndex:i];
+            }
+            else { 
+                [repeatArray insertObject:[NSNumber numberWithInteger:0] atIndex:i];
+            }
+        }
+        alarm.repeat = repeatArray;
         
         //Spara gammalt alarmState innan vi börjar skriva över
         int alarmStateBefore = [[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:q] alarmState];
@@ -202,10 +208,60 @@
         }
         */
         
+        [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmTime"];
+        [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmName"];
+        [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat0"];
+        [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat1"];
+        [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat2"];
+        [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat3"];
+        [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat4"];
+        [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat5"];
+        [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat6"];
+    
         [[[Singleton sharedSingleton] sharedPrefs] synchronize];
         [[[Singleton sharedSingleton] sharedFireDates] removeAllObjects];
         [self.delegate2 editAlarmViewController:self didEditAlarm:alarm];
     }
+}
+
+
+-(void) setTimeLabel {
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    [outputFormatter setDateFormat:@"h:mm a"];
+    NSDate *date = [[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:alarmID] fireDate];
+    
+    if ([[[Singleton sharedSingleton] sharedPrefs] objectForKey:@"editAlarmTime"] != nil) {
+        date = [[[Singleton sharedSingleton] sharedPrefs] objectForKey:@"editAlarmTime"];
+    }
+    
+    timeSideLabel.text = [outputFormatter stringFromDate:date];
+}
+
+-(void) setNameTextField {
+    nameField.text = [[[Singleton sharedSingleton] sharedPrefs] objectForKey:@"editAlarmName"];
+}
+
+-(void) setRepeatLabel {
+    NSString *text = @"";
+    NSMutableArray *days = [[NSMutableArray alloc] initWithObjects:@"M",@"T",@"W",@"T",@"F",@"S",@"S", nil];
+    for (int i = 0; i < 7; i++) {
+        if ([[[[Singleton sharedSingleton] sharedPrefs] objectForKey:[NSString stringWithFormat:@"editAlarmRepeatArray%i", i]] intValue] == 1) {
+            text = [NSString stringWithFormat:@"%@ %@", text, [days objectAtIndex:i]];
+        }
+        else {
+            text = [NSString stringWithFormat:@"%@ _", text];
+        }
+    }
+    if ([text isEqualToString:@" _ _ _ _ _ _ _"]) {
+        text = @"Once";
+    }
+    else if ([text isEqualToString:@" M T W T F S S"]) {
+        text = @"Every day";
+    }
+    else if ([text isEqualToString:@" M T W T F _ _"]) {
+        text = @"Every weekday";
+    }
+    repeatSideLabel.text = text;
 }
 
 
@@ -225,38 +281,38 @@
 - (void)viewDidLoad
 {
         
-    [self performSelector:@selector(selector) withObject:self afterDelay:0.1];
+    //[self performSelector:@selector(afterDidLoad) withObject:self afterDelay:0.0005];
+    NSLog(@"Redigerar alarm från indexPath: %i", alarmID);
+    
+    //Defaultvärden för fälten
+    nameField.text = [[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:alarmID] name];
+    
+    for (int i = 0; i < 7; i++) {
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:[[[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:alarmID] repeat] objectAtIndex:i] forKey:[NSString stringWithFormat:@"editAlarmRepeatArray%i", i]];
+    }
+    
+    [[[Singleton sharedSingleton] sharedPrefs] setValue:[[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:alarmID] fireDate]  forKey:@"editAlarmTime"];
+    
+    if ([[[Singleton sharedSingleton] sharedPrefs] integerForKey:[NSString stringWithFormat:@"CurrentSwitchState%i",alarmID]] == 1) {
+        [alarmSwitch setOn:YES];
+    }
+    [self setTimeLabel];
+    [self setRepeatLabel];
     [nameField resignFirstResponder];
     
     
 }
 
--(void)selector {
+-(void)afterDidLoad {
     
-    //Den aktuella raden
-    int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"TheRowISelected"];
     
-    //myDate tilldelas fireDatet för alarmet och läggs till i sharedFireDates, så att editering ska fungera utan att man ändrat tiden
-    NSDate *myDate = [[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:y ] fireDate];
-    [[[Singleton sharedSingleton] sharedFireDates] addObject:myDate];
-    
-    //Defaultvärden för fälten
-    nameField.text = [[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:y] name];
-    
-    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-    [outputFormatter setDateFormat:@"h:mm a"];
-    NSString *dateString = [outputFormatter stringFromDate:[[[Singleton sharedSingleton] sharedFireDates] objectAtIndex:[[[Singleton sharedSingleton] sharedFireDates] count]-1]];
-    
-    timeSideLabel.text = dateString;
-    if ([[[Singleton sharedSingleton] sharedPrefs] integerForKey:[NSString stringWithFormat:@"CurrentSwitchState%i",y]] == 1) {
-        [alarmSwitch setOn:YES];
-    }
     
 }
 
 
 - (void)viewDidUnload
 {
+    [self setRepeatSideLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -269,22 +325,17 @@
 }
 
 -(void)viewDidAppear {
-    
-    int q = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"TheRowISelected"];
-    timeSideLabel.text = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"time%i",q]];
-    NSLog(@"ViewDiDAppeareade för fan");
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     
-    int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"TheRowISelected"];
-    NSLog(@"Rad igen: %i",y);
+    int y = alarmID;
+    NSLog(@"Selected row: %i",y);
     
-    NSString *sideLabelText = 
-    [[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"SkaVisasISideLabel"];
+    [self setTimeLabel];
+    [self setRepeatLabel];
     
-    timeSideLabel.text = sideLabelText;
-    NSLog(@"ViewWillAppear För fan");
+    NSLog(@"ViewWillAppear");
     
 }
 @end
