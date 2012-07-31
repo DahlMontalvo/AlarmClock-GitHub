@@ -273,12 +273,21 @@
         
         
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    if (indexPath.row < [[[Singleton sharedSingleton] sharedAlarmsArray] count]) {
+        return UITableViewCellEditingStyleDelete;
+    }
+    return UITableViewCellEditingStyleNone;
+}
+
 
 
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (editingStyle == UITableViewCellEditingStyleDelete)
+	if (editingStyle == UITableViewCellEditingStyleDelete && indexPath.row <= [[[Singleton sharedSingleton] sharedAlarmsArray] count])
 	{
         int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
         Alarm *oldAlarm = [[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:indexPath.row];
