@@ -296,13 +296,7 @@
         [[[Singleton sharedSingleton] sharedPrefs] setInteger:y forKey:@"Counter"];        
         [[[Singleton sharedSingleton] sharedPrefs] synchronize];
         
-        if ([oldAlarm.fireDate timeIntervalSinceNow] > 0) {
-            //Då borde det också finnas en notification
-            
-            [oldAlarm unRegisterAlarm];
-            
-            
-        }
+        [oldAlarm unRegisterAlarm];
         
         [[[Singleton sharedSingleton] sharedAlarmsArray] removeObjectAtIndex:indexPath.row];
 		

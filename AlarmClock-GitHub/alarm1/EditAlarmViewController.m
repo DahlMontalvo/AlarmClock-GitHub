@@ -82,131 +82,39 @@
         alarm.name = nameField.text;
         alarm.identifier = alarm.name;
         alarm.fireDate = [[[Singleton sharedSingleton] sharedPrefs] objectForKey:@"editAlarmTime"];
+        if (alarmSwitch.on) {
+            alarm.alarmState = 1;
+        }
+        else {
+            alarm.alarmState = 0;
+        }
         
         NSMutableArray *repeatArray = [[NSMutableArray alloc] init];
         for (int i = 0; i < 7; i++) {
             if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"editAlarmRepeatArray%i",i]] intValue] == 1) {
                 [repeatArray insertObject:[NSNumber numberWithInteger:1] atIndex:i];
+                
+                //Uppdaterar staten i sharedPrefs
+                [[[Singleton sharedSingleton] sharedPrefs] setInteger:1 forKey:[NSString stringWithFormat:@"CurrentSwitchState%i",q]];
             }
             else { 
                 [repeatArray insertObject:[NSNumber numberWithInteger:0] atIndex:i];
+                
+                //Uppdaterar staten i sharedPrefs
+                [[[Singleton sharedSingleton] sharedPrefs] setInteger:0 forKey:[NSString stringWithFormat:@"CurrentSwitchState%i",q]];
             }
         }
         alarm.repeat = repeatArray;
-        
-        //Spara gammalt alarmState innan vi börjar skriva över
-        int alarmStateBefore = [[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:q] alarmState];
-        
+
         //Replacear det alarm vi editerar med det nyligen skapade
         [[[Singleton sharedSingleton] sharedAlarmsArray] replaceObjectAtIndex:q withObject:alarm];
         
-        //Pointer till vårt alarm
-        alarm = [[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:q];
-        
         //Uppdaterar namnet i sharedPrefs
         [[[Singleton sharedSingleton] sharedPrefs] setValue:nameField.text forKey:[NSString stringWithFormat:@"name%i",y]];
+        
         [[[Singleton sharedSingleton] sharedPrefs] synchronize];
         
-        if (alarmSwitch.on && alarmStateBefore == 1) {
-            //Användaren har inte ändrat state (utan på till på), utan vi ska bara ändra en tidigare notification
-
-            alarm.alarmState = 1;
-            [[[Singleton sharedSingleton] sharedPrefs] setInteger:1 forKey:[NSString stringWithFormat:@"CurrentSwitchState%i",q]];
-            [[[Singleton sharedSingleton] sharedPrefs] synchronize];
-            
-            //Tar bort alarm
-            [[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:q] unRegisterAlarm];
-            
-            //Lägger till alarm
-            [[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:q] registerAlarm];
-            
-        }
-        else if (!alarmSwitch.on && alarmStateBefore == 1) {
-            //Användaren har ändrat state från på till av, ta endast bort gammal notif
-            
-            alarm.alarmState = 0;
-            [[[Singleton sharedSingleton] sharedPrefs] setInteger:0 forKey:[NSString stringWithFormat:@"CurrentSwitchState%i",q]];
-            [[[Singleton sharedSingleton] sharedPrefs] synchronize];
-            
-            //Tar bort alarm
-            [alarm unRegisterAlarm];
-            
-        }
-        else if (alarmSwitch.on && alarmStateBefore == 0) {
-            
-            //Användaren har satt på alarmet, lägg endast till ett nytt, utan att ta bort
-                    
-            alarm.alarmState = 1;
-            [[[Singleton sharedSingleton] sharedPrefs] setInteger:1 forKey:[NSString stringWithFormat:@"CurrentSwitchState%i",q]];
-            [[[Singleton sharedSingleton] sharedPrefs] synchronize];
-            
-            //Lägger till alarm
-            [alarm registerAlarm];
-            
-        }
-        
-        //Om användaren inte har ändrat state (utan av till av), så vi behöver inte göra någonting
-        
-        /*
-        
-        int beforeAlarmState = alarm.alarmState;
-        
-        
-        
-        localNotif = [[UILocalNotification alloc] init];
-        localNotif.fireDate = [[[Singleton sharedSingleton] sharedFireDates] objectAtIndex:[[[Singleton sharedSingleton] sharedFireDates] count]-1];
-        localNotif.timeZone = [NSTimeZone defaultTimeZone];
-        localNotif.alertBody = [NSString stringWithFormat:@"Wake up!"];
-        localNotif.alertAction = @"Shut off";
-        localNotif.soundName = UILocalNotificationDefaultSoundName;
-        localNotif.applicationIconBadgeNumber = 1;
-        NSDictionary *infoDict = [NSDictionary dictionaryWithObject:nameField.text forKey:@"AlarmName"];
-        localNotif.userInfo = infoDict;
-        
-        //Id att ta bort
-        NSString *uIdToDelete = [[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:q] name];
-        
-        UIApplication *app = [UIApplication sharedApplication];
-        NSArray *eventArray = [app scheduledLocalNotifications];
-        
-        //Loopar igenom alla schemalagda notifications
-        for (int i=0; i<[eventArray count]; i++) {
-            
-            UILocalNotification* oneEvent = [eventArray objectAtIndex:i];
-            NSDictionary *userInfoCurrent = oneEvent.userInfo;
-            NSString *uid=[NSString stringWithFormat:@"%@",[userInfoCurrent valueForKey:@"uid"]];
-            
-            //Om vi hittar det som ska tas bort, ta bort det och hoppa ur loopen
-            if ([uid isEqualToString:uIdToDelete]) {
-                [app cancelLocalNotification:oneEvent];
-                break;
-            }
-        }
-        
-        
-        
-        //Ställer in om det ska vara aktiverat eller inte
-        if (alarmSwitch.on) {
-            alarm.alarmState = 1;
-            [[[Singleton sharedSingleton] sharedPrefs] setInteger:1 forKey:[NSString stringWithFormat:@"CurrentSwitchState%i",q]];
-            [[[Singleton sharedSingleton] sharedPrefs] synchronize];
-            NSLog(@"På");
-            
-        } else {
-            alarm.alarmState = 0;
-            [[[Singleton sharedSingleton] sharedPrefs] setInteger:0 forKey:[NSString stringWithFormat:@"CurrentSwitchState%i",q]];
-            [[[Singleton sharedSingleton] sharedPrefs] synchronize];
-            
-            //Det är egentligen bara om alarmet är aktiverat som det ska ringa, annars, ta bort notificationen
-            UIApplication *thisapp = [UIApplication sharedApplication];
-            NSArray *thiseventArray = [thisapp scheduledLocalNotifications];
-            UILocalNotification* thisoneEvent = [thiseventArray objectAtIndex:q];
-            [app cancelLocalNotification:thisoneEvent];
-            NSLog(@"Av");
-             
-            
-        }
-        */
+        [[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:q] resceduleAlarm];
         
         [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmTime"];
         [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmName"];

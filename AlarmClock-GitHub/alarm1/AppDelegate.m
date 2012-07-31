@@ -17,47 +17,21 @@
     
 }
 
-@synthesize window = _window;
+//@synthesize window = _window;
+@synthesize window;
 @synthesize mySound;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    application.applicationIconBadgeNumber = 0;
     
-    UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];  
-    if (localNotif) {       
-        NSLog(@"Kom hit, blev pushad av notifen");
+    // Handle launching from a notification
+    UILocalNotification *localNotif =
+    [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if (localNotif) {
+        NSLog(@"Recieved Notification %@",localNotif);
+        //Pusha nästa view
     }
-
-
-    
-    /*
-    
-    alarms = [NSMutableArray arrayWithCapacity:10];
-    
-    //alarms = [[NSMutableArray alloc]init];
-        
-    Alarm *alarm = [[Alarm alloc] init];
-	alarm.name = @"Hej Alarmet";
-	[alarms addObject:alarm];
-    
-    alarm = [[Alarm alloc] init];
-	alarm.name = @"Hej Alarmtvå";
-	[alarms addObject:alarm];
-     
-  
-    
-    
-    
-   
-    UINavigationController *navigationController = [[navigationController viewControllers] objectAtIndex:1];
-    minTableViewController *minnTableViewController = [[navigationController viewControllers] objectAtIndex:0];
-	minnTableViewController.alarms = alarms;
-    
-      
-     
-     */
-    
-    NSLog(@"Did get to loading");
     
     return YES;
 }
@@ -101,16 +75,24 @@
      */
 }
 
+
+- (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
+    // Handle the notificaton when the app is running
+    NSLog(@"Recieved Notification %@",notif);
+}
+
+
+
+/*
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)localNotif {
     
-    NSLog(@"Fick notif jao: %@", localNotif); 
     
     //Ringer om användaren är i appen, musik etc borde nog kallas här i UIAlertViewn
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Här ringer det" message:[NSString stringWithFormat:@"Ring"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertView show];
     
     //Startar att spela ett ljud då en notif går av, borde dock kollas om den kom från en notif eller om pers. var i appen
-    
+    */
     /*NSString *path = [[NSBundle mainBundle]
                     pathForResource:@"chimes" ofType:@"wav"];
    mySound = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
@@ -125,19 +107,17 @@
     //Om det finns en 1a, kolla vilken/vilka dag/ar det är och sätt upp alarm på alla.
     
     
-    
+  /*  
 }
-
+*/
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
  
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     
-	if([title isEqualToString:[NSString stringWithFormat:@"OK"]])
-	{
+	if([title isEqualToString:[NSString stringWithFormat:@"OK"]]) {
             //Stoppar ljudet när användaren trycker på OK
       //  [mySound stop];
-        NSLog(@"Stop Sound called.");
         
     }
 

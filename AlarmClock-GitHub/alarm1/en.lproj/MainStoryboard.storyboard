@@ -8,16 +8,43 @@
         <scene sceneID="xwI-MC-AxO">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ktx-LQ-4BO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="iHp-mK-aI5" customClass="DoMathViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DoMathViewController" id="iHp-mK-aI5" customClass="DoMathViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GRv-kJ-nGx">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="4" minimumFontSize="10" id="9hX-Qp-gd6">
+                                <rect key="frame" x="14" y="68" width="1464" height="328"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">Svårt mattetal och en bön om att inte klicka på hemknappen. Eller förresten, vi kan sätta ett nytt alarm om viewDidDisappear, så blir det som en snooze om man inte klarar talet.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="C7c-fq-kCL"/>
+                    <connections>
+                        <segue destination="5aw-Mw-Emg" kind="push" identifier="ToDoMath" id="Rxa-R3-Ytd"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="656" y="-671"/>
+        </scene>
+        <scene sceneID="2ro-yg-14T">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yfq-qg-Z3f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="5aw-Mw-Emg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BTX-Cf-6X6">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="C7c-fq-kCL"/>
+                    <navigationItem key="navigationItem" id="6OO-c3-Pqy"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="742" y="-795"/>
+            <point key="canvasLocation" x="1133" y="-671"/>
         </scene>
         <scene sceneID="tgx-Uo-GXI">
             <objects>
@@ -31,7 +58,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="210" y="-795"/>
+            <point key="canvasLocation" x="148" y="-671"/>
         </scene>
         <scene sceneID="yIo-Ii-bCC">
             <objects>

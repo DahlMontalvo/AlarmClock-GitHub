@@ -17,8 +17,11 @@
 @property (nonatomic, retain) UILocalNotification *localNotif;
 @property (nonatomic, assign) NSInteger mathLevel;
 @property (nonatomic, retain) NSMutableArray *repeat;
+@property (nonatomic, retain) NSString *alarmText;
+@property (nonatomic, retain) NSString *alarmButtonText;
 
 -(void) registerAlarm;
+-(void) resceduleAlarm;
 -(void) unRegisterAlarm;
 
 @end
