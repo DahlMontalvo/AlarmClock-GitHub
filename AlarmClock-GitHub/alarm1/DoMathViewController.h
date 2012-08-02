@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MasterViewController.h"
 
-@interface DoMathViewController : UIViewController
+@class DoMathViewController;
+@protocol DoMathViewControllerDelegate <NSObject>
+
+@end
+
+@interface DoMathViewController : UIViewController {
+    
+}
+
+@property (nonatomic, weak) id <DoMathViewControllerDelegate> delegate;
+
+-(IBAction)buttonPressed:(id)sender;
 
 @end

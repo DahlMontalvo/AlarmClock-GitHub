@@ -9,6 +9,7 @@
 #import "DoMathViewController.h"
 
 @implementation DoMathViewController
+@synthesize delegate;
 
 
 #pragma mark - View lifecycle
@@ -20,13 +21,22 @@
 }
 */
 
-/*
+-(IBAction)buttonPressed:(id)sender {
+    
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    MasterViewController* myStoryBoardInitialViewController = [storyboard instantiateInitialViewController];
+    myStoryBoardInitialViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self.navigationController presentModalViewController:myStoryBoardInitialViewController animated:YES];
+    
+}
+
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 }
-*/
+
 
 - (void)viewDidUnload
 {

@@ -8,16 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVAudioplayer.h>
+#import "DoMathViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 {
     AVAudioPlayer *mySound;
+    
+    
 
     
 }
 
 @property (nonatomic, retain) AVAudioPlayer *mySound;
+@property (nonatomic, retain) UINavigationController *nvcontrol;
 @property (strong, nonatomic) UIWindow *window;
 
 @end

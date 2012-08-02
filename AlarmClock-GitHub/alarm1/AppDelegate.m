@@ -11,15 +11,16 @@
 #import "minTableViewController.h"
 #import "DoMathViewController.h"
 #import <AVFoundation/AVAudioplayer.h>
-@implementation AppDelegate {
+@implementation AppDelegate 
     
   //  NSMutableArray* alarms;
     
-}
+
 
 //@synthesize window = _window;
 @synthesize window;
 @synthesize mySound;
+@synthesize nvcontrol;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -76,29 +77,27 @@
 }
 
 
-- (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
-    // Handle the notificaton when the app is running
-    NSLog(@"Recieved Notification %@",notif);
-}
-
-
-
-/*
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)localNotif {
     
     
     //Ringer om användaren är i appen, musik etc borde nog kallas här i UIAlertViewn
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Här ringer det" message:[NSString stringWithFormat:@"Ring"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Här ringer det" message:[NSString stringWithFormat:@"Ring"] delegate:self cancelButtonTitle:@"Snooze" otherButtonTitles:@"Do Math!", nil];
     [alertView show];
     
     //Startar att spela ett ljud då en notif går av, borde dock kollas om den kom från en notif eller om pers. var i appen
-    */
-    /*NSString *path = [[NSBundle mainBundle]
+     /*
+    
+    NSString *path = [[NSBundle mainBundle]
                     pathForResource:@"chimes" ofType:@"wav"];
    mySound = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
    [mySound play];
-     
-     */
+   
+    */
+   
+    
+    
+    
+    NSLog(@"didReceive");
     
     //Cancela alla alarm för det alarm som ringde
     //Loopa igenom det alarm som ringde
@@ -107,17 +106,27 @@
     //Om det finns en 1a, kolla vilken/vilka dag/ar det är och sätt upp alarm på alla.
     
     
-  /*  
+   
 }
-*/
+
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
  
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     
-	if([title isEqualToString:[NSString stringWithFormat:@"OK"]]) {
+	if([title isEqualToString:[NSString stringWithFormat:@"Do Math!"]]) {
             //Stoppar ljudet när användaren trycker på OK
       //  [mySound stop];
+        DoMathViewController *doMathViewController = [[DoMathViewController alloc]initWithNibName:@"DoMathViewController" bundle:nil];
+
+        nvcontrol = [[UINavigationController alloc] initWithRootViewController:doMathViewController];
+        [nvcontrol.navigationBar setTintColor:[UIColor yellowColor]];
+        //[nvcontrol.navigationItem setTitle:@"Wake up!"];
+        self.window.rootViewController = nvcontrol;
+        [[self window] makeKeyAndVisible];
+
+        
         
     }
 

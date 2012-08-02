@@ -1,65 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11A511" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Aaq-VX-fh7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Aaq-VX-fh7">
     <dependencies>
-        <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
+        <deployment defaultVersion="1296" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
-        <scene sceneID="xwI-MC-AxO">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ktx-LQ-4BO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="DoMathViewController" id="iHp-mK-aI5" customClass="DoMathViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GRv-kJ-nGx">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="4" minimumFontSize="10" id="9hX-Qp-gd6">
-                                <rect key="frame" x="14" y="68" width="1464" height="328"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">Svårt mattetal och en bön om att inte klicka på hemknappen. Eller förresten, vi kan sätta ett nytt alarm om viewDidDisappear, så blir det som en snooze om man inte klarar talet.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="C7c-fq-kCL"/>
-                    <connections>
-                        <segue destination="5aw-Mw-Emg" kind="push" identifier="ToDoMath" id="Rxa-R3-Ytd"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="656" y="-671"/>
-        </scene>
-        <scene sceneID="2ro-yg-14T">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yfq-qg-Z3f" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="5aw-Mw-Emg" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="BTX-Cf-6X6">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="6OO-c3-Pqy"/>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="1133" y="-671"/>
-        </scene>
-        <scene sceneID="tgx-Uo-GXI">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3G9-2P-xnB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="nnK-0z-flX" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="KyI-KM-fSy">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="iHp-mK-aI5" kind="relationship" relationship="rootViewController" id="R35-78-IUY"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="148" y="-671"/>
-        </scene>
+        <!--Master View Controller-->
         <scene sceneID="yIo-Ii-bCC">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kha-TN-Hyh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -139,6 +85,34 @@
             </objects>
             <point key="canvasLocation" x="674" y="28"/>
         </scene>
+        <!--Do Math View Controller - Yo-->
+        <scene sceneID="4LB-o2-9fl">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y8n-3Z-dkS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="LTb-oe-icX" customClass="DoMathViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aXj-ZF-Qky">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="VHf-Ex-NLV">
+                                <rect key="frame" x="121" y="222" width="79" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Yo" id="Jyv-hH-FNx"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <nil key="simulatedDestinationMetrics"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="148" y="-594"/>
+        </scene>
+        <!--Navigation Controller-->
         <scene sceneID="qSa-HL-ApQ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Har-KR-AH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -156,6 +130,7 @@
             </objects>
             <point key="canvasLocation" x="148" y="28"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="dL8-Tv-gu5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AuA-5t-cqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -173,6 +148,7 @@
             </objects>
             <point key="canvasLocation" x="1133" y="28"/>
         </scene>
+        <!--Min Table View Controller-->
         <scene sceneID="ITE-dz-Div">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s11-iZ-Jpz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -223,7 +199,7 @@
                                 <rect key="frame" x="0.0" y="91" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Setting" lineBreakMode="tailTruncation" minimumFontSize="10" id="yJn-Dy-3RK">
@@ -255,7 +231,7 @@
                                 <rect key="frame" x="0.0" y="135" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Add Alarm..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4hb-Jg-zKF">
@@ -297,6 +273,7 @@
             </objects>
             <point key="canvasLocation" x="1609" y="28"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="dTv-jR-N64">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kE4-YE-uPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -313,8 +290,9 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="2137" y="-297"/>
+            <point key="canvasLocation" x="2663" y="-297"/>
         </scene>
+        <!--Add Alarm View Controller - Add Alarm-->
         <scene sceneID="SCB-Js-VLt">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jW1-Gm-AbY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -506,8 +484,9 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2574" y="-297"/>
+            <point key="canvasLocation" x="3100" y="-297"/>
         </scene>
+        <!--Add Repeat View Controller-->
         <scene sceneID="0lc-wJ-71k">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="orb-yB-rd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -674,6 +653,7 @@
             </objects>
             <point key="canvasLocation" x="3047" y="-1351"/>
         </scene>
+        <!--Edit Repeat View Controller-->
         <scene sceneID="7Cc-nS-oqT">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nw1-dz-Aca" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -840,6 +820,7 @@
             </objects>
             <point key="canvasLocation" x="3001" y="927"/>
         </scene>
+        <!--Add Time View Controller-->
         <scene sceneID="I9e-mA-nmJ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZO3-ip-zBc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -892,8 +873,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="3043" y="-785"/>
+            <point key="canvasLocation" x="3569" y="-785"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="N3i-jU-BlB">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C6N-de-gmW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -912,6 +894,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="2137" y="327"/>
         </scene>
+        <!--Edit Alarm View Controller - Edit Alarm-->
         <scene sceneID="Csg-XD-5AD">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnb-7f-rk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1132,6 +1115,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="2574" y="327"/>
         </scene>
+        <!--Edit Alarm Add Time View Controller-->
         <scene sceneID="j1U-yT-Az8">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0MG-yh-YjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1232,6 +1216,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="DoMathViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DoMathViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonPressed:"/>
+            </relationships>
         </class>
         <class className="EditAlarmAddTimeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EditAlarmAddTimeViewController.h"/>

@@ -34,6 +34,7 @@
 		00DE2B3614E4818C00A5B32F /* EditAlarmAddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DE2B3514E4818C00A5B32F /* EditAlarmAddTimeViewController.m */; };
 		00EE848414DF1DF100CEB90F /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EE848314DF1DF100CEB90F /* Alarm.m */; };
 		00EE848B14DF2F0D00CEB90F /* AlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EE848A14DF2F0D00CEB90F /* AlarmCell.m */; };
+		00FB6AE615CAF69C00ACCB98 /* DoMathViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FB6AE515CAF69C00ACCB98 /* DoMathViewController.xib */; };
 		CE47CDA914E3B3EE005E44ED /* EditAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE47CDA814E3B3EE005E44ED /* EditAlarmViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		00EE848314DF1DF100CEB90F /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
 		00EE848914DF2F0D00CEB90F /* AlarmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmCell.h; sourceTree = "<group>"; };
 		00EE848A14DF2F0D00CEB90F /* AlarmCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmCell.m; sourceTree = "<group>"; };
+		00FB6AE515CAF69C00ACCB98 /* DoMathViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoMathViewController.xib; sourceTree = "<group>"; };
 		CE47CDA714E3B3EE005E44ED /* EditAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAlarmViewController.h; sourceTree = "<group>"; };
 		CE47CDA814E3B3EE005E44ED /* EditAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAlarmViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				0016390C14DAC9690097041F /* MainStoryboard.storyboard */,
+				00FB6AE515CAF69C00ACCB98 /* DoMathViewController.xib */,
 				0036C2871509FA4100CA8CC9 /* chimes.wav */,
 				0016390914DAC9690097041F /* AppDelegate.h */,
 				0016390A14DAC9690097041F /* AppDelegate.m */,
@@ -298,7 +301,7 @@
 		001638ED14DAC9690097041F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0440;
 			};
 			buildConfigurationList = 001638F014DAC9690097041F /* Build configuration list for PBXProject "alarm1" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -327,6 +330,7 @@
 				0016390E14DAC9690097041F /* MainStoryboard.storyboard in Resources */,
 				0036C2881509FA4100CA8CC9 /* chimes.wav in Resources */,
 				00D417DD15C5C822002052E2 /* BigBG_1.png in Resources */,
+				00FB6AE615CAF69C00ACCB98 /* DoMathViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +450,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -465,6 +470,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
