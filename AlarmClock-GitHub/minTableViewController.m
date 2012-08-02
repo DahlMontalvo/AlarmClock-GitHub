@@ -200,7 +200,7 @@
     }
     
     if (section ==1) {
-        return 5;
+        return 3;
     } else {
         
         return 0;
@@ -216,17 +216,22 @@
     
     alarms = [[Singleton sharedSingleton] sharedAlarmsArray];
     
-    int num = [[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"Counter"] intValue];
+   
     
     static NSString *CellIdentifier1 = @"AlarmCell";
     static NSString *CellIdentifier2 = @"SettingCell";
+    static NSString *CellIdentifier3 = @"SettingCell2";
     
-    NSMutableArray *settingsArray = [NSMutableArray arrayWithCapacity:5];
-    [settingsArray addObject:@"Math Level: "];
-    [settingsArray addObject:@"Math Type: "];
-    [settingsArray addObject:@"Number of Questions: "];
-    [settingsArray addObject:@"24 Hour Clock: "];
-    [settingsArray addObject:@"Clock Style:"];
+    NSMutableArray *settingsArray = [NSMutableArray arrayWithCapacity:3];
+    [settingsArray addObject:@"Math Settings"];
+    [settingsArray addObject:@"Clock Style"];
+    
+    
+    NSMutableArray *settingsArraySwitch = [NSMutableArray arrayWithCapacity:1];
+    [settingsArraySwitch addObject:@"24 Hour Clock "];
+    
+    int num = [[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"Counter"] intValue];
+    int num2 = [settingsArray count];
     
     if (indexPath.section == 0) {
         if (indexPath.row >= num) {
@@ -258,17 +263,24 @@
 
         }
         
-    } 
-    else {
+    }
+     
+   else if (indexPath.section  == 1 && indexPath.row >= num2) {
+        SettingCell2 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier3];
+        cell.textLabel.text = [settingsArraySwitch objectAtIndex:indexPath.row-2];
+        NSLog(@"SettingCell2");
+        return cell;
         
+    
+        
+    } else {
         SettingCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
         cell.settingLabel.text = [settingsArray objectAtIndex:indexPath.row];
-        
         return cell;
-
+        NSLog(@"SettingCell1");
+        
     }
-   
-    
+
 }
         
         

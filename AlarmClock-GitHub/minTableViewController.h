@@ -11,6 +11,7 @@
 #import "EditAlarmViewController.h"
 #import "AlarmCell.h"
 #import "SettingCell.h"
+#import "SettingCell2.h"
 #import "EditAlarmViewController.h"
 
 @class minTableViewController;
