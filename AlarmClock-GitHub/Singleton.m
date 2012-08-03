@@ -15,6 +15,7 @@ static Singleton *shared = NULL;
 @synthesize sharedCounter;
 @synthesize sharedNameArray;
 @synthesize sharedAlarmsArray;
+@synthesize sharedSettings;
 
 @synthesize sharedFireDates;
 @synthesize lastFireDate;
@@ -28,6 +29,7 @@ static Singleton *shared = NULL;
         
         self.sharedNameArray = [[NSMutableArray alloc] init];
         self.sharedPrefs = [[NSUserDefaults alloc] init];
+        self.sharedSettings = [[NSUserDefaults alloc] init];
         self.sharedAlarmsArray = [[NSMutableArray alloc] initWithCapacity:10];
         self.sharedFireDates = [[NSMutableArray alloc] init];
         NSLog(@"Singletons initierade");

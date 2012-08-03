@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Singleton.h"
 
 @interface SettingCell2 : UITableViewCell {
     
@@ -15,6 +16,8 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *textLabel;
 @property (nonatomic, strong) IBOutlet UISwitch *settingSwitch;
+
+-(IBAction)switchFlicked:(id)sender;
 
 
 

@@ -14,6 +14,7 @@
 @synthesize secondsDisplay;
 @synthesize dayDisplay;
 @synthesize dateDisplay;
+@synthesize background;
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -44,7 +45,14 @@
     NSDate *dateShow= [NSDate dateWithTimeIntervalSinceNow:0];
     
     dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"HH:mm"];
+    
+    if ([[[Singleton sharedSingleton]sharedSettings] integerForKey:@"24HourClockSetting"] == 0) {
+        [dateFormat setDateFormat:@"hh:mm"];
+    } else {
+        [dateFormat setDateFormat:@"HH:mm"];
+    }
+    
+    
     
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
     [outputFormatter setDateFormat:@"a"];
@@ -91,10 +99,7 @@
 
 - (void)viewDidLoad
 {
-    
-    
-    
-   
+
     
     //Kolla veckodag
     NSDateFormatter* theDateFormatter = [[NSDateFormatter alloc] init];
@@ -141,10 +146,23 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [self showClock];
+    
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     [super viewWillAppear:animated];
          NSLog(@"Counter: %i",[[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"]);
+    
+    UIImage *simplyBG = [UIImage imageNamed:@"SimplyBG.png"];
+    UIImage *standardBG = [UIImage imageNamed:@"BlackBoard4.png"];
+    
+    if ([[[Singleton sharedSingleton] sharedSettings]integerForKey:@"ClearBackgroundSetting"] == 0) {
+        [background setImage:standardBG];
+    } else {
+        [background setImage:simplyBG];
+    }
+    
+    
 }
 
 

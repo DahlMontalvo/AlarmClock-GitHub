@@ -20,6 +20,8 @@
 @synthesize delegate;
 @synthesize delegate2;
 @synthesize selectedIndex;
+@synthesize settingsArraySwitch;
+@synthesize settingsArray;
 
 
 - (IBAction)done:(id)sender
@@ -200,7 +202,7 @@
     }
     
     if (section ==1) {
-        return 4;
+        return [settingsArray count] + [settingsArraySwitch count];
     } else {
         
         return 0;
@@ -222,12 +224,12 @@
     static NSString *CellIdentifier2 = @"SettingCell";
     static NSString *CellIdentifier3 = @"SettingCell2";
     
-    NSMutableArray *settingsArray = [NSMutableArray arrayWithCapacity:3];
+    settingsArray = [NSMutableArray arrayWithCapacity:3];
     [settingsArray addObject:@"Math Settings"];
     [settingsArray addObject:@"Clock Style"];
     
     
-    NSMutableArray *settingsArraySwitch = [NSMutableArray arrayWithCapacity:1];
+    settingsArraySwitch = [NSMutableArray arrayWithCapacity:1];
     [settingsArraySwitch addObject:@"24 Hour Clock"];
     [settingsArraySwitch addObject:@"Clear Background"];
     
@@ -268,7 +270,25 @@
      
    else if (indexPath.section  == 1 && indexPath.row >= num2) {
         SettingCell2 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier3];
-        cell.textLabel.text = [settingsArraySwitch objectAtIndex:indexPath.row-2];
+        cell.textLabel.text = [settingsArraySwitch objectAtIndex:indexPath.row-[settingsArray count]];
+       
+       if ([cell.textLabel.text isEqualToString:@"24 Hour Clock"]) {
+           if ([[[Singleton sharedSingleton]sharedSettings]integerForKey:@"24HourClockSetting"] == 1) {
+               [cell.settingSwitch setOn:YES];
+           } else {
+               [cell.settingSwitch setOn:NO];
+           }
+       }
+       
+       if ([cell.textLabel.text isEqualToString:@"Clear Background"]) {
+           if ([[[Singleton sharedSingleton]sharedSettings]integerForKey:@"ClearBackgroundSetting"] == 1) {
+               [cell.settingSwitch setOn:YES];
+           } else {
+               [cell.settingSwitch setOn:NO];
+           }
+       }
+
+           
         NSLog(@"SettingCell2");
         return cell;
         
@@ -300,7 +320,8 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (editingStyle == UITableViewCellEditingStyleDelete && indexPath.row <= [[[Singleton sharedSingleton] sharedAlarmsArray] count])
+    //Man ska även bara kunna deleta alarm, ej settings. Därav indexPath.section = 0
+	if (editingStyle == UITableViewCellEditingStyleDelete && indexPath.row <= [[[Singleton sharedSingleton] sharedAlarmsArray] count] && indexPath.section == 0)
 	{
         int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
         Alarm *oldAlarm = [[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:indexPath.row];
@@ -366,18 +387,27 @@
     [tableView reloadData]; 
 }
 
-
+-(void)switchFlicked{
+    
+    
+}
 
 #pragma mark - Table view delegate
+
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     selectedIndex = indexPath.row;
-    if (indexPath.row == [[[Singleton sharedSingleton] sharedAlarmsArray] count]) {
+    if (indexPath.row == [[[Singleton sharedSingleton] sharedAlarmsArray] count] && indexPath.section == 0) {
         [self performSegueWithIdentifier:@"AddAlarm" sender:self];
     }
-    else {
+    else if (indexPath.section == 0) {
         [self performSegueWithIdentifier:@"EditAlarm" sender:self];
+    } else if (indexPath.section == 1 && indexPath.row < [settingsArray count]) {
+        [self performSegueWithIdentifier:@"SettingSegue" sender:self];
+    } else {
+        //Unclickable
     }
     NSLog(@"1. selectedIndex: %i", selectedIndex);
 }

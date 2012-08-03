@@ -83,6 +83,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="ampmDisplay" destination="7fz-jI-LLH" id="3Dp-UG-ENV"/>
+                        <outlet property="background" destination="aoK-m0-NvD" id="CcS-zV-ITe"/>
                         <outlet property="dateDisplay" destination="dqG-8N-TNo" id="FEt-PU-2eg"/>
                         <outlet property="dayDisplay" destination="2GE-5u-hGM" id="m9o-os-U7C"/>
                         <outlet property="secondsDisplay" destination="nEl-bo-p2D" id="pkI-RX-k4F"/>
@@ -133,7 +134,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s11-iZ-Jpz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="qlD-cE-5uW" customClass="minTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="lGz-e5-F15">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="lGz-e5-F15">
                         <rect key="frame" x="0.0" y="44" width="320" height="436"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -205,6 +206,7 @@
                                 </view>
                                 <connections>
                                     <outlet property="settingLabel" destination="do0-Jd-ejB" id="aka-Ht-Nth"/>
+                                    <segue destination="MoK-D6-XnY" kind="modal" identifier="SettingSegue" id="bSn-k4-W1q"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingCell2" id="RPb-FY-XEm" customClass="SettingCell2">
@@ -217,7 +219,10 @@
                                         <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="Sd8-rL-IEh">
                                             <rect key="frame" x="201" y="8" width="79" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="onTintColor" red="1" green="0.43529412150382996" blue="0.81176471710205078" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="onTintColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="switchFlicked:" destination="RPb-FY-XEm" eventType="valueChanged" id="JD4-A7-RGx"/>
+                                            </connections>
                                         </switch>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Setting" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="aaX-j3-8xr">
                                             <rect key="frame" x="53" y="11" width="140" height="21"/>
@@ -239,7 +244,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="addCell" textLabel="4hb-Jg-zKF" style="IBUITableViewCellStyleDefault" id="LAb-jK-c85">
-                                <rect key="frame" x="0.0" y="179" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="179" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -779,7 +784,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="3001" y="927"/>
+            <point key="canvasLocation" x="4053" y="927"/>
         </scene>
         <!--Add Time View Controller-->
         <scene sceneID="I9e-mA-nmJ">
@@ -854,6 +859,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
             </objects>
             <point key="canvasLocation" x="2137" y="327"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="viZ-ir-DiB">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rnc-QS-dtg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="7hr-ci-gFc" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dKq-j5-nyL">
+                        <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HPi-yW-gNT"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2137" y="957"/>
         </scene>
         <!--Edit Alarm View Controller - Edit Alarm-->
         <scene sceneID="Csg-XD-5AD">
@@ -1081,6 +1101,24 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="3001" y="327"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DxT-xW-Eff">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WDW-yy-jWM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="MoK-D6-XnY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uc5-ur-Qbl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7hr-ci-gFc" kind="relationship" relationship="rootViewController" id="VRJ-9D-6RZ"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1604" y="957"/>
+        </scene>
     </scenes>
     <resources>
         <image name="BigBG_1.png" width="960" height="960"/>
@@ -1164,6 +1202,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <relationships>
                 <relationship kind="action" name="settingsButton:"/>
                 <relationship kind="outlet" name="ampmDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="background" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="dateDisplay" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="dayDisplay" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="secondsDisplay" candidateClass="UILabel"/>
@@ -1179,6 +1218,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="SettingCell2" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingCell2.h"/>
             <relationships>
+                <relationship kind="action" name="switchFlicked:"/>
                 <relationship kind="outlet" name="settingSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="textLabel" candidateClass="UILabel"/>
             </relationships>

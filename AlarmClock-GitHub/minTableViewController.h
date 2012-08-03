@@ -13,6 +13,7 @@
 #import "SettingCell.h"
 #import "SettingCell2.h"
 #import "EditAlarmViewController.h"
+#import "Singleton.h"
 
 @class minTableViewController;
 
@@ -34,6 +35,8 @@
 @property (nonatomic, weak) id <minTableViewControllerDelegate> delegate;
 @property (nonatomic, weak) id <minTableViewControllerDelegate> delegate2;
 @property (nonatomic, retain) NSMutableArray *alarms;
+@property (nonatomic, retain) NSMutableArray *settingsArray;
+@property (nonatomic, retain) NSMutableArray *settingsArraySwitch;
 @property (nonatomic) int selectedIndex;
 
 

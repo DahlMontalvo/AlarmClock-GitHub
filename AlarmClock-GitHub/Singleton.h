@@ -20,6 +20,7 @@
 }
 
 @property (nonatomic, retain) NSUserDefaults *sharedPrefs;
+@property (nonatomic, retain) NSUserDefaults *sharedSettings;
 @property(nonatomic, assign) NSUInteger sharedCounter;
 @property (nonatomic, retain) NSMutableArray *sharedNameArray;
 @property (nonatomic, retain) NSMutableArray *sharedAlarmsArray;

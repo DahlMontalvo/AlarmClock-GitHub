@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "minTableViewController.h"
 #import "AddAlarmViewController.h"
+#import "Singleton.h"
 @class MasterViewController;
 
 @interface MasterViewController : UIViewController <minTableViewControllerDelegate> {
@@ -31,6 +32,7 @@
 @property(retain,nonatomic)UILabel *secondsDisplay;
 @property(retain,nonatomic)UILabel *dayDisplay;
 @property(retain,nonatomic)UILabel *dateDisplay;
+@property (nonatomic ,retain)IBOutlet UIImageView *background;
 
 
 - (IBAction)settingsButton:(id)sender;
