@@ -200,7 +200,7 @@
     }
     
     if (section ==1) {
-        return 3;
+        return 4;
     } else {
         
         return 0;
@@ -228,7 +228,8 @@
     
     
     NSMutableArray *settingsArraySwitch = [NSMutableArray arrayWithCapacity:1];
-    [settingsArraySwitch addObject:@"24 Hour Clock "];
+    [settingsArraySwitch addObject:@"24 Hour Clock"];
+    [settingsArraySwitch addObject:@"Clear Background"];
     
     int num = [[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"Counter"] intValue];
     int num2 = [settingsArray count];
