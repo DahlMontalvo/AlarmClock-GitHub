@@ -34,6 +34,8 @@
 		00961B3D14E143A30097F622 /* AddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00961B3C14E143A30097F622 /* AddTimeViewController.m */; };
 		00A64AD714DDBB9000A8AC52 /* AddAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A64AD614DDBB9000A8AC52 /* AddAlarmViewController.m */; };
 		00B4A6BE14F6753700716821 /* DoMathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B4A6BD14F6753700716821 /* DoMathViewController.m */; };
+		00C6F14A15CEACDF009543E1 /* setting1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00C6F14915CEACDF009543E1 /* setting1.png */; };
+		00C6F14C15CEAEE0009543E1 /* setting2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00C6F14B15CEAEE0009543E1 /* setting2.png */; };
 		00D417DD15C5C822002052E2 /* BigBG_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D417DC15C5C822002052E2 /* BigBG_1.png */; };
 		00DE2B3614E4818C00A5B32F /* EditAlarmAddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DE2B3514E4818C00A5B32F /* EditAlarmAddTimeViewController.m */; };
 		00EE848414DF1DF100CEB90F /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EE848314DF1DF100CEB90F /* Alarm.m */; };
@@ -95,6 +97,8 @@
 		00A64AD614DDBB9000A8AC52 /* AddAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddAlarmViewController.m; path = ../AddAlarmViewController.m; sourceTree = "<group>"; };
 		00B4A6BC14F6753700716821 /* DoMathViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoMathViewController.h; sourceTree = "<group>"; };
 		00B4A6BD14F6753700716821 /* DoMathViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoMathViewController.m; sourceTree = "<group>"; };
+		00C6F14915CEACDF009543E1 /* setting1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting1.png; sourceTree = "<group>"; };
+		00C6F14B15CEAEE0009543E1 /* setting2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting2.png; sourceTree = "<group>"; };
 		00D417DC15C5C822002052E2 /* BigBG_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigBG_1.png; sourceTree = "<group>"; };
 		00DE2B3414E4818C00A5B32F /* EditAlarmAddTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAlarmAddTimeViewController.h; sourceTree = "<group>"; };
 		00DE2B3514E4818C00A5B32F /* EditAlarmAddTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAlarmAddTimeViewController.m; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 		0016390114DAC9690097041F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				00C6F14915CEACDF009543E1 /* setting1.png */,
+				00C6F14B15CEAEE0009543E1 /* setting2.png */,
 				0093D48615CB627D00F666AE /* BlackBoard4.png */,
 				0093D48815CB653000F666AE /* SimplyBG.png */,
 				0093D47C15CB558E00F666AE /* arrow.png */,
@@ -348,6 +354,8 @@
 				0093D47D15CB558E00F666AE /* arrow.png in Resources */,
 				0093D48715CB627D00F666AE /* BlackBoard4.png in Resources */,
 				0093D48915CB653000F666AE /* SimplyBG.png in Resources */,
+				00C6F14A15CEACDF009543E1 /* setting1.png in Resources */,
+				00C6F14C15CEAEE0009543E1 /* setting2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

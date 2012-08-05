@@ -226,8 +226,6 @@
     
     settingsArray = [NSMutableArray arrayWithCapacity:3];
     [settingsArray addObject:@"Math Settings"];
-    [settingsArray addObject:@"Clock Style"];
-    
     
     settingsArraySwitch = [NSMutableArray arrayWithCapacity:1];
     [settingsArraySwitch addObject:@"24 Hour Clock"];

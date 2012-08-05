@@ -183,7 +183,7 @@
                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="BigBG_1.png" id="GJa-6Z-5DB">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="setting1.png" id="GJa-6Z-5DB">
                                             <rect key="frame" x="20" y="9" width="25" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -231,7 +231,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="BigBG_1.png" id="eho-J5-Ej8">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="setting2.png" id="eho-J5-Ej8">
                                             <rect key="frame" x="20" y="8" width="25" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -1121,9 +1121,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
-        <image name="BigBG_1.png" width="960" height="960"/>
         <image name="BlackBoard4.png" width="960" height="960"/>
         <image name="arrow.png" width="40" height="40"/>
+        <image name="setting1.png" width="50" height="50"/>
+        <image name="setting2.png" width="50" height="50"/>
     </resources>
     <classes>
         <class className="AddAlarmViewController" superclassName="UITableViewController">
