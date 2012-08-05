@@ -21,6 +21,8 @@
     IBOutlet UILabel *dayDisplay;
     IBOutlet UILabel *dateDisplay;
     
+    //hej commit
+    
     NSTimer *timer;
 }
 
