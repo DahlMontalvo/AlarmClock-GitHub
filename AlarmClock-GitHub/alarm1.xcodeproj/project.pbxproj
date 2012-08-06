@@ -38,6 +38,7 @@
 		00C6F14C15CEAEE0009543E1 /* setting2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00C6F14B15CEAEE0009543E1 /* setting2.png */; };
 		00D417DD15C5C822002052E2 /* BigBG_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D417DC15C5C822002052E2 /* BigBG_1.png */; };
 		00DE2B3614E4818C00A5B32F /* EditAlarmAddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DE2B3514E4818C00A5B32F /* EditAlarmAddTimeViewController.m */; };
+		00E1669815CF405D00983423 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E1669715CF405D00983423 /* SettingsViewController.m */; };
 		00EE848414DF1DF100CEB90F /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EE848314DF1DF100CEB90F /* Alarm.m */; };
 		00EE848B14DF2F0D00CEB90F /* AlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EE848A14DF2F0D00CEB90F /* AlarmCell.m */; };
 		00FB6AE615CAF69C00ACCB98 /* DoMathViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FB6AE515CAF69C00ACCB98 /* DoMathViewController.xib */; };
@@ -102,6 +103,8 @@
 		00D417DC15C5C822002052E2 /* BigBG_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigBG_1.png; sourceTree = "<group>"; };
 		00DE2B3414E4818C00A5B32F /* EditAlarmAddTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAlarmAddTimeViewController.h; sourceTree = "<group>"; };
 		00DE2B3514E4818C00A5B32F /* EditAlarmAddTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAlarmAddTimeViewController.m; sourceTree = "<group>"; };
+		00E1669615CF405D00983423 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		00E1669715CF405D00983423 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		00EE848214DF1DF100CEB90F /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
 		00EE848314DF1DF100CEB90F /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
 		00EE848914DF2F0D00CEB90F /* AlarmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmCell.h; sourceTree = "<group>"; };
@@ -179,6 +182,8 @@
 				0016391014DAC9690097041F /* MasterViewController.m */,
 				0016393614DADE5F0097041F /* minTableViewController.h */,
 				0016393714DADE5F0097041F /* minTableViewController.m */,
+				00E1669615CF405D00983423 /* SettingsViewController.h */,
+				00E1669715CF405D00983423 /* SettingsViewController.m */,
 				00B4A6BA14F674DE00716821 /* DoMathViewController */,
 				00DE2B3B14E4829E00A5B32F /* AddAlarm */,
 				00DE2B3914E4825A00A5B32F /* Edit Alarm */,
@@ -406,6 +411,7 @@
 				006F2A0E14F687E400C4A906 /* EditRepeatViewController.m in Sources */,
 				00566C1B15C73BA9004601B8 /* SettingCell.m in Sources */,
 				005BF78F15CB0BB40047B4C5 /* SettingCell2.m in Sources */,
+				00E1669815CF405D00983423 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

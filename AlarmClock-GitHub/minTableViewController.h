@@ -14,6 +14,7 @@
 #import "SettingCell2.h"
 #import "EditAlarmViewController.h"
 #import "Singleton.h"
+#import "SettingsViewController.h"
 
 @class minTableViewController;
 
@@ -23,7 +24,7 @@
 
 @end
 
-@interface minTableViewController : UITableViewController <AddAlarmViewControllerDelegate, EditAlarmViewControllerDelegate> {
+@interface minTableViewController : UITableViewController <AddAlarmViewControllerDelegate, EditAlarmViewControllerDelegate, SettingsViewControllerDelegate> {
     
    
     int counter;

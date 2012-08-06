@@ -11,6 +11,7 @@
 #import "AddAlarmViewController.h"
 #import "EditAlarmViewController.h"
 #import "Singleton.h"
+#import "SettingsViewController.h"
 
 
 
@@ -49,6 +50,11 @@
         editAlarmViewController.alarmID = selectedIndex;
         NSLog(@"2. editAlarmViewController.alarmID: %i", editAlarmViewController.alarmID);
         NSLog(@"2. selectedIndex: %i", selectedIndex);
+    } else if ([segue.identifier isEqualToString:@"SettingSegue"]) {
+        
+        UINavigationController *navigationController = segue.destinationViewController;
+        SettingsViewController *settingsViewController = [[navigationController viewControllers] objectAtIndex:0];
+        settingsViewController.delegate = self;
     }
 }
 
@@ -68,6 +74,14 @@
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)settingsViewControllerDidCancel:(SettingsViewController *)controller {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)settingsViewControllerDidSave:(SettingsViewController *)controller{
+    //Do stuff here (maybe)
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -76,6 +90,8 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
+
+
 
 #pragma mark - View lifecycle
 

@@ -860,17 +860,38 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="2137" y="327"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="viZ-ir-DiB">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rnc-QS-dtg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="7hr-ci-gFc" sceneMemberID="viewController">
+                <viewController id="7hr-ci-gFc" customClass="SettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dKq-j5-nyL">
                         <rect key="frame" x="0.0" y="44" width="320" height="436"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Them Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="tOz-5u-xVM">
+                                <rect key="frame" x="105" y="128" width="110" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="HPi-yW-gNT"/>
+                    <navigationItem key="navigationItem" id="HPi-yW-gNT">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="yXZ-YD-pWX">
+                            <connections>
+                                <action selector="cancel:" destination="7hr-ci-gFc" id="cDG-NZ-Hfe"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="f2W-dl-Wss">
+                            <color key="tintColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="save:" destination="7hr-ci-gFc" id="evh-Aw-i2q"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="2137" y="957"/>
@@ -1222,6 +1243,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="action" name="switchFlicked:"/>
                 <relationship kind="outlet" name="settingSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="textLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="save:"/>
             </relationships>
         </class>
         <class className="minTableViewController" superclassName="UITableViewController">
