@@ -31,7 +31,13 @@
     [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
     if (localNotif) {
         NSLog(@"Recieved Notification %@",localNotif);
-        //Pusha nästa view
+        DoMathViewController *doMathViewController = [[DoMathViewController alloc]initWithNibName:@"DoMathViewController" bundle:nil];
+        
+        nvcontrol = [[UINavigationController alloc] initWithRootViewController:doMathViewController];
+        [nvcontrol.navigationBar setTintColor:[UIColor yellowColor]];
+        //[nvcontrol.navigationItem setTitle:@"Wake up!"];
+        self.window.rootViewController = nvcontrol;
+        [[self window] makeKeyAndVisible];
     }
     
     return YES;

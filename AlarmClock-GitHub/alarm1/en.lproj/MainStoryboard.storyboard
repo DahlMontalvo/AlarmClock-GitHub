@@ -261,7 +261,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="b9I-dh-qdN" kind="modal" identifier="AddAlarm" id="U8u-NR-gZ1"/>
+                                    <segue destination="b9I-dh-qdN" kind="modal" identifier="AddAlarmRow" id="U8u-NR-gZ1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1265,6 +1265,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8CX-P5-XEd"/>
+        <segue reference="U8u-NR-gZ1"/>
     </inferredMetricsTieBreakers>
 </document>

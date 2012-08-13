@@ -35,7 +35,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-	if ([segue.identifier isEqualToString:@"AddAlarm"])
+	if ([segue.identifier isEqualToString:@"AddAlarm"] || [segue.identifier isEqualToString:@"AddAlarmRow"])
 	{
 		UINavigationController *navigationController = segue.destinationViewController;
 		AddAlarmViewController *addAlarmViewController = [[navigationController viewControllers] objectAtIndex:0];
@@ -264,7 +264,12 @@
             cell.nameLabel.text = alarm.name;
             
             NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-            [outputFormatter setDateFormat:@"HH:mm a"];
+            if ([[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"24HourClockSetting"] == 0) {
+                [outputFormatter setDateFormat:@"h:mm a"];
+            }
+            else {
+                [outputFormatter setDateFormat:@"HH:mm"];
+            }
             NSString *dateString = [outputFormatter stringFromDate:alarm.fireDate];
             
             cell.timeLabel.text = dateString;

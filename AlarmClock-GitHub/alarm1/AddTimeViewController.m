@@ -16,7 +16,7 @@
 -(IBAction)save:(id)sender {
     
     //Antal klockor
-    int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"newAlarmID"]; 
+    //int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"newAlarmID"];
     
     //selectedTime innehåller nu tiden som användaren matat in
     NSDate *selectedTime = [timePicker date];

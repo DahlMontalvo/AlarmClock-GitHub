@@ -18,7 +18,10 @@
     
 }
 
+@property (nonatomic) int answer;
 @property (nonatomic, weak) id <DoMathViewControllerDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UITextField *userAnswerTextField;
+@property (weak, nonatomic) IBOutlet UILabel *questionLabel;
 
 -(IBAction)buttonPressed:(id)sender;
 

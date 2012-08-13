@@ -28,6 +28,13 @@
 
 - (IBAction)switchFlicked:(id)sender {
     
+    if ([alarmSwitch isOn]) {
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:@"1" forKey:@"editAlarmState"];
+    }
+    else {
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:@"0" forKey:@"editAlarmState"];
+    }
+     
 }
 
 - (void)dismissKeyboard:(id)sender
@@ -40,6 +47,16 @@
 - (IBAction)cancel:(id)sender
 {
     [[[Singleton sharedSingleton] sharedFireDates] removeAllObjects];
+    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmState"];
+    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmTime"];
+    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmName"];
+    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat0"];
+    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat1"];
+    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat2"];
+    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat3"];
+    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat4"];
+    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat5"];
+    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat6"];
     [self.delegate2 editAlarmViewControllerDidCancel:self];
 }
 
@@ -82,7 +99,8 @@
         alarm.name = nameField.text;
         alarm.identifier = alarm.name;
         alarm.fireDate = [[[Singleton sharedSingleton] sharedPrefs] objectForKey:@"editAlarmTime"];
-        if (alarmSwitch.on) {
+        
+        if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"editAlarmState"] isEqualToString:@"1"]) {
             alarm.alarmState = 1;
         }
         else {
@@ -91,17 +109,11 @@
         
         NSMutableArray *repeatArray = [[NSMutableArray alloc] init];
         for (int i = 0; i < 7; i++) {
-            if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"editAlarmRepeatArray%i",i]] intValue] == 1) {
+            if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"newAlarmRepeatArray%i",i]] intValue] == 1) {
                 [repeatArray insertObject:[NSNumber numberWithInteger:1] atIndex:i];
-                
-                //Uppdaterar staten i sharedPrefs
-                [[[Singleton sharedSingleton] sharedPrefs] setInteger:1 forKey:[NSString stringWithFormat:@"CurrentSwitchState%i",q]];
             }
-            else { 
+            else {
                 [repeatArray insertObject:[NSNumber numberWithInteger:0] atIndex:i];
-                
-                //Uppdaterar staten i sharedPrefs
-                [[[Singleton sharedSingleton] sharedPrefs] setInteger:0 forKey:[NSString stringWithFormat:@"CurrentSwitchState%i",q]];
             }
         }
         alarm.repeat = repeatArray;
@@ -111,11 +123,14 @@
         
         //Uppdaterar namnet i sharedPrefs
         [[[Singleton sharedSingleton] sharedPrefs] setValue:nameField.text forKey:[NSString stringWithFormat:@"name%i",y]];
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:alarm.fireDate forKey:[NSString stringWithFormat:@"time%i",y]];
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"editAlarmState"] forKey:[NSString stringWithFormat:@"CurrentSwitchState%i",y]];
         
         [[[Singleton sharedSingleton] sharedPrefs] synchronize];
         
         [[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:q] resceduleAlarm];
         
+        [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmState"];
         [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmTime"];
         [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmName"];
         [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat0"];
@@ -135,7 +150,12 @@
 
 -(void) setTimeLabel {
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-    [outputFormatter setDateFormat:@"h:mm a"];
+    if ([[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"24HourClockSetting"] == 0) {
+        [outputFormatter setDateFormat:@"h:mm a"];
+    }
+    else {
+        [outputFormatter setDateFormat:@"HH:mm"];
+    }
     NSDate *date = [[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:alarmID] fireDate];
     
     if ([[[Singleton sharedSingleton] sharedPrefs] objectForKey:@"editAlarmTime"] != nil) {
@@ -188,9 +208,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-        
     //[self performSelector:@selector(afterDidLoad) withObject:self afterDelay:0.0005];
-    NSLog(@"Redigerar alarm från indexPath: %i", alarmID);
     
     //Defaultvärden för fälten
     nameField.text = [[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:alarmID] name];
@@ -201,7 +219,20 @@
     
     [[[Singleton sharedSingleton] sharedPrefs] setValue:[[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:alarmID] fireDate]  forKey:@"editAlarmTime"];
     
-    if ([[[Singleton sharedSingleton] sharedPrefs] integerForKey:[NSString stringWithFormat:@"CurrentSwitchState%i",alarmID]] == 1) {
+    if ([[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:alarmID] alarmState] == 1) {
+        [alarmSwitch setOn:YES];
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:@"1" forKey:@"editAlarmState"];
+    }
+    else {
+        [alarmSwitch setOn:NO];
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:@"0" forKey:@"editAlarmState"];
+    }
+    
+    
+    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"editAlarmState"] isEqualToString:@"0"]) {
+        [alarmSwitch setOn:NO];
+    }
+    else if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"editAlarmState"] isEqualToString:@"1"]) {
         [alarmSwitch setOn:YES];
     }
     [self setTimeLabel];
@@ -236,14 +267,20 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    
-    int y = alarmID;
-    NSLog(@"Selected row: %i",y);
+    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"editAlarmState"] isEqualToString:@"0"]) {
+        [alarmSwitch setOn:NO];
+    }
+    else if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"editAlarmState"] isEqualToString:@"1"]) {
+        [alarmSwitch setOn:YES];
+    }
+    else if ([[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:alarmID] alarmState] == 1) {
+        [alarmSwitch setOn:YES];
+    }
+    else {
+        [alarmSwitch setOn:NO];
+    }
     
     [self setTimeLabel];
     [self setRepeatLabel];
-    
-    NSLog(@"ViewWillAppear");
-    
 }
 @end

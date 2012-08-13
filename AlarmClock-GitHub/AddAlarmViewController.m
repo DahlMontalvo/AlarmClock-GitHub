@@ -132,7 +132,12 @@
 
 -(void) setTimeLabel {
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-    [outputFormatter setDateFormat:@"h:mm a"];
+    if ([[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"24HourClockSetting"] == 0) {
+        [outputFormatter setDateFormat:@"h:mm a"];
+    }
+    else {
+        [outputFormatter setDateFormat:@"HH:mm"];
+    }
     NSDate *date = [NSDate date];
     if ([[[Singleton sharedSingleton] sharedPrefs] objectForKey:@"newAlarmTime"] != nil) {
         date = [[[Singleton sharedSingleton] sharedPrefs] objectForKey:@"newAlarmTime"];
@@ -200,7 +205,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
+    //int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
     [self setTimeLabel];
     [self setRepeatLabel];    
     [super viewWillAppear:animated];

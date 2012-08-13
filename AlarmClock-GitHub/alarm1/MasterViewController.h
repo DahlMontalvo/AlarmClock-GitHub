@@ -28,7 +28,6 @@
 
 
 
-
 @property(retain,nonatomic)UILabel *timeDisplay;
 @property(retain,nonatomic)UILabel *ampmDisplay;
 @property(retain,nonatomic)UILabel *secondsDisplay;
