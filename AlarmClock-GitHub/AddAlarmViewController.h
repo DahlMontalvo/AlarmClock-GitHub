@@ -31,6 +31,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *timeSideLabel;
 @property (nonatomic, retain) UILocalNotification *localNotif;
 @property (strong, nonatomic) IBOutlet UILabel *repeatSideLabel;
+@property (weak, nonatomic) IBOutlet UILabel *snoozeLabel;
 
 
 - (IBAction)cancel:(id)sender;

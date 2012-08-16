@@ -48,8 +48,6 @@
 		EditAlarmViewController *editAlarmViewController = [[navigationController viewControllers] objectAtIndex:0];
 		editAlarmViewController.delegate2 = self;
         editAlarmViewController.alarmID = selectedIndex;
-        NSLog(@"2. editAlarmViewController.alarmID: %i", editAlarmViewController.alarmID);
-        NSLog(@"2. selectedIndex: %i", selectedIndex);
     } else if ([segue.identifier isEqualToString:@"SettingSegue"]) {
         
         UINavigationController *navigationController = segue.destinationViewController;
@@ -97,10 +95,22 @@
 
 - (void)viewDidLoad
 {
+    
+    UIApplication *app = [UIApplication sharedApplication];
+    NSArray *eventArray = [app scheduledLocalNotifications];
+    
+    //Loopar igenom alla schemalagda notifications
+    for (int i=0; i<[eventArray count]; i++) {
+        
+        UILocalNotification *oneEvent = [eventArray objectAtIndex:i];
+        NSDictionary *userInfoCurrent = oneEvent.userInfo;
+        NSString *uid = [NSString stringWithFormat:@"%@",[userInfoCurrent valueForKey:@"AlarmName"]];
+        //Om vi hittar det som ska tas bort, ta bort det och hoppa ur loopen
+        NSLog(@"Uid: %@, %@", uid, oneEvent.fireDate);
+    }
    
     //Antalet singletonvariabler
     counter = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
-    NSLog(@"Counter:%i",counter);
     
     //Läser in alla sharedprefs i en sharedAlarmsArray
     if ([[[Singleton sharedSingleton] sharedAlarmsArray] count] < counter) {
@@ -112,12 +122,13 @@
             Alarm *alarm = [[Alarm alloc] init];
             alarm.name = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"name%i",i]];
             alarm.fireDate = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"time%i",i]];
+            alarm.snoozeInterval = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:[NSString stringWithFormat:@"snoozeInterval%i",i]];
+            alarm.snoozeNumberOfTimes = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:[NSString stringWithFormat:@"snoozeNumberOfTimes%i",i]];
             alarm.alarmState = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:[NSString stringWithFormat:@"CurrentSwitchState%i",i]];
             alarm.repeat = [[[Singleton sharedSingleton] sharedPrefs] objectForKey:[NSString stringWithFormat:@"repeat%i",i]];
         
             [[[Singleton sharedSingleton] sharedAlarmsArray] addObject:alarm];
             
-            NSLog(@"Added alarm with name: %@", alarm.name);
             
             
         }
@@ -308,7 +319,6 @@
        }
 
            
-        NSLog(@"SettingCell2");
         return cell;
         
     
@@ -317,7 +327,6 @@
         SettingCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
         cell.settingLabel.text = [settingsArray objectAtIndex:indexPath.row];
         return cell;
-        NSLog(@"SettingCell1");
         
     }
 
@@ -345,10 +354,6 @@
         int y = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
         Alarm *oldAlarm = [[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:indexPath.row];
         
-		        
-        [[[Singleton sharedSingleton] sharedPrefs] setInteger:y forKey:@"Counter"];        
-        [[[Singleton sharedSingleton] sharedPrefs] synchronize];
-        
         [oldAlarm unRegisterAlarm];
         
         [[[Singleton sharedSingleton] sharedAlarmsArray] removeObjectAtIndex:indexPath.row];
@@ -359,6 +364,7 @@
         
                 
         [[[Singleton sharedSingleton] sharedPrefs] setInteger:y forKey:@"Counter"];
+        [[[Singleton sharedSingleton] sharedPrefs] synchronize];
         [tableView reloadData];
 
 	}   
@@ -428,7 +434,6 @@
     } else {
         //Unclickable
     }
-    NSLog(@"1. selectedIndex: %i", selectedIndex);
 }
 
 @end

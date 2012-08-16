@@ -99,15 +99,13 @@
 
 - (void)viewDidLoad
 {
-
+    
     
     //Kolla veckodag
     NSDateFormatter* theDateFormatter = [[NSDateFormatter alloc] init];
     [theDateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
     [theDateFormatter setDateFormat:@"EEEE"];
     NSString *weekDay =  [theDateFormatter stringFromDate:[NSDate date]];
-    
-    NSLog(@"%@",weekDay);
     
     NSDate *today = [NSDate date];
     NSCalendar *gregorian = [[NSCalendar alloc]
@@ -117,12 +115,6 @@
     NSInteger day = [weekdayComponents day];
     NSInteger weekday = [weekdayComponents weekday];
     
-    NSLog(@"day: %i", day);
-    NSLog(@"Weekday: %i", weekday);
-    
-    //
-    
-    NSLog(@"Did start MasterViewController ViewDidLoad");
      [[self navigationController] setNavigationBarHidden:YES animated:NO];   
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     timer=[NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(showClock) userInfo:nil repeats:YES]; //Kallar showClock med intervallet 0,5 sekunder.
@@ -130,7 +122,6 @@
     
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
     
-    NSLog(@"Did finish MasterViewController ViewDidLoad");
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
@@ -151,7 +142,6 @@
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     [super viewWillAppear:animated];
-         NSLog(@"Counter: %i",[[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"]);
     
     UIImage *simplyBG = [UIImage imageNamed:@"SimplyBG.png"];
     UIImage *standardBG = [UIImage imageNamed:@"BlackBoard4.png"];

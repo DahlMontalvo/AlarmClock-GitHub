@@ -15,10 +15,11 @@
 @end
 
 @interface DoMathViewController : UIViewController {
-    
+    NSString *alarmID;
 }
 
 @property (nonatomic) int answer;
+@property (nonatomic, retain) NSString *alarmID;
 @property (nonatomic, weak) id <DoMathViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UITextField *userAnswerTextField;
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;

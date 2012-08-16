@@ -24,6 +24,7 @@
 @synthesize alarmSwitch;
 @synthesize localNotif;
 @synthesize repeatSideLabel;
+@synthesize snoozeLabel;
 @synthesize alarmID;
 
 - (IBAction)switchFlicked:(id)sender {
@@ -57,6 +58,8 @@
     [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat4"];
     [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat5"];
     [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat6"];
+    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmSnoozeInterval"];
+    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmSnoozeNumberOfTimes"];
     [self.delegate2 editAlarmViewControllerDidCancel:self];
 }
 
@@ -99,6 +102,8 @@
         alarm.name = nameField.text;
         alarm.identifier = alarm.name;
         alarm.fireDate = [[[Singleton sharedSingleton] sharedPrefs] objectForKey:@"editAlarmTime"];
+        alarm.snoozeInterval = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"editAlarmSnoozeInterval"];
+        alarm.snoozeNumberOfTimes = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"editAlarmSnoozeNumberOfTimes"];
         
         if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"editAlarmState"] isEqualToString:@"1"]) {
             alarm.alarmState = 1;
@@ -109,7 +114,7 @@
         
         NSMutableArray *repeatArray = [[NSMutableArray alloc] init];
         for (int i = 0; i < 7; i++) {
-            if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"newAlarmRepeatArray%i",i]] intValue] == 1) {
+            if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"editAlarmRepeatArray%i",i]] intValue] == 1) {
                 [repeatArray insertObject:[NSNumber numberWithInteger:1] atIndex:i];
             }
             else {
@@ -122,9 +127,14 @@
         [[[Singleton sharedSingleton] sharedAlarmsArray] replaceObjectAtIndex:q withObject:alarm];
         
         //Uppdaterar namnet i sharedPrefs
-        [[[Singleton sharedSingleton] sharedPrefs] setValue:nameField.text forKey:[NSString stringWithFormat:@"name%i",y]];
-        [[[Singleton sharedSingleton] sharedPrefs] setValue:alarm.fireDate forKey:[NSString stringWithFormat:@"time%i",y]];
-        [[[Singleton sharedSingleton] sharedPrefs] setValue:[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"editAlarmState"] forKey:[NSString stringWithFormat:@"CurrentSwitchState%i",y]];
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:nameField.text forKey:[NSString stringWithFormat:@"name%i",q]];
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:alarm.fireDate forKey:[NSString stringWithFormat:@"time%i",q]];
+        [[[Singleton sharedSingleton] sharedPrefs] setInteger:alarm.snoozeInterval forKey:[NSString stringWithFormat:@"snoozeInterval%i",q]];
+        [[[Singleton sharedSingleton] sharedPrefs] setInteger:alarm.snoozeNumberOfTimes forKey:[NSString stringWithFormat:@"snoozeNumberOfTimes%i",q]];
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:repeatArray forKey:[NSString stringWithFormat:@"repeat%i",y]];
+        [[[Singleton sharedSingleton] sharedPrefs] synchronize];
+        
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"editAlarmState"] forKey:[NSString stringWithFormat:@"CurrentSwitchState%i",q]];
         
         [[[Singleton sharedSingleton] sharedPrefs] synchronize];
         
@@ -140,6 +150,8 @@
         [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat4"];
         [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat5"];
         [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmRepeat6"];
+        [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmSnoozeInterval"];
+        [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"editAlarmSnoozeNumberOfTimes"];
     
         [[[Singleton sharedSingleton] sharedPrefs] synchronize];
         [[[Singleton sharedSingleton] sharedFireDates] removeAllObjects];
@@ -163,6 +175,18 @@
     }
     
     timeSideLabel.text = [outputFormatter stringFromDate:date];
+}
+
+-(void) setSnoozeTextLabel {
+    int interval = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"editAlarmSnoozeInterval"];
+    int times = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"editAlarmSnoozeNumberOfTimes"];
+    snoozeLabel.text = [NSString stringWithFormat:@"%i mins, %i times", interval, times];
+    if (times == 2) {
+        snoozeLabel.text = [NSString stringWithFormat:@"%i mins, twice", interval];
+    }
+    else if (times == 1) {
+        snoozeLabel.text = [NSString stringWithFormat:@"%i mins, once", interval];
+    }
 }
 
 -(void) setNameTextField {
@@ -218,6 +242,11 @@
     }
     
     [[[Singleton sharedSingleton] sharedPrefs] setValue:[[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:alarmID] fireDate]  forKey:@"editAlarmTime"];
+    [[[Singleton sharedSingleton] sharedPrefs] setInteger:[[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:alarmID] snoozeInterval]  forKey:@"editAlarmSnoozeInterval"];
+    [[[Singleton sharedSingleton] sharedPrefs] setInteger:[[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:alarmID] snoozeNumberOfTimes]  forKey:@"editAlarmSnoozeNumberOfTimes"];
+    for (int i = 0; i < 7; i++) {
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:[[[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:alarmID] repeat] objectAtIndex:i] forKey:[NSString stringWithFormat:@"editAlarmRepeatArray%i", i]];
+    }
     
     if ([[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:alarmID] alarmState] == 1) {
         [alarmSwitch setOn:YES];
@@ -237,6 +266,7 @@
     }
     [self setTimeLabel];
     [self setRepeatLabel];
+    [self setSnoozeTextLabel];
     [nameField resignFirstResponder];
     
     
@@ -252,6 +282,7 @@
 - (void)viewDidUnload
 {
     [self setRepeatSideLabel:nil];
+    [self setSnoozeLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -282,5 +313,12 @@
     
     [self setTimeLabel];
     [self setRepeatLabel];
+    [self setSnoozeTextLabel];
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 @end

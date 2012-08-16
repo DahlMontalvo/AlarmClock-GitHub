@@ -7,9 +7,11 @@
 //
 
 #import "DoMathViewController.h"
+#import "Alarm.h"
 
 @implementation DoMathViewController
 @synthesize delegate;
+@synthesize alarmID;
 @synthesize userAnswerTextField;
 @synthesize questionLabel;
 @synthesize answer;
@@ -28,12 +30,26 @@
 -(IBAction)buttonPressed:(id)sender {
     
     if ([[userAnswerTextField text] intValue] == answer) {
-        NSLog(@"Correct");
+        //Rätt svar
+        //Snooza inte mer... nu är vi tillräckligt vakna
+        //Hitta alarmet
+        int save = -1;
+        for (int i = 0; i < [[[Singleton sharedSingleton] sharedAlarmsArray] count]; i++) {
+            if ([[[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:i] name] isEqualToString:alarmID]) {
+                //Hittat! Spara i
+                save = i;
+            }
+        }
+        if (save != -1) {
+            [[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:save] noMoreSnooze];
+        }
         
         UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
         MasterViewController* myStoryBoardInitialViewController = [storyboard instantiateInitialViewController];
         myStoryBoardInitialViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [self.navigationController presentModalViewController:myStoryBoardInitialViewController animated:YES];
+        
+        
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wrong" message:@"Wrong answer. Try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
@@ -49,6 +65,8 @@
 - (void)viewDidLoad
 {
     [userAnswerTextField becomeFirstResponder];
+    
+    NSLog(@"Användaren kom från alarm som heter: %@", alarmID);
     
     NSString *question;
     
@@ -96,7 +114,7 @@
         question = [NSString stringWithFormat:@"%i * %i", number1, number2];
     }
     else {
-        NSLog(@"FELFELFEL!!!");
+        //FEL!
     }
     
     questionLabel.text = question;

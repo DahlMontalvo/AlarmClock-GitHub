@@ -21,23 +21,20 @@
 @synthesize window;
 @synthesize mySound;
 @synthesize nvcontrol;
+@synthesize alarmID;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     application.applicationIconBadgeNumber = 0;
     
     // Handle launching from a notification
     UILocalNotification *localNotif =
     [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
     if (localNotif) {
-        NSLog(@"Recieved Notification %@",localNotif);
-        DoMathViewController *doMathViewController = [[DoMathViewController alloc]initWithNibName:@"DoMathViewController" bundle:nil];
-        
-        nvcontrol = [[UINavigationController alloc] initWithRootViewController:doMathViewController];
-        [nvcontrol.navigationBar setTintColor:[UIColor yellowColor]];
-        //[nvcontrol.navigationItem setTitle:@"Wake up!"];
-        self.window.rootViewController = nvcontrol;
-        [[self window] makeKeyAndVisible];
+        alarmID = [localNotif.userInfo valueForKey:@"Name"];
+        [self handleMathForward];
+        //NSLog(@"Recieved Notification %@",localNotif);
     }
     
     return YES;
@@ -82,13 +79,37 @@
      */
 }
 
+- (void)handleMathForward {
+    
+    //Stoppar ljudet när användaren trycker på OK
+    //  [mySound stop];
+    DoMathViewController *doMathViewController = [[DoMathViewController alloc]initWithNibName:@"DoMathViewController" bundle:nil];
+    doMathViewController.alarmID = alarmID;
+    
+    nvcontrol = [[UINavigationController alloc] initWithRootViewController:doMathViewController];
+    [nvcontrol.navigationBar setTintColor:[UIColor yellowColor]];
+    //[nvcontrol.navigationItem setTitle:@"Wake up!"];
+    self.window.rootViewController = nvcontrol;
+    [[self window] makeKeyAndVisible];
+        
+        
+}
+
 
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)localNotif {
     
+    alarmID = [localNotif.userInfo valueForKey:@"Name"];
     
-    //Ringer om användaren är i appen, musik etc borde nog kallas här i UIAlertViewn
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Här ringer det" message:[NSString stringWithFormat:@"Ring"] delegate:self cancelButtonTitle:@"Snooze" otherButtonTitles:@"Do Math!", nil];
-    [alertView show];
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateInactive) {
+        [self handleMathForward];
+    } else {
+        //Ringer om användaren är i appen, musik etc borde nog kallas här i UIAlertViewn
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Här ringer det" message:[NSString stringWithFormat:@"Ring"] delegate:self cancelButtonTitle:@"Snooze" otherButtonTitles:@"Do Math!", nil];
+        [alertView show];
+    }
+    
+    
     
     //Startar att spela ett ljud då en notif går av, borde dock kollas om den kom från en notif eller om pers. var i appen
      /*
@@ -99,11 +120,6 @@
    [mySound play];
    
     */
-   
-    
-    
-    
-    NSLog(@"didReceive");
     
     //Cancela alla alarm för det alarm som ringde
     //Loopa igenom det alarm som ringde
@@ -119,23 +135,18 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
  
+    
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     
 	if([title isEqualToString:[NSString stringWithFormat:@"Do Math!"]]) {
-            //Stoppar ljudet när användaren trycker på OK
-      //  [mySound stop];
-        DoMathViewController *doMathViewController = [[DoMathViewController alloc]initWithNibName:@"DoMathViewController" bundle:nil];
-
-        nvcontrol = [[UINavigationController alloc] initWithRootViewController:doMathViewController];
-        [nvcontrol.navigationBar setTintColor:[UIColor yellowColor]];
-        //[nvcontrol.navigationItem setTitle:@"Wake up!"];
-        self.window.rootViewController = nvcontrol;
-        [[self window] makeKeyAndVisible];
-
         
+        //** HÄR TAR VI BORT KOMMANDE SNOOZE FRÅN SAMMA ALARM **//
+        [self handleMathForward];
         
     }
-
+    else {
+        //Snooze
+    }
 }
 
 @end

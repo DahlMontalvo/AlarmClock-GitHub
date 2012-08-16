@@ -14,6 +14,8 @@
 @property (nonatomic, retain) NSDate *fireDate;
 @property (nonatomic, retain) NSString *identifier;
 @property (nonatomic, assign) NSInteger alarmState;
+@property (nonatomic, assign) NSInteger snoozeInterval;
+@property (nonatomic, assign) NSInteger snoozeNumberOfTimes;
 @property (nonatomic, retain) UILocalNotification *localNotif;
 @property (nonatomic, assign) NSInteger mathLevel;
 @property (nonatomic, retain) NSMutableArray *repeat;
@@ -23,5 +25,6 @@
 -(void) registerAlarm;
 -(void) resceduleAlarm;
 -(void) unRegisterAlarm;
+-(void) noMoreSnooze;
 
 @end

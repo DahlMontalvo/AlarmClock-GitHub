@@ -43,6 +43,8 @@
 		00EE848B14DF2F0D00CEB90F /* AlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EE848A14DF2F0D00CEB90F /* AlarmCell.m */; };
 		00FB6AE615CAF69C00ACCB98 /* DoMathViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FB6AE515CAF69C00ACCB98 /* DoMathViewController.xib */; };
 		CE47CDA914E3B3EE005E44ED /* EditAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE47CDA814E3B3EE005E44ED /* EditAlarmViewController.m */; };
+		DDCD0F3515DCD5490007569E /* AddSnoozeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD0F3415DCD5490007569E /* AddSnoozeViewController.m */; };
+		DDCD0F3915DCE7340007569E /* EditSnoozeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD0F3815DCE7340007569E /* EditSnoozeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +114,10 @@
 		00FB6AE515CAF69C00ACCB98 /* DoMathViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoMathViewController.xib; sourceTree = "<group>"; };
 		CE47CDA714E3B3EE005E44ED /* EditAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAlarmViewController.h; sourceTree = "<group>"; };
 		CE47CDA814E3B3EE005E44ED /* EditAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAlarmViewController.m; sourceTree = "<group>"; };
+		DDCD0F3315DCD5490007569E /* AddSnoozeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSnoozeViewController.h; sourceTree = "<group>"; };
+		DDCD0F3415DCD5490007569E /* AddSnoozeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSnoozeViewController.m; sourceTree = "<group>"; };
+		DDCD0F3715DCE7340007569E /* EditSnoozeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSnoozeViewController.h; sourceTree = "<group>"; };
+		DDCD0F3815DCE7340007569E /* EditSnoozeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditSnoozeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				0016390C14DAC9690097041F /* MainStoryboard.storyboard */,
-				00FB6AE515CAF69C00ACCB98 /* DoMathViewController.xib */,
 				0036C2871509FA4100CA8CC9 /* chimes.wav */,
 				0016390914DAC9690097041F /* AppDelegate.h */,
 				0016390A14DAC9690097041F /* AppDelegate.m */,
@@ -232,6 +237,7 @@
 		00B4A6BA14F674DE00716821 /* DoMathViewController */ = {
 			isa = PBXGroup;
 			children = (
+				00FB6AE515CAF69C00ACCB98 /* DoMathViewController.xib */,
 				00B4A6BC14F6753700716821 /* DoMathViewController.h */,
 				00B4A6BD14F6753700716821 /* DoMathViewController.m */,
 			);
@@ -247,6 +253,8 @@
 				00DE2B3514E4818C00A5B32F /* EditAlarmAddTimeViewController.m */,
 				006F2A0C14F687E400C4A906 /* EditRepeatViewController.h */,
 				006F2A0D14F687E400C4A906 /* EditRepeatViewController.m */,
+				DDCD0F3715DCE7340007569E /* EditSnoozeViewController.h */,
+				DDCD0F3815DCE7340007569E /* EditSnoozeViewController.m */,
 			);
 			name = "Edit Alarm";
 			sourceTree = "<group>";
@@ -277,6 +285,8 @@
 				00961B3C14E143A30097F622 /* AddTimeViewController.m */,
 				004E8A6714F6837F0013550D /* AddRepeatViewController.h */,
 				004E8A6814F6837F0013550D /* AddRepeatViewController.m */,
+				DDCD0F3315DCD5490007569E /* AddSnoozeViewController.h */,
+				DDCD0F3415DCD5490007569E /* AddSnoozeViewController.m */,
 			);
 			name = AddAlarm;
 			sourceTree = "<group>";
@@ -412,6 +422,8 @@
 				00566C1B15C73BA9004601B8 /* SettingCell.m in Sources */,
 				005BF78F15CB0BB40047B4C5 /* SettingCell2.m in Sources */,
 				00E1669815CF405D00983423 /* SettingsViewController.m in Sources */,
+				DDCD0F3515DCD5490007569E /* AddSnoozeViewController.m in Sources */,
+				DDCD0F3915DCE7340007569E /* EditSnoozeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

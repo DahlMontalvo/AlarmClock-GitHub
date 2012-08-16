@@ -21,6 +21,7 @@
 }
 
 @property (nonatomic, retain) AVAudioPlayer *mySound;
+@property (nonatomic, retain) NSString *alarmID;
 @property (nonatomic, retain) UINavigationController *nvcontrol;
 @property (strong, nonatomic) UIWindow *window;
 
