@@ -187,6 +187,9 @@
     else if (times == 1) {
         snoozeLabel.text = [NSString stringWithFormat:@"%i mins, once", interval];
     }
+    else if (times == 0) {
+        snoozeLabel.text = @"No snooze";
+    }
 }
 
 -(void) setNameTextField {
