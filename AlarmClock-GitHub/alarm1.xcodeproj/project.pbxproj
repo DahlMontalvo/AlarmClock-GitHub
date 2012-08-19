@@ -39,6 +39,7 @@
 		00D417DD15C5C822002052E2 /* BigBG_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D417DC15C5C822002052E2 /* BigBG_1.png */; };
 		00DE2B3614E4818C00A5B32F /* EditAlarmAddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DE2B3514E4818C00A5B32F /* EditAlarmAddTimeViewController.m */; };
 		00E1669815CF405D00983423 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E1669715CF405D00983423 /* SettingsViewController.m */; };
+		00E93DE015E163C300709D81 /* WhiteDesign.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E93DDF15E163C300709D81 /* WhiteDesign.png */; };
 		00EE848414DF1DF100CEB90F /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EE848314DF1DF100CEB90F /* Alarm.m */; };
 		00EE848B14DF2F0D00CEB90F /* AlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EE848A14DF2F0D00CEB90F /* AlarmCell.m */; };
 		00FB6AE615CAF69C00ACCB98 /* DoMathViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FB6AE515CAF69C00ACCB98 /* DoMathViewController.xib */; };
@@ -107,6 +108,7 @@
 		00DE2B3514E4818C00A5B32F /* EditAlarmAddTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAlarmAddTimeViewController.m; sourceTree = "<group>"; };
 		00E1669615CF405D00983423 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		00E1669715CF405D00983423 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		00E93DDF15E163C300709D81 /* WhiteDesign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhiteDesign.png; sourceTree = "<group>"; };
 		00EE848214DF1DF100CEB90F /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
 		00EE848314DF1DF100CEB90F /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
 		00EE848914DF2F0D00CEB90F /* AlarmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmCell.h; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				00C6F14B15CEAEE0009543E1 /* setting2.png */,
 				0093D48615CB627D00F666AE /* BlackBoard4.png */,
 				0093D48815CB653000F666AE /* SimplyBG.png */,
+				00E93DDF15E163C300709D81 /* WhiteDesign.png */,
 				0093D47C15CB558E00F666AE /* arrow.png */,
 				00D417DC15C5C822002052E2 /* BigBG_1.png */,
 				0016390214DAC9690097041F /* alarm1-Info.plist */,
@@ -371,6 +374,7 @@
 				0093D48915CB653000F666AE /* SimplyBG.png in Resources */,
 				00C6F14A15CEACDF009543E1 /* setting1.png in Resources */,
 				00C6F14C15CEAEE0009543E1 /* setting2.png in Resources */,
+				00E93DE015E163C300709D81 /* WhiteDesign.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
