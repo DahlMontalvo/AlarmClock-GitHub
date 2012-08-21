@@ -418,8 +418,10 @@
     selectedIndex = indexPath.row;
     if (indexPath.section == 1) {
         NSMutableArray *setting = [settings objectAtIndex:indexPath.row];
-        activeSetting = setting;
-        [self performSegueWithIdentifier:@"SettingSegue" sender:self];
+        if ([[setting objectAtIndex:1] intValue] == 1) {
+            activeSetting = setting;
+            [self performSegueWithIdentifier:@"SettingSegue" sender:self];
+        }
     }
     
     if (indexPath.row == [[[Singleton sharedSingleton] sharedAlarmsArray] count] && indexPath.section == 0) {
