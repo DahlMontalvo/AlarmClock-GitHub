@@ -6,11 +6,12 @@
 //
 //
 
-#import "SettingCell2.h"
+#import "SettingCellSwitch.h"
 
-@implementation SettingCell2
+@implementation SettingCellSwitch
 @synthesize textLabel;
 @synthesize settingSwitch;
+@synthesize singletonName;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -30,19 +31,11 @@
 
 -(IBAction)switchFlicked:(id)sender {
     
-    if ([textLabel.text isEqualToString:@"24 Hour Clock"]) {
-        if (settingSwitch.on) {
-            [[[Singleton sharedSingleton] sharedSettings] setInteger:1 forKey:@"24HourClockSetting"];
-        } else {
-            [[[Singleton sharedSingleton] sharedSettings] setInteger:0 forKey:@"24HourClockSetting"];
-
-        }
-    } else if ([textLabel.text isEqualToString:@"Clear Background"]) {
-        if (settingSwitch.on) {
-             [[[Singleton sharedSingleton] sharedSettings] setInteger:1 forKey:@"ClearBackgroundSetting"];
-        } else {
-             [[[Singleton sharedSingleton] sharedSettings] setInteger:0 forKey:@"ClearBackgroundSetting"];
-        }
+    if (settingSwitch.on) {
+        [[[Singleton sharedSingleton] sharedSettings] setInteger:1 forKey:singletonName];
+    } else {
+        [[[Singleton sharedSingleton] sharedSettings] setInteger:0 forKey:singletonName];
+        
     }
     
 }

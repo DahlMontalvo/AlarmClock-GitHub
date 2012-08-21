@@ -6,10 +6,11 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SettingCell.h"
+#import "SettingCellDetail.h"
 
-@implementation SettingCell
+@implementation SettingCellDetail
 @synthesize settingLabel;
+@synthesize settingDetailLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

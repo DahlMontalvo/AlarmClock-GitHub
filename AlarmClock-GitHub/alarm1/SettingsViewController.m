@@ -7,12 +7,15 @@
 //
 
 #import "SettingsViewController.h"
+#import "Singleton.h"
 
 @interface SettingsViewController ()
 
 @end
 
 @implementation SettingsViewController
+
+@synthesize setting;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -25,6 +28,10 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"Nu ändrar vi i %@", setting);
+    
+    self.title = [setting objectAtIndex:0];
+    
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -50,16 +57,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [[setting objectAtIndex:3] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -67,7 +72,19 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Configure the cell...
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    if ([[NSString stringWithFormat:@"%@", [[setting objectAtIndex:3] objectAtIndex:indexPath.row] ] isEqualToString:[NSString stringWithFormat:@"%@", [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[setting objectAtIndex:2]]]]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", [[setting objectAtIndex:3] objectAtIndex:indexPath.row]];
     
     return cell;
 }
@@ -115,13 +132,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    for (int i = 0; i < [[setting objectAtIndex:3] count]; i++) {
+        UITableViewCell *cellToRemoveCheckmarkFrom = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        [cellToRemoveCheckmarkFrom setAccessoryType:UITableViewCellAccessoryNone];
+    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [[[Singleton sharedSingleton] sharedPrefs] setValue:[[setting objectAtIndex:3] objectAtIndex:indexPath.row] forKey:[setting objectAtIndex:2]];
+    
+    NSLog(@"[[[Singleton sharedSingleton] sharedPrefs] setValue:%@ forKey:%@];", [[setting objectAtIndex:3] objectAtIndex:indexPath.row], [setting objectAtIndex:2]);
+    
+    [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+    
+    [[[Singleton sharedSingleton] sharedPrefs] synchronize];
 }
 
 @end

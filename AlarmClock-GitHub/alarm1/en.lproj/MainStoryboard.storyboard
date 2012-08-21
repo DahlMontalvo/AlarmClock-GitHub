@@ -176,7 +176,7 @@
                                     <outlet property="timeLabel" destination="0Gg-p4-bLU" id="Tq4-wd-m29"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingCell" id="0dk-vx-JcT" customClass="SettingCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingCellDetail" id="0dk-vx-JcT" customClass="SettingCellDetail">
                                 <rect key="frame" x="0.0" y="91" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -205,11 +205,11 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
+                                    <outlet property="settingDetailLabel" destination="V2s-Tx-h0K" id="ECT-fM-CPB"/>
                                     <outlet property="settingLabel" destination="do0-Jd-ejB" id="aka-Ht-Nth"/>
-                                    <segue destination="MoK-D6-XnY" kind="modal" identifier="SettingSegue" id="bSn-k4-W1q"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingCell2" id="RPb-FY-XEm" customClass="SettingCell2">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingCellSwitch" id="RPb-FY-XEm" customClass="SettingCellSwitch">
                                 <rect key="frame" x="0.0" y="135" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -284,6 +284,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="nIZ-MZ-Aia" kind="modal" identifier="EditAlarm" id="mP1-rp-HJT"/>
+                        <segue destination="fX3-A7-w0S" kind="push" identifier="SettingSegue" id="HIJ-GR-Hio"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -920,40 +921,52 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="2137" y="327"/>
         </scene>
         <!--Settings View Controller-->
-        <scene sceneID="viZ-ir-DiB">
+        <scene sceneID="UKh-Bb-oEX">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rnc-QS-dtg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="7hr-ci-gFc" customClass="SettingsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="dKq-j5-nyL">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vaO-h5-e7Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="fX3-A7-w0S" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ntj-fx-D6a">
                         <rect key="frame" x="0.0" y="44" width="320" height="436"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Them Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="tOz-5u-xVM">
-                                <rect key="frame" x="105" y="128" width="110" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="HPi-yW-gNT">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="yXZ-YD-pWX">
-                            <connections>
-                                <action selector="cancel:" destination="7hr-ci-gFc" id="cDG-NZ-Hfe"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="f2W-dl-Wss">
-                            <color key="tintColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="save:" destination="7hr-ci-gFc" id="evh-Aw-i2q"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="cUs-Ha-GNX">
+                                <rect key="frame" x="0.0" y="46" width="320" height="45"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ixW-WS-2Rv">
+                                <rect key="frame" x="0.0" y="91" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ymg-Jo-Fso">
+                                <rect key="frame" x="0.0" y="135" width="320" height="45"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fX3-A7-w0S" id="gcd-JD-odv"/>
+                            <outlet property="delegate" destination="fX3-A7-w0S" id="W92-UE-sHS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="rKx-bP-7k8"/>
+                </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2137" y="957"/>
+            <point key="canvasLocation" x="2137" y="921"/>
         </scene>
         <!--Edit Alarm View Controller - Edit Alarm-->
         <scene sceneID="Csg-XD-5AD">
@@ -1259,24 +1272,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="3757" y="1022"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="DxT-xW-Eff">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WDW-yy-jWM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="MoK-D6-XnY" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uc5-ur-Qbl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="7hr-ci-gFc" kind="relationship" relationship="rootViewController" id="VRJ-9D-6RZ"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="1604" y="957"/>
-        </scene>
     </scenes>
     <resources>
         <image name="BlackBoard4.png" width="960" height="960"/>
@@ -1284,12 +1279,129 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="setting1.png" width="50" height="50"/>
         <image name="setting2.png" width="50" height="50"/>
     </resources>
+    <classes>
+        <class className="AddAlarmViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddAlarmViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="repeatLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="repeatSideLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="snoozeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeSideLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="AddRepeatViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddRepeatViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="fridayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="mondayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="saturdayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="sundayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="thursdayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="tuesdayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="wednesdayButton" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="AddSnoozeViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddSnoozeViewController.h"/>
+        </class>
+        <class className="AddTimeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddTimeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="timePicker" candidateClass="UIDatePicker"/>
+            </relationships>
+        </class>
+        <class className="AlarmCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AlarmCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="alarmSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="onOffLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="EditAlarmAddTimeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditAlarmAddTimeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="timePicker" candidateClass="UIDatePicker"/>
+            </relationships>
+        </class>
+        <class className="EditAlarmViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditAlarmViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="dismissKeyboard:"/>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="action" name="switchFlicked:"/>
+                <relationship kind="outlet" name="alarmSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="repeatSideLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="snoozeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeSideLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="EditRepeatViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditRepeatViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="fridayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="mondayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="saturdayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="sundayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="thursdayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="tuesdayButton" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="wednesdayButton" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="EditSnoozeViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditSnoozeViewController.h"/>
+        </class>
+        <class className="MasterViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="settingsButton:"/>
+                <relationship kind="outlet" name="ampmDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="background" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="dateDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dayDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="secondsDisplay" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeDisplay" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SettingCellDetail" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingCellDetail.h"/>
+            <relationships>
+                <relationship kind="outlet" name="settingDetailLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="settingLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SettingCellSwitch" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingCellSwitch.h"/>
+            <relationships>
+                <relationship kind="action" name="switchFlicked:"/>
+                <relationship kind="outlet" name="settingSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="textLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SettingsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
+        </class>
+        <class className="minTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/minTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="done:"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="U8u-NR-gZ1"/>
+        <segue reference="8CX-P5-XEd"/>
     </inferredMetricsTieBreakers>
 </document>

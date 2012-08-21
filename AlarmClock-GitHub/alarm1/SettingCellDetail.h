@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingCell : UITableViewCell {
+@interface SettingCellDetail : UITableViewCell {
     
     
 }
 
 @property (nonatomic, strong) IBOutlet UILabel *settingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *settingDetailLabel;
 
 @end

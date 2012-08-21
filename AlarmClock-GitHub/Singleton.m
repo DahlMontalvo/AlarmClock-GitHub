@@ -20,18 +20,7 @@ static Singleton *shared = NULL;
 @synthesize sharedFireDates;
 @synthesize lastFireDate;
 
-/*
 
- Dessa inställningar finns lagrade i [[Singleton sharedSingleton] sharedPrefs]
- Fyll på listan vid nya inställningar
- 
- Key                        Possible values     Function
- 
- 24HourClockSetting         int 0 or 1          If user uses 12 or 24 hour days
- MathLevelSetting           int 1-5             The math level for alarms
- ClearBackgroundSetting     int 0 or 1          Clear home screen details
- 
-*/
  
 - (id)init
 {
@@ -41,9 +30,8 @@ static Singleton *shared = NULL;
         self.sharedNameArray = [[NSMutableArray alloc] init];
         self.sharedPrefs = [[NSUserDefaults alloc] init];
         self.sharedSettings = [[NSUserDefaults alloc] init];
-        self.sharedAlarmsArray = [[NSMutableArray alloc] initWithCapacity:10];
+        self.sharedAlarmsArray = [[NSMutableArray alloc] init];
         self.sharedFireDates = [[NSMutableArray alloc] init];
-        // NSLog(@"SINGLETON_Number of objects in alarms after ViewDidLoad in AddAlarm: %i",[[[Singleton sharedSingleton] sharedAlarmsArray]count]);
        
         
     }

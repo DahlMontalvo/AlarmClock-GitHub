@@ -10,8 +10,8 @@
 #import "AddAlarmViewController.h"
 #import "EditAlarmViewController.h"
 #import "AlarmCell.h"
-#import "SettingCell.h"
-#import "SettingCell2.h"
+#import "SettingCellDetail.h"
+#import "SettingCellSwitch.h"
 #import "EditAlarmViewController.h"
 #import "Singleton.h"
 #import "SettingsViewController.h"
@@ -24,7 +24,7 @@
 
 @end
 
-@interface minTableViewController : UITableViewController <AddAlarmViewControllerDelegate, EditAlarmViewControllerDelegate, SettingsViewControllerDelegate> {
+@interface minTableViewController : UITableViewController <AddAlarmViewControllerDelegate, EditAlarmViewControllerDelegate> {
     
    
     int counter;
@@ -36,9 +36,9 @@
 @property (nonatomic, weak) id <minTableViewControllerDelegate> delegate;
 @property (nonatomic, weak) id <minTableViewControllerDelegate> delegate2;
 @property (nonatomic, retain) NSMutableArray *alarms;
-@property (nonatomic, retain) NSMutableArray *settingsArray;
-@property (nonatomic, retain) NSMutableArray *settingsArraySwitch;
 @property (nonatomic) int selectedIndex;
+@property (nonatomic, retain) NSMutableArray *settings;
+@property (nonatomic, retain) NSMutableArray *activeSetting;
 
 
 

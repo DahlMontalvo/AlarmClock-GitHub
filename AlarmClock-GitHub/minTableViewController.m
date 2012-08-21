@@ -21,8 +21,8 @@
 @synthesize delegate;
 @synthesize delegate2;
 @synthesize selectedIndex;
-@synthesize settingsArraySwitch;
-@synthesize settingsArray;
+@synthesize settings;
+@synthesize activeSetting;
 
 
 - (IBAction)done:(id)sender
@@ -48,11 +48,10 @@
 		EditAlarmViewController *editAlarmViewController = [[navigationController viewControllers] objectAtIndex:0];
 		editAlarmViewController.delegate2 = self;
         editAlarmViewController.alarmID = selectedIndex;
-    } else if ([segue.identifier isEqualToString:@"SettingSegue"]) {
-        
-        UINavigationController *navigationController = segue.destinationViewController;
-        SettingsViewController *settingsViewController = [[navigationController viewControllers] objectAtIndex:0];
-        settingsViewController.delegate = self;
+    }
+    else if ([segue.identifier isEqualToString:@"SettingSegue"]) {
+        SettingsViewController *navigationController = segue.destinationViewController;
+        navigationController.setting = activeSetting;
     }
 }
 
@@ -161,7 +160,30 @@
 {
        // [self.tableView reloadData];
     
-
+    //Matris med första objektet som dess namn, andra dess typ, tredje dess namn i sharedPrefs [och fjärde dess möjliga värden]
+    //Typer: 0 = switch, 1 = detail
+    //För att lägg till setting, lägg bara till en ny rad ([settings addObject...]) nedan med information i format som anges ovan. Anteckna gärna nedan vad settingen gör, så att man enkelt kan hålla reda på alla...
+    
+    /*
+     
+     Dessa inställningar finns lagrade i [[Singleton sharedSingleton] sharedPrefs]
+     Fyll på listan vid nya inställningar
+     
+     Nyckel                     Möjliga värden      Typ
+     
+     24HourClockSetting                             Switch
+     MathLevelSetting           int 1-5             Detail
+     ClearBackgroundSetting                         Switch
+     ActiveDesignSetting        int 0-2             Detail
+     
+     */
+    
+    settings = [[NSMutableArray alloc] init];
+    
+    [settings addObject:[[NSMutableArray alloc] initWithObjects:@"24 hour clock", [NSNumber numberWithInt:0], @"24HourClockSetting", nil]];
+    [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Clear background", [NSNumber numberWithInt:0], @"ClearBackgroundSetting", nil]];
+    [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Design", [NSNumber numberWithInt:1], @"ActiveDesignSetting", [[NSMutableArray alloc] initWithObjects:@"Design 1", @"Design 2", @"Design 3", nil], nil]];
+    [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Math level", [NSNumber numberWithInt:1], @"MathLevelSetting", [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithInt:1], [NSNumber numberWithInt:2], [NSNumber numberWithInt:3], [NSNumber numberWithInt:4], [NSNumber numberWithInt:5], nil], nil]];
     
     counter = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
     
@@ -201,19 +223,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
-    // Return the number of sections.
     return 2;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    
     if(section == 0){
         return @"Alarms";
     } else {
         return @"Settings";
     }
-        
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -227,12 +245,8 @@
         }
         
     }
-    
-    if (section ==1) {
-        return [settingsArray count] + [settingsArraySwitch count];
-    } else {
-        
-        return 0;
+    else {
+        return [settings count];
     }
 
 }
@@ -245,21 +259,7 @@
     
     alarms = [[Singleton sharedSingleton] sharedAlarmsArray];
     
-   
-    
-    static NSString *CellIdentifier1 = @"AlarmCell";
-    static NSString *CellIdentifier2 = @"SettingCell";
-    static NSString *CellIdentifier3 = @"SettingCell2";
-    
-    settingsArray = [NSMutableArray arrayWithCapacity:3];
-    [settingsArray addObject:@"Math Settings"];
-    
-    settingsArraySwitch = [NSMutableArray arrayWithCapacity:1];
-    [settingsArraySwitch addObject:@"24 Hour Clock"];
-    [settingsArraySwitch addObject:@"Clear Background"];
-    
     int num = [[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"Counter"] intValue];
-    int num2 = [settingsArray count];
     
     if (indexPath.section == 0) {
         if (indexPath.row >= num) {
@@ -269,7 +269,7 @@
         }
         else {
             
-            AlarmCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier1];
+            AlarmCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AlarmCell"];
             
             Alarm *alarm = [[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:indexPath.row];
             cell.nameLabel.text = alarm.name;
@@ -297,39 +297,31 @@
         }
         
     }
-     
-   else if (indexPath.section  == 1 && indexPath.row >= num2) {
-        SettingCell2 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier3];
-        cell.textLabel.text = [settingsArraySwitch objectAtIndex:indexPath.row-[settingsArray count]];
-       
-       if ([cell.textLabel.text isEqualToString:@"24 Hour Clock"]) {
-           if ([[[Singleton sharedSingleton]sharedSettings]integerForKey:@"24HourClockSetting"] == 1) {
-               [cell.settingSwitch setOn:YES];
-           } else {
-               [cell.settingSwitch setOn:NO];
-           }
-       }
-       
-       if ([cell.textLabel.text isEqualToString:@"Clear Background"]) {
-           if ([[[Singleton sharedSingleton]sharedSettings]integerForKey:@"ClearBackgroundSetting"] == 1) {
-               [cell.settingSwitch setOn:YES];
-           } else {
-               [cell.settingSwitch setOn:NO];
-           }
-       }
-
-           
-        return cell;
+    else {
+        NSMutableArray *setting = [settings objectAtIndex:indexPath.row];
         
-    
-        
-    } else {
-        SettingCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
-        cell.settingLabel.text = [settingsArray objectAtIndex:indexPath.row];
-        return cell;
+        if ([[setting objectAtIndex:1] intValue] == 0) {
+            SettingCellSwitch *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCellSwitch"];
+            cell.singletonName = [setting objectAtIndex:2];
+            cell.textLabel.text = [setting objectAtIndex:0];
+            if ([[[[Singleton sharedSingleton] sharedPrefs] objectForKey:cell.singletonName] intValue] == 1) {
+                [cell.settingSwitch setOn:YES];
+            }
+            else {
+                [cell.settingSwitch setOn:NO];
+            }
+            return cell;
+        }
+        else if ([[setting objectAtIndex:1] intValue] == 1) {
+            SettingCellDetail *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingCellDetail"];
+            cell.settingLabel.text = [setting objectAtIndex:0];
+            cell.settingDetailLabel.text = [NSString stringWithFormat:@"%@", [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[setting objectAtIndex:2]]];
+            return cell;
+        }
         
     }
-
+    
+    return nil;
 }
         
         
@@ -424,15 +416,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     selectedIndex = indexPath.row;
+    if (indexPath.section == 1) {
+        NSMutableArray *setting = [settings objectAtIndex:indexPath.row];
+        activeSetting = setting;
+        [self performSegueWithIdentifier:@"SettingSegue" sender:self];
+    }
+    
     if (indexPath.row == [[[Singleton sharedSingleton] sharedAlarmsArray] count] && indexPath.section == 0) {
         [self performSegueWithIdentifier:@"AddAlarm" sender:self];
     }
     else if (indexPath.section == 0) {
         [self performSegueWithIdentifier:@"EditAlarm" sender:self];
-    } else if (indexPath.section == 1 && indexPath.row < [settingsArray count]) {
-        [self performSegueWithIdentifier:@"SettingSegue" sender:self];
-    } else {
-        //Unclickable
     }
 }
 

@@ -9,13 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Singleton.h"
 
-@interface SettingCell2 : UITableViewCell {
+@interface SettingCellSwitch : UITableViewCell {
     
+    NSString *singletonName;
     
 }
 
 @property (nonatomic, strong) IBOutlet UILabel *textLabel;
 @property (nonatomic, strong) IBOutlet UISwitch *settingSwitch;
+@property (nonatomic, retain) NSString *singletonName;
 
 -(IBAction)switchFlicked:(id)sender;
 

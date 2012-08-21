@@ -25,8 +25,8 @@
 		0036C2811509F92400CA8CC9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0036C2801509F92400CA8CC9 /* AVFoundation.framework */; };
 		0036C2881509FA4100CA8CC9 /* chimes.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0036C2871509FA4100CA8CC9 /* chimes.wav */; };
 		004E8A6914F6837F0013550D /* AddRepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 004E8A6814F6837F0013550D /* AddRepeatViewController.m */; };
-		00566C1B15C73BA9004601B8 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00566C1A15C73BA9004601B8 /* SettingCell.m */; };
-		005BF78F15CB0BB40047B4C5 /* SettingCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 005BF78E15CB0BB40047B4C5 /* SettingCell2.m */; };
+		00566C1B15C73BA9004601B8 /* SettingCellDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 00566C1A15C73BA9004601B8 /* SettingCellDetail.m */; };
+		005BF78F15CB0BB40047B4C5 /* SettingCellSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 005BF78E15CB0BB40047B4C5 /* SettingCellSwitch.m */; };
 		006F2A0E14F687E400C4A906 /* EditRepeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 006F2A0D14F687E400C4A906 /* EditRepeatViewController.m */; };
 		0093D47D15CB558E00F666AE /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0093D47C15CB558E00F666AE /* arrow.png */; };
 		0093D48715CB627D00F666AE /* BlackBoard4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0093D48615CB627D00F666AE /* BlackBoard4.png */; };
@@ -38,12 +38,12 @@
 		00C6F14C15CEAEE0009543E1 /* setting2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00C6F14B15CEAEE0009543E1 /* setting2.png */; };
 		00D417DD15C5C822002052E2 /* BigBG_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D417DC15C5C822002052E2 /* BigBG_1.png */; };
 		00DE2B3614E4818C00A5B32F /* EditAlarmAddTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DE2B3514E4818C00A5B32F /* EditAlarmAddTimeViewController.m */; };
-		00E1669815CF405D00983423 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E1669715CF405D00983423 /* SettingsViewController.m */; };
 		00E93DE015E163C300709D81 /* WhiteDesign.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E93DDF15E163C300709D81 /* WhiteDesign.png */; };
 		00EE848414DF1DF100CEB90F /* Alarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EE848314DF1DF100CEB90F /* Alarm.m */; };
 		00EE848B14DF2F0D00CEB90F /* AlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EE848A14DF2F0D00CEB90F /* AlarmCell.m */; };
 		00FB6AE615CAF69C00ACCB98 /* DoMathViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FB6AE515CAF69C00ACCB98 /* DoMathViewController.xib */; };
 		CE47CDA914E3B3EE005E44ED /* EditAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE47CDA814E3B3EE005E44ED /* EditAlarmViewController.m */; };
+		DD5C431B15E41B6E0053A9E3 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5C431A15E41B6E0053A9E3 /* SettingsViewController.m */; };
 		DDCD0F3515DCD5490007569E /* AddSnoozeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD0F3415DCD5490007569E /* AddSnoozeViewController.m */; };
 		DDCD0F3915DCE7340007569E /* EditSnoozeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD0F3815DCE7340007569E /* EditSnoozeViewController.m */; };
 /* End PBXBuildFile section */
@@ -86,10 +86,10 @@
 		0036C2871509FA4100CA8CC9 /* chimes.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chimes.wav; sourceTree = "<group>"; };
 		004E8A6714F6837F0013550D /* AddRepeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRepeatViewController.h; sourceTree = "<group>"; };
 		004E8A6814F6837F0013550D /* AddRepeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRepeatViewController.m; sourceTree = "<group>"; };
-		00566C1915C73BA9004601B8 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
-		00566C1A15C73BA9004601B8 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
-		005BF78D15CB0BB40047B4C5 /* SettingCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell2.h; sourceTree = "<group>"; };
-		005BF78E15CB0BB40047B4C5 /* SettingCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell2.m; sourceTree = "<group>"; };
+		00566C1915C73BA9004601B8 /* SettingCellDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCellDetail.h; sourceTree = "<group>"; };
+		00566C1A15C73BA9004601B8 /* SettingCellDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCellDetail.m; sourceTree = "<group>"; };
+		005BF78D15CB0BB40047B4C5 /* SettingCellSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCellSwitch.h; sourceTree = "<group>"; };
+		005BF78E15CB0BB40047B4C5 /* SettingCellSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCellSwitch.m; sourceTree = "<group>"; };
 		006F2A0C14F687E400C4A906 /* EditRepeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditRepeatViewController.h; sourceTree = "<group>"; };
 		006F2A0D14F687E400C4A906 /* EditRepeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditRepeatViewController.m; sourceTree = "<group>"; };
 		0093D47C15CB558E00F666AE /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
@@ -106,8 +106,6 @@
 		00D417DC15C5C822002052E2 /* BigBG_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigBG_1.png; sourceTree = "<group>"; };
 		00DE2B3414E4818C00A5B32F /* EditAlarmAddTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAlarmAddTimeViewController.h; sourceTree = "<group>"; };
 		00DE2B3514E4818C00A5B32F /* EditAlarmAddTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAlarmAddTimeViewController.m; sourceTree = "<group>"; };
-		00E1669615CF405D00983423 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		00E1669715CF405D00983423 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		00E93DDF15E163C300709D81 /* WhiteDesign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhiteDesign.png; sourceTree = "<group>"; };
 		00EE848214DF1DF100CEB90F /* Alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alarm.h; sourceTree = "<group>"; };
 		00EE848314DF1DF100CEB90F /* Alarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alarm.m; sourceTree = "<group>"; };
@@ -116,6 +114,8 @@
 		00FB6AE515CAF69C00ACCB98 /* DoMathViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoMathViewController.xib; sourceTree = "<group>"; };
 		CE47CDA714E3B3EE005E44ED /* EditAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAlarmViewController.h; sourceTree = "<group>"; };
 		CE47CDA814E3B3EE005E44ED /* EditAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAlarmViewController.m; sourceTree = "<group>"; };
+		DD5C431915E41B6E0053A9E3 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		DD5C431A15E41B6E0053A9E3 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		DDCD0F3315DCD5490007569E /* AddSnoozeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSnoozeViewController.h; sourceTree = "<group>"; };
 		DDCD0F3415DCD5490007569E /* AddSnoozeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSnoozeViewController.m; sourceTree = "<group>"; };
 		DDCD0F3715DCE7340007569E /* EditSnoozeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSnoozeViewController.h; sourceTree = "<group>"; };
@@ -189,8 +189,8 @@
 				0016391014DAC9690097041F /* MasterViewController.m */,
 				0016393614DADE5F0097041F /* minTableViewController.h */,
 				0016393714DADE5F0097041F /* minTableViewController.m */,
-				00E1669615CF405D00983423 /* SettingsViewController.h */,
-				00E1669715CF405D00983423 /* SettingsViewController.m */,
+				DD5C431915E41B6E0053A9E3 /* SettingsViewController.h */,
+				DD5C431A15E41B6E0053A9E3 /* SettingsViewController.m */,
 				00B4A6BA14F674DE00716821 /* DoMathViewController */,
 				00DE2B3B14E4829E00A5B32F /* AddAlarm */,
 				00DE2B3914E4825A00A5B32F /* Edit Alarm */,
@@ -269,10 +269,10 @@
 				00EE848314DF1DF100CEB90F /* Alarm.m */,
 				00EE848914DF2F0D00CEB90F /* AlarmCell.h */,
 				00EE848A14DF2F0D00CEB90F /* AlarmCell.m */,
-				00566C1915C73BA9004601B8 /* SettingCell.h */,
-				00566C1A15C73BA9004601B8 /* SettingCell.m */,
-				005BF78D15CB0BB40047B4C5 /* SettingCell2.h */,
-				005BF78E15CB0BB40047B4C5 /* SettingCell2.m */,
+				00566C1915C73BA9004601B8 /* SettingCellDetail.h */,
+				00566C1A15C73BA9004601B8 /* SettingCellDetail.m */,
+				005BF78D15CB0BB40047B4C5 /* SettingCellSwitch.h */,
+				005BF78E15CB0BB40047B4C5 /* SettingCellSwitch.m */,
 				001954ED14DC316C0027FF43 /* Singleton.h */,
 				001954EE14DC316C0027FF43 /* Singleton.m */,
 			);
@@ -423,11 +423,11 @@
 				00B4A6BE14F6753700716821 /* DoMathViewController.m in Sources */,
 				004E8A6914F6837F0013550D /* AddRepeatViewController.m in Sources */,
 				006F2A0E14F687E400C4A906 /* EditRepeatViewController.m in Sources */,
-				00566C1B15C73BA9004601B8 /* SettingCell.m in Sources */,
-				005BF78F15CB0BB40047B4C5 /* SettingCell2.m in Sources */,
-				00E1669815CF405D00983423 /* SettingsViewController.m in Sources */,
+				00566C1B15C73BA9004601B8 /* SettingCellDetail.m in Sources */,
+				005BF78F15CB0BB40047B4C5 /* SettingCellSwitch.m in Sources */,
 				DDCD0F3515DCD5490007569E /* AddSnoozeViewController.m in Sources */,
 				DDCD0F3915DCE7340007569E /* EditSnoozeViewController.m in Sources */,
+				DD5C431B15E41B6E0053A9E3 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
