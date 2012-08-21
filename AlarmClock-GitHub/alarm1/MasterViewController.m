@@ -144,10 +144,12 @@
     [super viewWillAppear:animated];
     
     //UIImage *simplyBG = [UIImage imageNamed:@"SimplyBG.png"];
-    UIImage *simplyBG = [UIImage imageNamed:@"WhiteDesign.png"];
+    UIImage *simplyBG = [UIImage imageNamed:@"SimplyBG.png"];
     UIImage *standardBG = [UIImage imageNamed:@"BlackBoard4.png"];
+    UIImage *whiteBG = [UIImage imageNamed:@"WhiteDesign.png"];
     
-    if ([[[Singleton sharedSingleton] sharedSettings]integerForKey:@"ClearBackgroundSetting"] == 0) {
+    //Kollar och fixar rätt design
+    if ([[[[Singleton sharedSingleton] sharedSettings] valueForKey:@"ActiveDesignSetting"] isEqualToString:@"Back To School"]) {
         [background setImage:standardBG];
         
         timeDisplay.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1.0];
@@ -159,9 +161,22 @@
         ampmDisplay.font = [UIFont fontWithName:@"Chalkduster" size:22];
         dayDisplay.font = [UIFont fontWithName:@"Chalkduster" size:22];
         
-    } else {
+    } else if ([[[[Singleton sharedSingleton] sharedSettings] valueForKey:@"ActiveDesignSetting"] isEqualToString:@"Back To School Clean"]) {
         
         [background setImage:simplyBG];
+        
+        timeDisplay.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1.0];
+        dateDisplay.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1.0];
+        secondsDisplay.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1.0];
+        ampmDisplay.textColor = [UIColor colorWithRed:0.4 green:0.4 blue:1 alpha:1.0];
+        dayDisplay.textColor =  [UIColor colorWithRed:1 green:0.4 blue:0.4 alpha:1.0];
+        
+        ampmDisplay.font = [UIFont fontWithName:@"Chalkduster" size:22];
+        dayDisplay.font = [UIFont fontWithName:@"Chalkduster" size:22];
+        
+    } else if ([[[[Singleton sharedSingleton] sharedSettings] valueForKey:@"ActiveDesignSetting"] isEqualToString:@"White Math"]) {
+        
+        [background setImage:whiteBG];
         timeDisplay.textColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
         dateDisplay.textColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:1.0];
         secondsDisplay.textColor = [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:1.0];
@@ -170,8 +185,13 @@
         
         ampmDisplay.font = [UIFont fontWithName:@"Myriad Pro" size:24];
         dayDisplay.font = [UIFont fontWithName:@"Myriad Pro" size:24];
-        
-        
+    }
+    
+    if ([[[Singleton sharedSingleton] sharedSettings]integerForKey:@"ClearBackgroundSetting"] == 0) {
+        // GÖR INGET ALLS TILLS VIDARE
+     
+    } else {
+   
     }
     
     

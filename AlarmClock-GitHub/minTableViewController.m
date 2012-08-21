@@ -181,8 +181,8 @@
     settings = [[NSMutableArray alloc] init];
     
     [settings addObject:[[NSMutableArray alloc] initWithObjects:@"24 hour clock", [NSNumber numberWithInt:0], @"24HourClockSetting", nil]];
-    [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Clear background", [NSNumber numberWithInt:0], @"ClearBackgroundSetting", nil]];
-    [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Design", [NSNumber numberWithInt:1], @"ActiveDesignSetting", [[NSMutableArray alloc] initWithObjects:@"Design 1", @"Design 2", @"Design 3", nil], nil]];
+    //[settings addObject:[[NSMutableArray alloc] initWithObjects:@"Clear background", [NSNumber numberWithInt:0], @"ClearBackgroundSetting", nil]];
+    [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Design", [NSNumber numberWithInt:1], @"ActiveDesignSetting", [[NSMutableArray alloc] initWithObjects:@"Back To School", @"Back To School Clean", @"White Math", nil], nil]];
     [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Math level", [NSNumber numberWithInt:1], @"MathLevelSetting", [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithInt:1], [NSNumber numberWithInt:2], [NSNumber numberWithInt:3], [NSNumber numberWithInt:4], [NSNumber numberWithInt:5], nil], nil]];
     
     counter = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
