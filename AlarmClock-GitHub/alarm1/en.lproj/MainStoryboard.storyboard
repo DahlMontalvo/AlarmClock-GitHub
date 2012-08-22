@@ -406,15 +406,15 @@
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Sound" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fpO-6W-wF3">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Sound" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fpO-6W-wF3">
                                                     <rect key="frame" x="10" y="11" width="53" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lQf-n6-ih0">
-                                                    <rect key="frame" x="226" y="11" width="44" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Pick song" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lQf-n6-ih0">
+                                                    <rect key="frame" x="196" y="11" width="74" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
@@ -476,6 +476,7 @@
                         <outlet property="nameField" destination="a7n-1I-Kdh" id="SKj-6W-K5h"/>
                         <outlet property="repeatSideLabel" destination="XrX-xA-mwP" id="Mxn-BE-Ail"/>
                         <outlet property="snoozeLabel" destination="3Ak-Eg-f8B" id="5RI-nN-1RM"/>
+                        <outlet property="soundLabel" destination="lQf-n6-ih0" id="xCi-iM-TP3"/>
                         <outlet property="timeSideLabel" destination="kHb-Ic-Nk3" id="Z5H-oA-ZIW"/>
                     </connections>
                 </tableViewController>
@@ -1289,6 +1290,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="repeatLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="repeatSideLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="snoozeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="soundLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="timeSideLabel" candidateClass="UILabel"/>
             </relationships>
         </class>

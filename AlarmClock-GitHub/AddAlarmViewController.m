@@ -21,6 +21,7 @@
 @synthesize localNotif;
 @synthesize repeatSideLabel;
 @synthesize snoozeLabel;
+@synthesize soundLabel;
 
 
 
@@ -126,9 +127,53 @@
     
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (indexPath.section == 0) {
+	if (indexPath.row == 0) {
 		[self.nameField becomeFirstResponder];
     }
+    if (indexPath.row == 3) {
+        MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes: MPMediaTypeAny];
+        
+        mediaPicker.delegate = self;
+        mediaPicker.allowsPickingMultipleItems = NO;
+        mediaPicker.prompt = @"Select sound";
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        @try {
+        
+            [mediaPicker loadView];
+            [self presentModalViewController:mediaPicker animated:YES];
+            
+        }
+        @catch (NSException *exception) {
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Oops!",@"Error")
+                                        message:NSLocalizedString(@"The music library is not available.",@"Couldn't load media list.")
+                                       delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil] show];
+        }
+    }
+}
+
+- (void) mediaPicker: (MPMediaPickerController *) mediaPicker didPickMediaItems: (MPMediaItemCollection *) mediaItemCollection
+{
+    if (mediaItemCollection) {
+        
+        //mediaItemCollection ska sparas
+        MPMediaItem *item = [[mediaItemCollection items] objectAtIndex:0];
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:item forKey:@"newAlarmSoundItem"];
+        //Nu har vi sparat låten i Singletonen
+        //Uppdatera labeln
+        soundLabel.text = [item valueForProperty:MPMediaItemPropertyTitle];
+
+    }
+    
+    [self dismissModalViewControllerAnimated: YES];
+}
+
+- (void) mediaPickerDidCancel: (MPMediaPickerController *) mediaPicker
+{
+    [self dismissModalViewControllerAnimated: YES];
 }
 
 
@@ -234,6 +279,7 @@
     [self setRepeatLabel:nil];
     [self setRepeatSideLabel:nil];
     [self setSnoozeLabel:nil];
+    [self setSoundLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
