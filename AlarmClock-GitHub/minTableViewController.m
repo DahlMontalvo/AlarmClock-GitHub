@@ -96,10 +96,11 @@
 {
     
     NSMutableArray *soundArray = [[NSMutableArray alloc] init];
-    [soundArray addObject:[[NSMutableArray alloc] initWithObjects:@"Default", @"chimes", @"wav", nil]];
+    [soundArray addObject:[[NSMutableArray alloc] initWithObjects:@"Default", @"Flood", @"wav", nil]];
     [soundArray addObject:[[NSMutableArray alloc] initWithObjects:@"Cirkus", @"Cirkus", @"wav", nil]];
     [soundArray addObject:[[NSMutableArray alloc] initWithObjects:@"Tivoli", @"Tivoli", @"wav", nil]];
     [soundArray addObject:[[NSMutableArray alloc] initWithObjects:@"Forest", @"Fauna", @"wav", nil]];
+    [soundArray addObject:[[NSMutableArray alloc] initWithObjects:@"Chimes", @"chimes", @"wav", nil]];
     //För att lägga till musik, följ mönstret ovan.
     /*
      [soundArray addObject:[[NSMutableArray alloc] initWithObjects:@"Default", @"chimes", @"wav", nil]];
@@ -112,18 +113,6 @@
      */
     
     [[[Singleton sharedSingleton] sharedPrefs] setValue:soundArray forKey:@"soundArray"];
-    
-    UIApplication *app = [UIApplication sharedApplication];
-    NSArray *eventArray = [app scheduledLocalNotifications];
-    
-    //Loopar igenom alla schemalagda notifications
-    for (int i=0; i<[eventArray count]; i++) {
-        
-        UILocalNotification *oneEvent = [eventArray objectAtIndex:i];
-        NSDictionary *userInfoCurrent = oneEvent.userInfo;
-        NSString *uid = [NSString stringWithFormat:@"%@",[userInfoCurrent valueForKey:@"AlarmName"]];
-        //Om vi hittar det som ska tas bort, ta bort det och hoppa ur loopen
-    }
    
     //Antalet singletonvariabler
     counter = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
@@ -133,7 +122,6 @@
     
         for (int i = 0; i < counter ; i++) {
         
-            [self.tableView reloadData];
         
             Alarm *alarm = [[Alarm alloc] init];
             alarm.name = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"name%i",i]];
@@ -151,6 +139,7 @@
             
             
         }
+        [self.tableView reloadData];
     }
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];

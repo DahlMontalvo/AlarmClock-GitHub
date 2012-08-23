@@ -184,7 +184,6 @@
     else if (times == 0) {
         snoozeLabel.text = @"No snooze";
     }
-    NSLog(@"Nu settar vi");
 }
 
 -(void) setRepeatLabel {

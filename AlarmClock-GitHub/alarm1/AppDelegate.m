@@ -129,6 +129,7 @@
                   [error localizedDescription]);
         }
         else {
+            mySound.numberOfLoops = -1;
             [mySound prepareToPlay];
             //mySound.delegate = self;
             [mySound play];
@@ -168,6 +169,7 @@
     }
     else {
         //Snooze
+        [mySound stop];
     }
 }
 

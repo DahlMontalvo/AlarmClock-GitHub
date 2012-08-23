@@ -140,7 +140,6 @@
     
     UIApplication *app = [UIApplication sharedApplication];
     NSArray *array = [app scheduledLocalNotifications];
-    NSLog(@"notifs Count: %i", [array count]);
     if ([array count] > 0) {
         alarmIndicator.hidden = NO;
     } else {
