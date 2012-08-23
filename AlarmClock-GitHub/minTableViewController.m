@@ -172,10 +172,12 @@
      
      Nyckel                     Möjliga värden      Typ
      
-     24HourClockSetting                             Switch
+     24HourClockSetting         On/Off              Switch
      MathLevelSetting           int 1-5             Detail
      ActiveDesignSetting        String              Detail
      MathTypeSetting            String              Detail
+     ShowSecondsSetting         On/Off              Switch
+     ShowAMPMSetting            On/Off              Switch
      
      */
     
@@ -185,6 +187,8 @@
     [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Theme", [NSNumber numberWithInt:1], @"ActiveDesignSetting", [[NSMutableArray alloc] initWithObjects:@"Back To School", @"Back To School Clean", @"White Math", nil], nil]];
     [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Math Level", [NSNumber numberWithInt:1], @"MathLevelSetting", [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithInt:1], [NSNumber numberWithInt:2], [NSNumber numberWithInt:3], [NSNumber numberWithInt:4], [NSNumber numberWithInt:5], nil], nil]];
      [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Math Type", [NSNumber numberWithInt:1], @"MathTypeSetting", [[NSMutableArray alloc] initWithObjects:@"Addition", @"Subtraction", @"Multiplication", @"Division", @"Equation", @"Fraction",  nil], nil]];
+    [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Show Seconds", [NSNumber numberWithInt:0], @"ShowSecondsSetting", nil]];
+    [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Show AM/PM", [NSNumber numberWithInt:0], @"ShowAMPMSetting", nil]];
     
     counter = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
     
@@ -252,6 +256,17 @@
 
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+     int num = [[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"Counter"] intValue];
+    
+    if (indexPath.section == 0 && indexPath.row < num) {
+        return 53;
+    } else {
+        return 44;
+    }
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -271,6 +286,7 @@
         else {
             
             AlarmCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AlarmCell"];
+        
             
             Alarm *alarm = [[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:indexPath.row];
             cell.nameLabel.text = alarm.name;

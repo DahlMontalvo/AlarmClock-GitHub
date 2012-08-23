@@ -34,6 +34,7 @@
 @property(retain,nonatomic)UILabel *dayDisplay;
 @property(retain,nonatomic)UILabel *dateDisplay;
 @property (nonatomic ,retain)IBOutlet UIImageView *background;
+@property (nonatomic ,retain)IBOutlet UIImageView *alarmIndicator;
 
 
 - (IBAction)settingsButton:(id)sender;

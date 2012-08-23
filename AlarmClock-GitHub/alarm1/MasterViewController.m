@@ -15,6 +15,7 @@
 @synthesize dayDisplay;
 @synthesize dateDisplay;
 @synthesize background;
+@synthesize alarmIndicator;
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -135,8 +136,17 @@
         
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
+    
+    UIApplication *app = [UIApplication sharedApplication];
+    NSArray *array = [app scheduledLocalNotifications];
+    NSLog(@"notifs Count: %i", [array count]);
+    if ([array count] > 0) {
+        alarmIndicator.hidden = NO;
+    } else {
+        alarmIndicator.hidden = YES;
+    }
+    
     [self showClock];
     
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
@@ -147,6 +157,21 @@
     UIImage *simplyBG = [UIImage imageNamed:@"SimplyBG.png"];
     UIImage *standardBG = [UIImage imageNamed:@"BlackBoard4.png"];
     UIImage *whiteBG = [UIImage imageNamed:@"WhiteDesign.png"];
+    
+    //Kollar vilka labels som ska vara på
+    
+    if ([[[Singleton sharedSingleton] sharedSettings] integerForKey:@"ShowSecondsSetting"] == 0 ) {
+        secondsDisplay.hidden = YES;
+    } else {
+        secondsDisplay.hidden = NO;
+    }
+    
+    if ([[[Singleton sharedSingleton] sharedSettings] integerForKey:@"ShowAMPMSetting"] == 0 ) {
+        ampmDisplay.hidden = YES;
+    } else {
+        ampmDisplay.hidden = NO;
+    }
+
     
     //Kollar och fixar rätt design
     if ([[[[Singleton sharedSingleton] sharedSettings] valueForKey:@"ActiveDesignSetting"] isEqualToString:@"Back To School"]) {
