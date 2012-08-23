@@ -136,6 +136,7 @@
     
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.nameField resignFirstResponder];
 	if (indexPath.row == 0) {
 		[self.nameField becomeFirstResponder];
     }
@@ -286,6 +287,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [self.nameField resignFirstResponder];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

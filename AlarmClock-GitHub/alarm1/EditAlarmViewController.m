@@ -331,7 +331,9 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
--(void)viewDidAppear {
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.nameField resignFirstResponder];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
