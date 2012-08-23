@@ -31,6 +31,7 @@
     [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmTime"];
     [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmSnoozeInterval"];
     [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmSnoozeNumberOfTimes"];
+    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmSoundItem"];
     for (int i = 0; i < 7; i++) {
         [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"newAlarmRepeatArray%i", i]];
     }
@@ -77,6 +78,12 @@
         alarm.alarmState = 1;
         alarm.snoozeInterval = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"newAlarmSnoozeInterval"];
         alarm.snoozeNumberOfTimes = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"newAlarmSnoozeNumberOfTimes"];
+        if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"newAlarmSoundItem"] isEqualToString:@"nil"]) {
+            alarm.sound = nil;
+        }
+        else {
+            alarm.sound = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"newAlarmSoundItem"];
+        }
         
         NSMutableArray *repeatArray = [[NSMutableArray alloc] init];
         for (int i = 0; i < 7; i++) {
@@ -98,17 +105,14 @@
         [[[Singleton sharedSingleton] sharedPrefs] setValue:alarm.fireDate forKey:[NSString stringWithFormat:@"time%i",y]];
         [[[Singleton sharedSingleton] sharedPrefs] setInteger:alarm.snoozeInterval forKey:[NSString stringWithFormat:@"snoozeInterval%i",y]];
         [[[Singleton sharedSingleton] sharedPrefs] setInteger:alarm.snoozeNumberOfTimes forKey:[NSString stringWithFormat:@"snoozeNumberOfTimes%i",y]];
-        [[[Singleton sharedSingleton] sharedPrefs] setValue:[NSNumber numberWithInt:1] forKey:[NSString stringWithFormat:@"CurrentSwitchState%i",y]]; 
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:alarm.sound forKey:[NSString stringWithFormat:@"soundItem%i",y]];
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:[NSNumber numberWithInt:1] forKey:[NSString stringWithFormat:@"CurrentSwitchState%i",y]];
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:repeatArray forKey:[NSString stringWithFormat:@"repeat%i",y]];
         [[[Singleton sharedSingleton] sharedPrefs] synchronize];
-    
-        [self.delegate addAlarmViewController:self didAddAlarm:alarm];
         
         //Lägger till en notification, så att alarmet faktiskt ringer...
         [alarm registerAlarm];
         
-        //Det ska by default vara påslaget
-        [[[Singleton sharedSingleton] sharedPrefs] setInteger:1 forKey:[NSString stringWithFormat:@"CurrentSwitchState%i",y]];
-        [[[Singleton sharedSingleton] sharedPrefs] setValue:repeatArray forKey:[NSString stringWithFormat:@"repeat%i",y]];
         //Vi ökar y med 1, eftersom vi lagt till ett nytt alarm
         y = y + 1;
         [[[Singleton sharedSingleton] sharedPrefs] setInteger:y forKey:@"Counter"];
@@ -116,11 +120,13 @@
         [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmTime"];
         [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmSnoozeInterval"];
         [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmSnoozeNumberOfTimes"];
+        [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmSoundItem"];
         for (int i = 0; i < 7; i++) {
             [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"newAlarmRepeatArray%i", i]];
         }
         
         [[[Singleton sharedSingleton] sharedPrefs] synchronize];
+        [self.delegate addAlarmViewController:self didAddAlarm:alarm];
     }
     
 }
@@ -265,6 +271,7 @@
     
     [[[Singleton sharedSingleton] sharedPrefs] setInteger:3 forKey:@"newAlarmSnoozeInterval"];
     [[[Singleton sharedSingleton] sharedPrefs] setInteger:1 forKey:@"newAlarmSnoozeNumberOfTimes"];
+    [[[Singleton sharedSingleton] sharedPrefs] setValue:@"nil" forKey:@"newAlarmSoundItem"];
     
     [self setTimeLabel];
     [self setRepeatLabel];

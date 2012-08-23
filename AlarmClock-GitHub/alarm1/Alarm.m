@@ -22,6 +22,7 @@
 @synthesize repeat;
 @synthesize alarmText;
 @synthesize alarmButtonText;
+@synthesize sound;
 
 //Bra tut : http://www.icodeblog.com/2010/07/29/iphone-programming-tutorial-local-notifications/
 

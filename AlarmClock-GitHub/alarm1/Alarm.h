@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface Alarm : NSObject
 
@@ -21,6 +22,7 @@
 @property (nonatomic, retain) NSMutableArray *repeat;
 @property (nonatomic, retain) NSString *alarmText;
 @property (nonatomic, retain) NSString *alarmButtonText;
+@property (nonatomic, retain) MPMediaItem *sound;
 
 -(void) registerAlarm;
 -(void) resceduleAlarm;

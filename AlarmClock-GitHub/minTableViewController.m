@@ -123,6 +123,7 @@
             alarm.fireDate = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"time%i",i]];
             alarm.snoozeInterval = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:[NSString stringWithFormat:@"snoozeInterval%i",i]];
             alarm.snoozeNumberOfTimes = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:[NSString stringWithFormat:@"snoozeNumberOfTimes%i",i]];
+            alarm.sound = [[[Singleton sharedSingleton] sharedPrefs] objectForKey:[NSString stringWithFormat:@"soundItem%i",i]];
             alarm.alarmState = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:[NSString stringWithFormat:@"CurrentSwitchState%i",i]];
             alarm.repeat = [[[Singleton sharedSingleton] sharedPrefs] objectForKey:[NSString stringWithFormat:@"repeat%i",i]];
         

@@ -7,10 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import <AVFoundation/AVAudioplayer.h>
 #import "Alarm.h"
 #import "minTableViewController.h"
 #import "DoMathViewController.h"
-#import <AVFoundation/AVAudioplayer.h>
 @implementation AppDelegate 
     
   //  NSMutableArray* alarms;
@@ -104,7 +104,24 @@
     if (state == UIApplicationStateInactive) {
         [self handleMathForward];
     } else {
-        //Ringer om användaren är i appen, musik etc borde nog kallas här i UIAlertViewn
+        NSURL *soundUrl = [[NSURL alloc] init];
+        for (int i = 0; i < [[[Singleton sharedSingleton] sharedAlarmsArray] count]; i++) {
+            if ([[[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:i] name] isEqualToString:alarmID]) {
+                soundUrl = [[[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:i] sound] valueForProperty:MPMediaItemPropertyAssetURL];
+            }
+        }
+        NSError *error;
+        mySound = [[AVAudioPlayer alloc]
+                       initWithContentsOfURL:soundUrl
+                       error:&error];
+        if (error) {
+            NSLog(@"Error in audioPlayer: %@",
+                  [error localizedDescription]);
+        }
+        else {
+            mySound.delegate = self;
+            [mySound prepareToPlay];
+        }
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Här ringer det" message:[NSString stringWithFormat:@"Ring"] delegate:self cancelButtonTitle:@"Snooze" otherButtonTitles:@"Do Math!", nil];
         [alertView show];
     }

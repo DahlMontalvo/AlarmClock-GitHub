@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVAudioplayer.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "DoMathViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

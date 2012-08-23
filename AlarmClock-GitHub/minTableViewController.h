@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "AddAlarmViewController.h"
 #import "EditAlarmViewController.h"
 #import "AlarmCell.h"
