@@ -30,6 +30,8 @@
 -(IBAction)buttonPressed:(id)sender {
     
     if ([[userAnswerTextField text] intValue] == answer) {
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate stopSound];
         //Rätt svar
         //Snooza inte mer... nu är vi tillräckligt vakna
         //Hitta alarmet

@@ -32,6 +32,8 @@
     [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmSnoozeInterval"];
     [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmSnoozeNumberOfTimes"];
     [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmSoundItem"];
+    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmSoundInfo"];
+    [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmSoundType"];
     for (int i = 0; i < 7; i++) {
         [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"newAlarmRepeatArray%i", i]];
     }
@@ -78,12 +80,9 @@
         alarm.alarmState = 1;
         alarm.snoozeInterval = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"newAlarmSnoozeInterval"];
         alarm.snoozeNumberOfTimes = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"newAlarmSnoozeNumberOfTimes"];
-        if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"newAlarmSoundItem"] isEqualToString:@"nil"]) {
-            alarm.sound = nil;
-        }
-        else {
-            alarm.sound = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"newAlarmSoundItem"];
-        }
+        alarm.soundInfo = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"newAlarmSoundInfo"];
+        alarm.soundItem = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"newAlarmSoundItem"];
+        alarm.soundType = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"newAlarmSoundType"];
         
         NSMutableArray *repeatArray = [[NSMutableArray alloc] init];
         for (int i = 0; i < 7; i++) {
@@ -105,7 +104,9 @@
         [[[Singleton sharedSingleton] sharedPrefs] setValue:alarm.fireDate forKey:[NSString stringWithFormat:@"time%i",y]];
         [[[Singleton sharedSingleton] sharedPrefs] setInteger:alarm.snoozeInterval forKey:[NSString stringWithFormat:@"snoozeInterval%i",y]];
         [[[Singleton sharedSingleton] sharedPrefs] setInteger:alarm.snoozeNumberOfTimes forKey:[NSString stringWithFormat:@"snoozeNumberOfTimes%i",y]];
-        [[[Singleton sharedSingleton] sharedPrefs] setValue:alarm.sound forKey:[NSString stringWithFormat:@"soundItem%i",y]];
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:alarm.soundItem forKey:[NSString stringWithFormat:@"soundItem%i",y]];
+        [[[Singleton sharedSingleton] sharedPrefs] setInteger:alarm.soundType forKey:[NSString stringWithFormat:@"soundType%i",y]];
+        [[[Singleton sharedSingleton] sharedPrefs] setValue:alarm.soundInfo forKey:[NSString stringWithFormat:@"soundInfo%i",y]];
         [[[Singleton sharedSingleton] sharedPrefs] setValue:[NSNumber numberWithInt:1] forKey:[NSString stringWithFormat:@"CurrentSwitchState%i",y]];
         [[[Singleton sharedSingleton] sharedPrefs] setValue:repeatArray forKey:[NSString stringWithFormat:@"repeat%i",y]];
         [[[Singleton sharedSingleton] sharedPrefs] synchronize];
@@ -121,6 +122,8 @@
         [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmSnoozeInterval"];
         [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmSnoozeNumberOfTimes"];
         [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmSoundItem"];
+        [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmSoundInfo"];
+        [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:@"newAlarmSoundType"];
         for (int i = 0; i < 7; i++) {
             [[[Singleton sharedSingleton] sharedPrefs] removeObjectForKey:[NSString stringWithFormat:@"newAlarmRepeatArray%i", i]];
         }
@@ -136,51 +139,8 @@
 	if (indexPath.row == 0) {
 		[self.nameField becomeFirstResponder];
     }
-    if (indexPath.row == 3) {
-        MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes: MPMediaTypeAny];
-        
-        mediaPicker.delegate = self;
-        mediaPicker.allowsPickingMultipleItems = NO;
-        mediaPicker.prompt = @"Select sound";
-        
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        
-        @try {
-        
-            [mediaPicker loadView];
-            [self presentModalViewController:mediaPicker animated:YES];
-            
-        }
-        @catch (NSException *exception) {
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Oops!",@"Error")
-                                        message:NSLocalizedString(@"The music library is not available.",@"Couldn't load media list.")
-                                       delegate:nil
-                              cancelButtonTitle:@"OK"
-                              otherButtonTitles:nil] show];
-        }
-    }
 }
 
-- (void) mediaPicker: (MPMediaPickerController *) mediaPicker didPickMediaItems: (MPMediaItemCollection *) mediaItemCollection
-{
-    if (mediaItemCollection) {
-        
-        //mediaItemCollection ska sparas
-        MPMediaItem *item = [[mediaItemCollection items] objectAtIndex:0];
-        [[[Singleton sharedSingleton] sharedPrefs] setValue:item forKey:@"newAlarmSoundItem"];
-        //Nu har vi sparat låten i Singletonen
-        //Uppdatera labeln
-        soundLabel.text = [item valueForProperty:MPMediaItemPropertyTitle];
-
-    }
-    
-    [self dismissModalViewControllerAnimated: YES];
-}
-
-- (void) mediaPickerDidCancel: (MPMediaPickerController *) mediaPicker
-{
-    [self dismissModalViewControllerAnimated: YES];
-}
 
 
 - (void)didReceiveMemoryWarning
@@ -250,6 +210,20 @@
     repeatSideLabel.text = text;
 }
 
+-(void) setSoundTextLabel {
+    if ([[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"newAlarmSoundType"] == nil) {
+        soundLabel.text = @"Default";
+    }
+    else {
+        if ([[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"newAlarmSoundType"] == 0) {
+            soundLabel.text = [[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"newAlarmSoundItem"] valueForProperty:MPMediaItemPropertyTitle];
+        }
+        else {
+            soundLabel.text = [[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"newAlarmSoundInfo"] objectAtIndex:0];
+        }
+    }
+}
+
 // ...
 
 #pragma mark - View lifecycle
@@ -271,11 +245,14 @@
     
     [[[Singleton sharedSingleton] sharedPrefs] setInteger:3 forKey:@"newAlarmSnoozeInterval"];
     [[[Singleton sharedSingleton] sharedPrefs] setInteger:1 forKey:@"newAlarmSnoozeNumberOfTimes"];
-    [[[Singleton sharedSingleton] sharedPrefs] setValue:@"nil" forKey:@"newAlarmSoundItem"];
+    [[[Singleton sharedSingleton] sharedPrefs] setValue:nil forKey:@"newAlarmSoundItem"];
+    [[[Singleton sharedSingleton] sharedPrefs] setValue:[[NSMutableArray alloc] initWithObjects:@"Default", @"chimes", @"wav", nil] forKey:@"newAlarmSoundInfo"];
+    [[[Singleton sharedSingleton] sharedPrefs] setInteger:1 forKey:@"newAlarmSoundType"];
     
     [self setTimeLabel];
     [self setRepeatLabel];
     [self setSnoozeTextLabel];
+    [self setSoundTextLabel];
         
     [super viewDidLoad];
 }
@@ -298,6 +275,7 @@
     [self setTimeLabel];
     [self setRepeatLabel];
     [self setSnoozeTextLabel];
+    [self setSoundTextLabel];
     [super viewWillAppear:animated];
 }
 

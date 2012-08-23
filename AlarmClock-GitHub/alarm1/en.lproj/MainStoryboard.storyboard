@@ -421,6 +421,9 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="HO8-Yc-GRL" kind="push" id="5EF-p3-rw7"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="uOU-8Z-4Cg" detailTextLabel="3Ak-Eg-f8B" style="IBUITableViewCellStyleSubtitle" id="DkK-va-tCP">
                                         <rect key="frame" x="0.0" y="187" width="320" height="45"/>
@@ -510,6 +513,36 @@
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="3569" y="-185"/>
+        </scene>
+        <!--Add Sound View Controller-->
+        <scene sceneID="zmZ-pg-aha">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bs0-cu-4XX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="HO8-Yc-GRL" customClass="AddSoundViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Jw1-ua-O0B">
+                        <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Khl-H5-MKh">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="HO8-Yc-GRL" id="hJ4-I6-TB2"/>
+                            <outlet property="delegate" destination="HO8-Yc-GRL" id="JQF-z2-9KR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="0bS-xd-fUb"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="3795" y="427"/>
         </scene>
         <!--Add Repeat View Controller-->
         <scene sceneID="0lc-wJ-71k">
@@ -1071,8 +1104,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZKd-fK-5fq">
-                                                    <rect key="frame" x="226" y="11" width="44" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Default" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZKd-fK-5fq">
+                                                    <rect key="frame" x="216" y="11" width="54" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -1081,6 +1114,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="V5K-A9-08p" kind="push" id="sHy-Wh-5aq"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="8LD-sm-rIt">
                                         <rect key="frame" x="0.0" y="187" width="320" height="44"/>
@@ -1161,6 +1197,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="nameField" destination="Sto-cc-obJ" id="kud-ec-hyq"/>
                         <outlet property="repeatSideLabel" destination="H5h-qF-Cwz" id="Ii1-Ig-zvw"/>
                         <outlet property="snoozeLabel" destination="C7Y-vz-A6G" id="Ee2-8Q-AMp"/>
+                        <outlet property="soundLabel" destination="ZKd-fK-5fq" id="ghu-gh-FgB"/>
                         <outlet property="timeSideLabel" destination="PFf-Ae-LqU" id="ui1-yU-Hhq"/>
                     </connections>
                 </tableViewController>
@@ -1271,6 +1308,36 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="3757" y="1022"/>
         </scene>
+        <!--Edit Sound View Controller-->
+        <scene sceneID="LJx-er-pno">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YXX-t8-GNW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="V5K-A9-08p" customClass="EditSoundViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fjx-Ju-7UK">
+                        <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="kon-vU-wrX">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="V5K-A9-08p" id="TzU-b5-cyC"/>
+                            <outlet property="delegate" destination="V5K-A9-08p" id="eRf-lo-6Gy"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="B1E-sT-gjP"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="4163" y="1395"/>
+        </scene>
     </scenes>
     <resources>
         <image name="BlackBoard4.png" width="960" height="960"/>
@@ -1307,6 +1374,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="AddSnoozeViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddSnoozeViewController.h"/>
         </class>
+        <class className="AddSoundViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddSoundViewController.h"/>
+        </class>
         <class className="AddTimeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddTimeViewController.h"/>
             <relationships>
@@ -1341,6 +1411,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="repeatSideLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="snoozeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="soundLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="timeSideLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -1358,6 +1429,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="EditSnoozeViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EditSnoozeViewController.h"/>
+        </class>
+        <class className="EditSoundViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditSoundViewController.h"/>
         </class>
         <class className="MasterViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>

@@ -95,6 +95,24 @@
 - (void)viewDidLoad
 {
     
+    NSMutableArray *soundArray = [[NSMutableArray alloc] init];
+    [soundArray addObject:[[NSMutableArray alloc] initWithObjects:@"Default", @"chimes", @"wav", nil]];
+    [soundArray addObject:[[NSMutableArray alloc] initWithObjects:@"Cirkus", @"Cirkus", @"wav", nil]];
+    [soundArray addObject:[[NSMutableArray alloc] initWithObjects:@"Tivoli", @"Tivoli", @"wav", nil]];
+    [soundArray addObject:[[NSMutableArray alloc] initWithObjects:@"Forest", @"Fauna", @"wav", nil]];
+    //För att lägga till musik, följ mönstret ovan.
+    /*
+     [soundArray addObject:[[NSMutableArray alloc] initWithObjects:@"Default", @"chimes", @"wav", nil]];
+     ^           ^        ^
+     |           |        |
+     Namn som visas  Filnamn     Filändelse
+     för användaren
+     
+     I exemplet kommer "Default" visas för användaren och filen chimes.wav kommer spelas upp
+     */
+    
+    [[[Singleton sharedSingleton] sharedPrefs] setValue:soundArray forKey:@"soundArray"];
+    
     UIApplication *app = [UIApplication sharedApplication];
     NSArray *eventArray = [app scheduledLocalNotifications];
     
@@ -105,7 +123,6 @@
         NSDictionary *userInfoCurrent = oneEvent.userInfo;
         NSString *uid = [NSString stringWithFormat:@"%@",[userInfoCurrent valueForKey:@"AlarmName"]];
         //Om vi hittar det som ska tas bort, ta bort det och hoppa ur loopen
-        NSLog(@"Uid: %@, %@", uid, oneEvent.fireDate);
     }
    
     //Antalet singletonvariabler
@@ -123,7 +140,9 @@
             alarm.fireDate = [[[Singleton sharedSingleton] sharedPrefs] valueForKey:[NSString stringWithFormat:@"time%i",i]];
             alarm.snoozeInterval = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:[NSString stringWithFormat:@"snoozeInterval%i",i]];
             alarm.snoozeNumberOfTimes = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:[NSString stringWithFormat:@"snoozeNumberOfTimes%i",i]];
-            alarm.sound = [[[Singleton sharedSingleton] sharedPrefs] objectForKey:[NSString stringWithFormat:@"soundItem%i",i]];
+            alarm.soundItem = [[[Singleton sharedSingleton] sharedPrefs] objectForKey:[NSString stringWithFormat:@"soundItem%i",i]];
+            alarm.soundType = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:[NSString stringWithFormat:@"soundType%i",i]];
+            alarm.soundInfo = [[[Singleton sharedSingleton] sharedPrefs] objectForKey:[NSString stringWithFormat:@"soundInfo%i",i]];
             alarm.alarmState = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:[NSString stringWithFormat:@"CurrentSwitchState%i",i]];
             alarm.repeat = [[[Singleton sharedSingleton] sharedPrefs] objectForKey:[NSString stringWithFormat:@"repeat%i",i]];
         

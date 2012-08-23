@@ -22,7 +22,10 @@
 @property (nonatomic, retain) NSMutableArray *repeat;
 @property (nonatomic, retain) NSString *alarmText;
 @property (nonatomic, retain) NSString *alarmButtonText;
-@property (nonatomic, retain) MPMediaItem *sound;
+
+@property (nonatomic) int soundType; //0 för egen & 1 för inbyggt (soundInfo)
+@property (nonatomic, retain) MPMediaItem *soundItem;
+@property (nonatomic, retain) NSMutableArray *soundInfo;
 
 -(void) registerAlarm;
 -(void) resceduleAlarm;

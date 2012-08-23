@@ -43,8 +43,13 @@
 		00EE848B14DF2F0D00CEB90F /* AlarmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EE848A14DF2F0D00CEB90F /* AlarmCell.m */; };
 		00FB6AE615CAF69C00ACCB98 /* DoMathViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FB6AE515CAF69C00ACCB98 /* DoMathViewController.xib */; };
 		CE47CDA914E3B3EE005E44ED /* EditAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE47CDA814E3B3EE005E44ED /* EditAlarmViewController.m */; };
+		DD3E3BB415E66D070016A4BB /* Cirkus.wav in Resources */ = {isa = PBXBuildFile; fileRef = DD3E3BB315E66D070016A4BB /* Cirkus.wav */; };
+		DD3E3BB915E674F90016A4BB /* AddSoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3E3BB815E674F90016A4BB /* AddSoundViewController.m */; };
 		DD5C431B15E41B6E0053A9E3 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5C431A15E41B6E0053A9E3 /* SettingsViewController.m */; };
 		DD5C432115E542900053A9E3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5C432015E542900053A9E3 /* MediaPlayer.framework */; };
+		DD8295E215E6916A005703AE /* Fauna.wav in Resources */ = {isa = PBXBuildFile; fileRef = DD8295E015E6916A005703AE /* Fauna.wav */; };
+		DD8295E315E6916A005703AE /* Tivoli.wav in Resources */ = {isa = PBXBuildFile; fileRef = DD8295E115E6916A005703AE /* Tivoli.wav */; };
+		DD8295E715E6932C005703AE /* EditSoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8295E615E6932C005703AE /* EditSoundViewController.m */; };
 		DDCD0F3515DCD5490007569E /* AddSnoozeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD0F3415DCD5490007569E /* AddSnoozeViewController.m */; };
 		DDCD0F3915DCE7340007569E /* EditSnoozeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD0F3815DCE7340007569E /* EditSnoozeViewController.m */; };
 /* End PBXBuildFile section */
@@ -115,9 +120,16 @@
 		00FB6AE515CAF69C00ACCB98 /* DoMathViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoMathViewController.xib; sourceTree = "<group>"; };
 		CE47CDA714E3B3EE005E44ED /* EditAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAlarmViewController.h; sourceTree = "<group>"; };
 		CE47CDA814E3B3EE005E44ED /* EditAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAlarmViewController.m; sourceTree = "<group>"; };
+		DD3E3BB315E66D070016A4BB /* Cirkus.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Cirkus.wav; sourceTree = "<group>"; };
+		DD3E3BB715E674F80016A4BB /* AddSoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSoundViewController.h; sourceTree = "<group>"; };
+		DD3E3BB815E674F90016A4BB /* AddSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSoundViewController.m; sourceTree = "<group>"; };
 		DD5C431915E41B6E0053A9E3 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		DD5C431A15E41B6E0053A9E3 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		DD5C432015E542900053A9E3 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		DD8295E015E6916A005703AE /* Fauna.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Fauna.wav; sourceTree = "<group>"; };
+		DD8295E115E6916A005703AE /* Tivoli.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Tivoli.wav; sourceTree = "<group>"; };
+		DD8295E515E6932C005703AE /* EditSoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSoundViewController.h; sourceTree = "<group>"; };
+		DD8295E615E6932C005703AE /* EditSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditSoundViewController.m; sourceTree = "<group>"; };
 		DDCD0F3315DCD5490007569E /* AddSnoozeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSnoozeViewController.h; sourceTree = "<group>"; };
 		DDCD0F3415DCD5490007569E /* AddSnoozeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSnoozeViewController.m; sourceTree = "<group>"; };
 		DDCD0F3715DCE7340007569E /* EditSnoozeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSnoozeViewController.h; sourceTree = "<group>"; };
@@ -186,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				0016390C14DAC9690097041F /* MainStoryboard.storyboard */,
-				0036C2871509FA4100CA8CC9 /* chimes.wav */,
 				0016390914DAC9690097041F /* AppDelegate.h */,
 				0016390A14DAC9690097041F /* AppDelegate.m */,
 				0016390F14DAC9690097041F /* MasterViewController.h */,
@@ -195,6 +206,7 @@
 				0016393714DADE5F0097041F /* minTableViewController.m */,
 				DD5C431915E41B6E0053A9E3 /* SettingsViewController.h */,
 				DD5C431A15E41B6E0053A9E3 /* SettingsViewController.m */,
+				DD3E3BB615E66D1A0016A4BB /* Sounds */,
 				00B4A6BA14F674DE00716821 /* DoMathViewController */,
 				00DE2B3B14E4829E00A5B32F /* AddAlarm */,
 				00DE2B3914E4825A00A5B32F /* Edit Alarm */,
@@ -258,6 +270,8 @@
 				CE47CDA814E3B3EE005E44ED /* EditAlarmViewController.m */,
 				00DE2B3414E4818C00A5B32F /* EditAlarmAddTimeViewController.h */,
 				00DE2B3514E4818C00A5B32F /* EditAlarmAddTimeViewController.m */,
+				DD8295E515E6932C005703AE /* EditSoundViewController.h */,
+				DD8295E615E6932C005703AE /* EditSoundViewController.m */,
 				006F2A0C14F687E400C4A906 /* EditRepeatViewController.h */,
 				006F2A0D14F687E400C4A906 /* EditRepeatViewController.m */,
 				DDCD0F3715DCE7340007569E /* EditSnoozeViewController.h */,
@@ -290,12 +304,25 @@
 				00A64AD614DDBB9000A8AC52 /* AddAlarmViewController.m */,
 				00961B3B14E143A30097F622 /* AddTimeViewController.h */,
 				00961B3C14E143A30097F622 /* AddTimeViewController.m */,
+				DD3E3BB715E674F80016A4BB /* AddSoundViewController.h */,
+				DD3E3BB815E674F90016A4BB /* AddSoundViewController.m */,
 				004E8A6714F6837F0013550D /* AddRepeatViewController.h */,
 				004E8A6814F6837F0013550D /* AddRepeatViewController.m */,
 				DDCD0F3315DCD5490007569E /* AddSnoozeViewController.h */,
 				DDCD0F3415DCD5490007569E /* AddSnoozeViewController.m */,
 			);
 			name = AddAlarm;
+			sourceTree = "<group>";
+		};
+		DD3E3BB615E66D1A0016A4BB /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				DD8295E015E6916A005703AE /* Fauna.wav */,
+				DD8295E115E6916A005703AE /* Tivoli.wav */,
+				DD3E3BB315E66D070016A4BB /* Cirkus.wav */,
+				0036C2871509FA4100CA8CC9 /* chimes.wav */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,6 +406,9 @@
 				00C6F14A15CEACDF009543E1 /* setting1.png in Resources */,
 				00C6F14C15CEAEE0009543E1 /* setting2.png in Resources */,
 				00E93DE015E163C300709D81 /* WhiteDesign.png in Resources */,
+				DD3E3BB415E66D070016A4BB /* Cirkus.wav in Resources */,
+				DD8295E215E6916A005703AE /* Fauna.wav in Resources */,
+				DD8295E315E6916A005703AE /* Tivoli.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +462,8 @@
 				DDCD0F3515DCD5490007569E /* AddSnoozeViewController.m in Sources */,
 				DDCD0F3915DCE7340007569E /* EditSnoozeViewController.m in Sources */,
 				DD5C431B15E41B6E0053A9E3 /* SettingsViewController.m in Sources */,
+				DD3E3BB915E674F90016A4BB /* AddSoundViewController.m in Sources */,
+				DD8295E715E6932C005703AE /* EditSoundViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

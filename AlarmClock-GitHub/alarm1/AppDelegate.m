@@ -107,36 +107,36 @@
         NSURL *soundUrl = [[NSURL alloc] init];
         for (int i = 0; i < [[[Singleton sharedSingleton] sharedAlarmsArray] count]; i++) {
             if ([[[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:i] name] isEqualToString:alarmID]) {
-                soundUrl = [[[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:i] sound] valueForProperty:MPMediaItemPropertyAssetURL];
+                if ([[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:i] soundType] == 1) {
+                    soundUrl = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:[[[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:i] soundInfo] objectAtIndex:1] ofType:[[[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:i] soundInfo] objectAtIndex:2]]];
+                }
+                else {
+                    if ([[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:i] soundItem] == nil) {
+                        //Okey, ta ett defaultsound
+                        soundUrl = [[NSURL alloc] initFileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Cirkus" ofType:@"wav"]];
+                    }
+                    else {
+                        soundUrl = [[[[[Singleton sharedSingleton] sharedAlarmsArray] objectAtIndex:i] soundItem] valueForProperty:MPMediaItemPropertyAssetURL];
+                    }
+                }
             }
         }
+        
         NSError *error;
-        mySound = [[AVAudioPlayer alloc]
-                       initWithContentsOfURL:soundUrl
-                       error:&error];
+        mySound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:&error];
         if (error) {
             NSLog(@"Error in audioPlayer: %@",
                   [error localizedDescription]);
         }
         else {
-            mySound.delegate = self;
             [mySound prepareToPlay];
+            //mySound.delegate = self;
+            [mySound play];
         }
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Här ringer det" message:[NSString stringWithFormat:@"Ring"] delegate:self cancelButtonTitle:@"Snooze" otherButtonTitles:@"Do Math!", nil];
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:alarmID message:[NSString stringWithFormat:@"Alarm"] delegate:self cancelButtonTitle:@"Snooze" otherButtonTitles:@"Do Math!", nil];
         [alertView show];
     }
     
-    
-    
-    //Startar att spela ett ljud då en notif går av, borde dock kollas om den kom från en notif eller om pers. var i appen
-     /*
-    
-    NSString *path = [[NSBundle mainBundle]
-                    pathForResource:@"chimes" ofType:@"wav"];
-   mySound = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
-   [mySound play];
-   
-    */
     
     //Cancela alla alarm för det alarm som ringde
     //Loopa igenom det alarm som ringde
@@ -146,6 +146,11 @@
     
     
    
+}
+
+
+- (void)stopSound {
+    [mySound stop];
 }
 
 
