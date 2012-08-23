@@ -94,6 +94,9 @@
 
 - (void)viewDidLoad
 {
+    if ([[[[Singleton sharedSingleton] sharedPrefs] valueForKey:@"cancelAllLocalNotifs"] intValue] == 1) {
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    }
     
     NSMutableArray *soundArray = [[NSMutableArray alloc] init];
     [soundArray addObject:[[NSMutableArray alloc] initWithObjects:@"Default", @"Flood", @"wav", nil]];
@@ -197,6 +200,9 @@
      [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Math Type", [NSNumber numberWithInt:1], @"MathTypeSetting", [[NSMutableArray alloc] initWithObjects:@"Addition", @"Subtraction", @"Multiplication", @"Division", @"Equation", @"Fraction",  nil], nil]];
     [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Show Seconds", [NSNumber numberWithInt:0], @"ShowSecondsSetting", nil]];
     [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Show AM/PM", [NSNumber numberWithInt:0], @"ShowAMPMSetting", nil]];
+    [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Debug mode", [NSNumber numberWithInt:0], @"cancelAllLocalNotifs", nil]];
+    
+    
     
     counter = [[[Singleton sharedSingleton] sharedPrefs] integerForKey:@"Counter"];
     

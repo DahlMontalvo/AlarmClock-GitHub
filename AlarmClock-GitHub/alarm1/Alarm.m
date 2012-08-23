@@ -103,7 +103,7 @@
                     // Set the action button
                     localNotif.alertAction = alarmButtonText;
                     
-                    localNotif.soundName = UILocalNotificationDefaultSoundName;
+                    localNotif.soundName = @"Jungle.wav";
                     localNotif.applicationIconBadgeNumber = 1;
                     
                     // Specify custom data for the notification
@@ -176,7 +176,7 @@
                 // Set the action button
                 localNotif.alertAction = alarmButtonText;
                 
-                localNotif.soundName = UILocalNotificationDefaultSoundName;
+                localNotif.soundName = @"Jungle.wav";
                 localNotif.applicationIconBadgeNumber = 1;
 
                 

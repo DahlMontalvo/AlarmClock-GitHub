@@ -51,6 +51,7 @@
 		DD8295E315E6916A005703AE /* Tivoli.wav in Resources */ = {isa = PBXBuildFile; fileRef = DD8295E115E6916A005703AE /* Tivoli.wav */; };
 		DD8295E715E6932C005703AE /* EditSoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8295E615E6932C005703AE /* EditSoundViewController.m */; };
 		DD8295E915E6BEFB005703AE /* Flood.wav in Resources */ = {isa = PBXBuildFile; fileRef = DD8295E815E6BEFB005703AE /* Flood.wav */; };
+		DD8295EB15E6C6C8005703AE /* Jungle.wav in Resources */ = {isa = PBXBuildFile; fileRef = DD8295EA15E6C6C8005703AE /* Jungle.wav */; };
 		DDCD0F3515DCD5490007569E /* AddSnoozeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD0F3415DCD5490007569E /* AddSnoozeViewController.m */; };
 		DDCD0F3915DCE7340007569E /* EditSnoozeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD0F3815DCE7340007569E /* EditSnoozeViewController.m */; };
 /* End PBXBuildFile section */
@@ -132,6 +133,7 @@
 		DD8295E515E6932C005703AE /* EditSoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSoundViewController.h; sourceTree = "<group>"; };
 		DD8295E615E6932C005703AE /* EditSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditSoundViewController.m; sourceTree = "<group>"; };
 		DD8295E815E6BEFB005703AE /* Flood.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Flood.wav; sourceTree = "<group>"; };
+		DD8295EA15E6C6C8005703AE /* Jungle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Jungle.wav; sourceTree = "<group>"; };
 		DDCD0F3315DCD5490007569E /* AddSnoozeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSnoozeViewController.h; sourceTree = "<group>"; };
 		DDCD0F3415DCD5490007569E /* AddSnoozeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSnoozeViewController.m; sourceTree = "<group>"; };
 		DDCD0F3715DCE7340007569E /* EditSnoozeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSnoozeViewController.h; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				DD8295E015E6916A005703AE /* Fauna.wav */,
 				DD8295E115E6916A005703AE /* Tivoli.wav */,
 				DD3E3BB315E66D070016A4BB /* Cirkus.wav */,
+				DD8295EA15E6C6C8005703AE /* Jungle.wav */,
 				0036C2871509FA4100CA8CC9 /* chimes.wav */,
 			);
 			name = Sounds;
@@ -413,6 +416,7 @@
 				DD8295E215E6916A005703AE /* Fauna.wav in Resources */,
 				DD8295E315E6916A005703AE /* Tivoli.wav in Resources */,
 				DD8295E915E6BEFB005703AE /* Flood.wav in Resources */,
+				DD8295EB15E6C6C8005703AE /* Jungle.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
