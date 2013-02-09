@@ -156,6 +156,7 @@
     UIImage *simplyBG = [UIImage imageNamed:@"SimplyBG.png"];
     UIImage *standardBG = [UIImage imageNamed:@"BlackBoard4.png"];
     UIImage *whiteBG = [UIImage imageNamed:@"WhiteDesign.png"];
+    UIImage *testing = [UIImage imageNamed:@"clock3.png"];
     
     //Kollar vilka labels som ska vara på
     
@@ -209,7 +210,20 @@
         
         ampmDisplay.font = [UIFont fontWithName:@"Myriad Pro" size:24];
         dayDisplay.font = [UIFont fontWithName:@"Myriad Pro" size:24];
+        
+    } else if ([[[[Singleton sharedSingleton] sharedSettings] valueForKey:@"ActiveDesignSetting"] isEqualToString:@"testing"]) {
+        
+        [background setImage:testing];
+        timeDisplay.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        dateDisplay.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        secondsDisplay.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        ampmDisplay.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        dayDisplay.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        
+        ampmDisplay.font = [UIFont fontWithName:@"Myriad Pro" size:24];
+        dayDisplay.font = [UIFont fontWithName:@"Myriad Pro" size:24];
     }
+
     
     if ([[[Singleton sharedSingleton] sharedSettings]integerForKey:@"ClearBackgroundSetting"] == 0) {
         // GÖR INGET ALLS TILLS VIDARE

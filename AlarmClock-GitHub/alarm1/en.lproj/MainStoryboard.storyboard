@@ -1,26 +1,67 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Aaq-VX-fh7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Aaq-VX-fh7">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Master View Controller-->
         <scene sceneID="yIo-Ii-bCC">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kha-TN-Hyh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="8Gd-4o-2ev" customClass="MasterViewController" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="8Gd-4o-2ev" customClass="MasterViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="46d-V5-ldG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="BlackBoard4.png" id="aoK-m0-NvD">
-                                <rect key="frame" x="-80" y="0.0" width="480" height="480"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="clock2.png" id="aoK-m0-NvD">
+                                <rect key="frame" x="-160" y="-80" width="640" height="640"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" id="w3m-Wf-64X">
+                                <rect key="frame" x="42" y="172" width="236" height="127"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="bEb-Tc-TiO">
+                                        <rect key="frame" x="-22" y="-58" width="280" height="251"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="DBLCDTempBlack" family="DB LCD Temp" pointSize="84"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Day" lineBreakMode="tailTruncation" minimumFontSize="10" id="2GE-5u-hGM">
+                                        <rect key="frame" x="15" y="0.0" width="86" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="22"/>
+                                        <color key="textColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PM" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="7fz-jI-LLH">
+                                        <rect key="frame" x="134" y="0.0" width="82" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="22"/>
+                                        <color key="textColor" red="0.40000000596046448" green="0.40000000596046448" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="00-00-00" lineBreakMode="tailTruncation" minimumFontSize="10" id="dqG-8N-TNo">
+                                        <rect key="frame" x="7" y="106" width="94" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="DBLCDTempBlack" family="DB LCD Temp" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="00" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="nEl-bo-p2D">
+                                        <rect key="frame" x="119" y="106" width="97" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" name="DBLCDTempBlack" family="DB LCD Temp" pointSize="22"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iAC-Ja-QpT">
-                                <rect key="frame" x="273" y="433" width="27" height="27"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <rect key="frame" x="281" y="447" width="27" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="arrow.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -33,44 +74,9 @@
                                     <segue destination="bYr-UU-Cp9" kind="modal" identifier="PushminView" modalTransitionStyle="flipHorizontal" id="Lcw-9L-qmG"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="bEb-Tc-TiO">
-                                <rect key="frame" x="20" y="114" width="280" height="251"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="DBLCDTempBlack" family="DB LCD Temp" pointSize="84"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Day" lineBreakMode="tailTruncation" minimumFontSize="10" id="2GE-5u-hGM">
-                                <rect key="frame" x="46" y="170" width="86" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="22"/>
-                                <color key="textColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PM" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="7fz-jI-LLH">
-                                <rect key="frame" x="196" y="170" width="82" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="22"/>
-                                <color key="textColor" red="0.40000000596046448" green="0.40000000596046448" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="00-00-00" lineBreakMode="tailTruncation" minimumFontSize="10" id="dqG-8N-TNo">
-                                <rect key="frame" x="42" y="273" width="94" height="21"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <fontDescription key="fontDescription" name="DBLCDTempBlack" family="DB LCD Temp" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="00" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="nEl-bo-p2D">
-                                <rect key="frame" x="164" y="273" width="97" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="DBLCDTempBlack" family="DB LCD Temp" pointSize="22"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="setting1.png" id="eCS-Kb-Imm">
-                                <rect key="frame" x="42" y="302" width="58" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="131" y="141" width="58" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
@@ -78,6 +84,7 @@
                     <navigationItem key="navigationItem" id="8rm-QV-HC7"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="alarmIndicator" destination="eCS-Kb-Imm" id="MWs-ga-JiT"/>
                         <outlet property="ampmDisplay" destination="7fz-jI-LLH" id="3Dp-UG-ENV"/>
@@ -88,13 +95,13 @@
                         <outlet property="timeDisplay" destination="bEb-Tc-TiO" id="gFL-6y-uI0"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kha-TN-Hyh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="674" y="28"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qSa-HL-ApQ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Har-KR-AH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="Aaq-VX-fh7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Gga-bg-zCG">
@@ -106,13 +113,13 @@
                         <segue destination="8Gd-4o-2ev" kind="relationship" relationship="rootViewController" id="MyG-Ac-PXt"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Har-KR-AH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="148" y="28"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dL8-Tv-gu5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AuA-5t-cqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="bYr-UU-Cp9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Mke-Lf-0Bb">
@@ -124,16 +131,16 @@
                         <segue destination="qlD-cE-5uW" kind="relationship" relationship="rootViewController" id="rsF-hp-yuf"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AuA-5t-cqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1133" y="28"/>
         </scene>
         <!--Min Table View Controller-->
         <scene sceneID="ITE-dz-Div">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="s11-iZ-Jpz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="qlD-cE-5uW" customClass="minTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="lGz-e5-F15">
-                        <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -285,13 +292,13 @@
                         <segue destination="fX3-A7-w0S" kind="push" identifier="SettingSegue" id="HIJ-GR-Hio"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s11-iZ-Jpz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1609" y="28"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dTv-jR-N64">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kE4-YE-uPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="b9I-dh-qdN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="LIX-Nj-yVt"/>
@@ -304,16 +311,16 @@
                         <segue destination="5wC-Zj-kgQ" kind="relationship" relationship="rootViewController" id="wmw-td-PTD"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kE4-YE-uPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2663" y="-297"/>
         </scene>
         <!--Add Alarm View Controller - Add Alarm-->
         <scene sceneID="SCB-Js-VLt">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jW1-Gm-AbY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="5wC-Zj-kgQ" customClass="AddAlarmViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="jkM-qL-Vel">
-                        <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -481,16 +488,16 @@
                         <outlet property="timeSideLabel" destination="kHb-Ic-Nk3" id="Z5H-oA-ZIW"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jW1-Gm-AbY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3100" y="-297"/>
         </scene>
         <!--Add Snooze View Controller-->
         <scene sceneID="eYk-xp-dBv">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Uk5-xm-c1g" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="DAZ-Jr-DMd" customClass="AddSnoozeViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="NBn-Jv-9He">
-                        <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -511,16 +518,16 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="9rt-BO-SQB"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uk5-xm-c1g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3569" y="-185"/>
         </scene>
         <!--Add Sound View Controller-->
         <scene sceneID="zmZ-pg-aha">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bs0-cu-4XX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="HO8-Yc-GRL" customClass="AddSoundViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Jw1-ua-O0B">
-                        <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -541,16 +548,16 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="0bS-xd-fUb"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bs0-cu-4XX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3795" y="427"/>
         </scene>
         <!--Add Repeat View Controller-->
         <scene sceneID="0lc-wJ-71k">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="orb-yB-rd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="UUK-xq-EWH" customClass="AddRepeatViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="3KT-Vw-xiS">
-                        <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -708,16 +715,16 @@
                         <outlet property="wednesdayButton" destination="Pas-em-5qb" id="xmL-3L-LsH"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="orb-yB-rd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3569" y="-1388"/>
         </scene>
         <!--Edit Repeat View Controller-->
         <scene sceneID="7Cc-nS-oqT">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nw1-dz-Aca" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="aHJ-QJ-LRw" customClass="EditRepeatViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="jJM-6Q-0et">
-                        <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -875,16 +882,16 @@
                         <outlet property="wednesdayButton" destination="yNy-oo-PBR" id="eyO-cv-pUg"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nw1-dz-Aca" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3391" y="667"/>
         </scene>
         <!--Add Time View Controller-->
         <scene sceneID="I9e-mA-nmJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZO3-ip-zBc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="mbw-ga-Y4Y" customClass="AddTimeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h3q-Et-QG7">
-                        <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" id="zSP-HE-Y2C">
@@ -930,13 +937,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="timePicker" destination="zSP-HE-Y2C" id="3Bc-zd-vgW"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZO3-ip-zBc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3569" y="-785"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="N3i-jU-BlB">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C6N-de-gmW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="nIZ-MZ-Aia" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="FoB-ef-XM4"/>
@@ -949,16 +956,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <segue destination="tKJ-4d-3s1" kind="relationship" relationship="rootViewController" id="24s-Th-DpJ"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C6N-de-gmW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2137" y="327"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="UKh-Bb-oEX">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vaO-h5-e7Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="fX3-A7-w0S" customClass="SettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ntj-fx-D6a">
-                        <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -997,16 +1004,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </tableView>
                     <navigationItem key="navigationItem" id="rKx-bP-7k8"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vaO-h5-e7Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2137" y="921"/>
         </scene>
         <!--Edit Alarm View Controller - Edit Alarm-->
         <scene sceneID="Csg-XD-5AD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vnb-7f-rk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="tKJ-4d-3s1" customClass="EditAlarmViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="YiW-Ko-9eG">
-                        <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -1048,7 +1055,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PFf-Ae-LqU">
-                                                    <rect key="frame" x="244" y="11" width="26" height="21"/>
+                                                    <rect key="frame" x="226" y="11" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -1201,16 +1208,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="timeSideLabel" destination="PFf-Ae-LqU" id="ui1-yU-Hhq"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vnb-7f-rk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2574" y="327"/>
         </scene>
         <!--Edit Alarm Add Time View Controller-->
         <scene sceneID="j1U-yT-Az8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0MG-yh-YjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="xDV-f6-zN7" customClass="EditAlarmAddTimeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t1z-MZ-b71">
-                        <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" id="mXa-pZ-ImV">
@@ -1256,16 +1263,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="timePicker" destination="mXa-pZ-ImV" id="A0R-8T-kEC"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0MG-yh-YjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3001" y="327"/>
         </scene>
         <!--Edit Snooze View Controller-->
         <scene sceneID="Dhf-dO-A5A">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zrg-3e-kV6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="YkI-p9-gGb" customClass="EditSnoozeViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="kBS-Cy-1IY">
-                        <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -1305,16 +1312,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </tableView>
                     <navigationItem key="navigationItem" id="Buo-UK-nak"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zrg-3e-kV6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3757" y="1022"/>
         </scene>
         <!--Edit Sound View Controller-->
         <scene sceneID="LJx-er-pno">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YXX-t8-GNW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="V5K-A9-08p" customClass="EditSoundViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fjx-Ju-7UK">
-                        <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -1335,13 +1342,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </tableView>
                     <navigationItem key="navigationItem" id="B1E-sT-gjP"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YXX-t8-GNW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4163" y="1395"/>
         </scene>
     </scenes>
     <resources>
-        <image name="BlackBoard4.png" width="960" height="960"/>
         <image name="arrow.png" width="40" height="40"/>
+        <image name="clock2.png" width="960" height="960"/>
         <image name="setting1.png" width="50" height="50"/>
         <image name="setting2.png" width="50" height="50"/>
     </resources>
