@@ -195,7 +195,7 @@
     settings = [[NSMutableArray alloc] init];
     
     [settings addObject:[[NSMutableArray alloc] initWithObjects:@"24 Hour Clock", [NSNumber numberWithInt:0], @"24HourClockSetting", nil]];
-    [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Theme", [NSNumber numberWithInt:1], @"ActiveDesignSetting", [[NSMutableArray alloc] initWithObjects:@"Back To School", @"Back To School Clean", @"White Math", @"testing", nil], nil]];
+    [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Theme", [NSNumber numberWithInt:1], @"ActiveDesignSetting", [[NSMutableArray alloc] initWithObjects:@"Back To School", @"Back To School Clean", @"White Math", @"Blue LED", @"Green LED", nil], nil]];
     [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Math Level", [NSNumber numberWithInt:1], @"MathLevelSetting", [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithInt:1], [NSNumber numberWithInt:2], [NSNumber numberWithInt:3], [NSNumber numberWithInt:4], [NSNumber numberWithInt:5], nil], nil]];
      [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Math Type", [NSNumber numberWithInt:1], @"MathTypeSetting", [[NSMutableArray alloc] initWithObjects:@"Addition", @"Subtraction", @"Multiplication", @"Division", @"Equation", @"Fraction",  nil], nil]];
     [settings addObject:[[NSMutableArray alloc] initWithObjects:@"Show Seconds", [NSNumber numberWithInt:0], @"ShowSecondsSetting", nil]];

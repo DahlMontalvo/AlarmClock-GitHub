@@ -11,6 +11,8 @@
 		00081D2B16C6FF5D00761F0D /* clock2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00081D2A16C6FF5D00761F0D /* clock2.png */; };
 		00081D2D16C7065800761F0D /* clock3.png in Resources */ = {isa = PBXBuildFile; fileRef = 00081D2C16C7065800761F0D /* clock3.png */; };
 		00081D2F16C7110700761F0D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00081D2E16C7110700761F0D /* Default-568h@2x.png */; };
+		00081D3116C7D78800761F0D /* clock4 copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 00081D3016C7D78800761F0D /* clock4 copy.png */; };
+		00081D3316C7DA4500761F0D /* clock4green.png in Resources */ = {isa = PBXBuildFile; fileRef = 00081D3216C7DA4500761F0D /* clock4green.png */; };
 		001638FB14DAC9690097041F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001638FA14DAC9690097041F /* UIKit.framework */; };
 		001638FD14DAC9690097041F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001638FC14DAC9690097041F /* Foundation.framework */; };
 		001638FF14DAC9690097041F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001638FE14DAC9690097041F /* CoreGraphics.framework */; };
@@ -75,6 +77,8 @@
 		00081D2A16C6FF5D00761F0D /* clock2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock2.png; sourceTree = "<group>"; };
 		00081D2C16C7065800761F0D /* clock3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock3.png; sourceTree = "<group>"; };
 		00081D2E16C7110700761F0D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		00081D3016C7D78800761F0D /* clock4 copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock4 copy.png"; sourceTree = "<group>"; };
+		00081D3216C7DA4500761F0D /* clock4green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock4green.png; sourceTree = "<group>"; };
 		001638F614DAC9690097041F /* alarm1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alarm1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		001638FA14DAC9690097041F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		001638FC14DAC9690097041F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -233,6 +237,8 @@
 			isa = PBXGroup;
 			children = (
 				00081D2C16C7065800761F0D /* clock3.png */,
+				00081D3016C7D78800761F0D /* clock4 copy.png */,
+				00081D3216C7DA4500761F0D /* clock4green.png */,
 				00C6F14915CEACDF009543E1 /* setting1.png */,
 				00081D2816C6F78500761F0D /* clock1.png */,
 				00C6F14B15CEAEE0009543E1 /* setting2.png */,
@@ -433,6 +439,8 @@
 				00081D2B16C6FF5D00761F0D /* clock2.png in Resources */,
 				00081D2D16C7065800761F0D /* clock3.png in Resources */,
 				00081D2F16C7110700761F0D /* Default-568h@2x.png in Resources */,
+				00081D3116C7D78800761F0D /* clock4 copy.png in Resources */,
+				00081D3316C7DA4500761F0D /* clock4green.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
